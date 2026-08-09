@@ -10,8 +10,8 @@ import {
 import Link from "next/link";
 import { useRef, useState } from "react";
 import BrandLogo from "@/components/BrandLogo";
-import PlaceholderImage from "@/components/PlaceholderImage";
 import ProductCard from "@/components/ProductCard";
+import ProductImage from "@/components/ProductImage";
 import PurgoButton from "@/components/PurgoButton";
 import Reveal from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
@@ -20,34 +20,40 @@ import { PURGO_ORIGIN } from "@/lib/brand";
 import { products } from "@/lib/products";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+const shampoo = products[0];
+const capsule = products[1];
+const lift = products[2];
 
 const stories = [
   {
     name: "Maya",
     quote: "The shampoo ritual finally feels clinical and calm — not noisy.",
     label: "Member story",
+    image: shampoo.image,
   },
   {
     name: "Jordan",
     quote: "Capsule Cream melted in and layered under everything else.",
     label: "Member story",
+    image: capsule.image,
   },
   {
     name: "Avery",
     quote: "Lift Cream is the small jar I actually finish.",
     label: "Member story",
+    image: lift.image,
   },
 ];
 
 const ugcTiles = [
-  "Bathroom shelf",
-  "Pump detail",
-  "Morning ritual",
-  "Scalp care",
-  "Capsule melt",
-  "Press note",
-  "Travel kit",
-  "Texture close-up",
+  shampoo.image,
+  shampoo.secondImage,
+  capsule.image,
+  capsule.secondImage,
+  lift.image,
+  lift.secondImage,
+  shampoo.image,
+  capsule.image,
 ];
 
 function HeroSection() {
@@ -65,14 +71,15 @@ function HeroSection() {
       <div className="absolute inset-0 hero-plane" />
       <motion.div
         style={{ y: imageY }}
-        className="absolute inset-y-0 right-0 hidden w-[52%] md:block"
+        className="absolute inset-y-0 right-0 hidden w-[52%] bg-brand-deep/40 md:block"
       >
-        <PlaceholderImage
-          label="Copper Growth Shampoo"
-          caption="Hero visual placeholder"
-          aspect="square"
-          tone="deep"
-          className="!aspect-auto h-[120%] min-h-[120svh] rounded-none"
+        <ProductImage
+          src={shampoo.image}
+          alt={shampoo.name}
+          aspect="auto"
+          priority
+          className="!aspect-auto h-[120%] min-h-[120svh] rounded-none bg-transparent"
+          sizes="52vw"
         />
       </motion.div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(255,255,255,0.12),transparent_40%)]" />
@@ -125,11 +132,12 @@ function HeroSection() {
         </div>
 
         <div className="mt-10 md:hidden">
-          <PlaceholderImage
-            label="Copper Growth Shampoo"
-            caption="Hero visual placeholder"
+          <ProductImage
+            src={shampoo.image}
+            alt={shampoo.name}
             aspect="hero"
-            tone="deep"
+            priority
+            sizes="100vw"
           />
         </div>
       </motion.div>
@@ -216,18 +224,18 @@ function HighlightSection() {
         </Reveal>
         <Parallax offset={60}>
           <div className="grid grid-cols-2 gap-4">
-            <PlaceholderImage
-              label="Shampoo"
-              caption="Highlight"
+            <ProductImage
+              src={shampoo.image}
+              alt={shampoo.name}
               aspect="portrait"
-              tone="brand"
+              sizes="(max-width: 768px) 45vw, 22vw"
             />
-            <PlaceholderImage
-              label="Capsule"
-              caption="Highlight"
+            <ProductImage
+              src={capsule.image}
+              alt={capsule.name}
               aspect="portrait"
-              tone="mist"
               className="mt-10"
+              sizes="(max-width: 768px) 45vw, 22vw"
             />
           </div>
         </Parallax>
@@ -326,11 +334,11 @@ function ScienceSection() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-8 md:py-28">
         <Reveal>
           <Parallax offset={40}>
-            <PlaceholderImage
-              label="Peptide science"
-              caption="Science / Peptides 101"
-              aspect="wide"
-              tone="mist"
+            <ProductImage
+              src={capsule.secondImage}
+              alt="Capsule Cream packaging"
+              aspect="hero"
+              sizes="(max-width: 768px) 100vw, 45vw"
             />
           </Parallax>
         </Reveal>
@@ -399,11 +407,11 @@ function ReviewSection() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.55, ease }}
             >
-              <PlaceholderImage
-                label={stories[active].name}
-                caption={stories[active].label}
-                aspect="wide"
-                tone="brand"
+              <ProductImage
+                src={stories[active].image}
+                alt={stories[active].name}
+                aspect="hero"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <blockquote className="mt-6 max-w-lg">
                 <p className="font-renewal text-2xl leading-snug text-ink md:text-3xl">
@@ -464,13 +472,13 @@ function UgcSection() {
       </div>
 
       <motion.div style={{ x }} className="mt-12 flex w-max gap-4 px-5 md:gap-6 md:px-8">
-        {ugcTiles.map((tile, index) => (
-          <div key={tile} className="w-[240px] shrink-0 md:w-[300px]">
-            <PlaceholderImage
-              label={tile}
-              caption={`UGC ${index + 1}`}
+        {ugcTiles.map((src, index) => (
+          <div key={`${src}-${index}`} className="w-[240px] shrink-0 md:w-[300px]">
+            <ProductImage
+              src={src}
+              alt={`[FORM] product ${index + 1}`}
               aspect="portrait"
-              tone={index % 3 === 0 ? "brand" : index % 3 === 1 ? "mist" : "deep"}
+              sizes="300px"
             />
           </div>
         ))}
@@ -502,11 +510,11 @@ function LabsSection() {
         </Reveal>
         <Reveal delay={0.1}>
           <Parallax offset={50}>
-            <PlaceholderImage
-              label="Lab shelf"
-              caption="Bookend visual"
-              aspect="wide"
-              tone="deep"
+            <ProductImage
+              src={lift.secondImage}
+              alt={lift.name}
+              aspect="hero"
+              sizes="(max-width: 768px) 100vw, 45vw"
             />
           </Parallax>
         </Reveal>

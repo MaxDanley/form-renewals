@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Accordion from "@/components/Accordion";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import ProductImage from "@/components/ProductImage";
 import PurgoButton from "@/components/PurgoButton";
 import StickyBuyBar from "@/components/StickyBuyBar";
 import Reveal from "@/components/motion/Reveal";
@@ -22,25 +22,26 @@ export default function ProductPageClient({
       <section className="mx-auto grid max-w-6xl gap-10 px-5 py-10 md:grid-cols-2 md:gap-14 md:px-8 md:py-16">
         <Reveal className="space-y-4" y={36}>
           <Parallax offset={40}>
-            <PlaceholderImage
-              label={product.name}
-              caption={`${product.code} · primary`}
+            <ProductImage
+              src={product.image}
+              alt={product.name}
               aspect="portrait"
-              tone="brand"
+              priority
+              sizes="(max-width: 768px) 100vw, 45vw"
             />
           </Parallax>
           <div className="grid grid-cols-2 gap-4">
-            <PlaceholderImage
-              label="Detail"
-              caption="Secondary"
+            <ProductImage
+              src={product.secondImage}
+              alt={`${product.name} packaging`}
               aspect="square"
-              tone="mist"
+              sizes="(max-width: 768px) 50vw, 22vw"
             />
-            <PlaceholderImage
-              label="Lifestyle"
-              caption="Secondary"
+            <ProductImage
+              src={product.image}
+              alt={`${product.name} detail`}
               aspect="square"
-              tone="deep"
+              sizes="(max-width: 768px) 50vw, 22vw"
             />
           </div>
         </Reveal>
@@ -134,13 +135,13 @@ export default function ProductPageClient({
             </h2>
           </Reveal>
           <Stagger className="mt-12 grid gap-8 md:grid-cols-3" delay={0.05}>
-            {product.features.map((feature) => (
+            {product.features.map((feature, index) => (
               <StaggerItem key={feature.title}>
-                <PlaceholderImage
-                  label={feature.title}
-                  caption="Feature"
+                <ProductImage
+                  src={index % 2 === 0 ? product.image : product.secondImage}
+                  alt={feature.title}
                   aspect="square"
-                  tone="mist"
+                  sizes="(max-width: 768px) 90vw, 30vw"
                 />
                 <h3 className="font-form mt-5 text-lg uppercase tracking-[0.08em]">
                   {feature.title}
@@ -233,11 +234,11 @@ export default function ProductPageClient({
                   href={`/products/${item.slug}`}
                   className="group grid gap-4 border border-line bg-white/40 p-4 transition hover:border-brand/40 sm:grid-cols-[140px_1fr]"
                 >
-                  <PlaceholderImage
-                    label={item.shortName}
-                    caption={item.code}
+                  <ProductImage
+                    src={item.image}
+                    alt={item.name}
                     aspect="square"
-                    tone="brand"
+                    sizes="140px"
                   />
                   <div className="flex flex-col justify-center">
                     <p className="font-form text-lg uppercase tracking-[0.06em]">

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import ProductImage from "@/components/ProductImage";
 import PurgoButton from "@/components/PurgoButton";
 import { formatPrice, type FormProduct } from "@/lib/products";
 
@@ -19,11 +19,11 @@ export default function ProductCard({ product }: { product: FormProduct }) {
           whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <PlaceholderImage
-            label={product.shortName}
-            caption={product.code}
+          <ProductImage
+            src={product.image}
+            alt={product.name}
             aspect="portrait"
-            tone="brand"
+            sizes="(max-width: 768px) 90vw, 30vw"
           />
         </motion.div>
       </Link>

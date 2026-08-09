@@ -11,6 +11,8 @@ export type FormProduct = {
   size: string;
   actives: string;
   badge?: string;
+  image: string;
+  secondImage: string;
   benefits: string[];
   directions: string;
   ingredients: string;
@@ -32,6 +34,8 @@ export const products: FormProduct[] = [
     size: "300ml / 10.14oz",
     actives: "5% GHK-CU + 3% AHK-CU + BIOTIN",
     badge: "Bestseller",
+    image: "/products/form-shampoo.png",
+    secondImage: "/products/form-shampoo-box.png",
     benefits: [
       "Supports thicker, fuller-looking hair",
       "Helps improve elasticity, resilience, and shine",
@@ -87,6 +91,8 @@ export const products: FormProduct[] = [
     size: "50g / 1.76 fl.oz · 50000 MG",
     actives: "GHK-Cu Copper Peptide Capsules",
     badge: "New",
+    image: "/products/form-capsule-cream.png",
+    secondImage: "/products/form-capsule-cream-box.png",
     benefits: [
       "Melt-on capsules for targeted application",
       "Helps reduce the appearance of fine lines",
@@ -142,6 +148,8 @@ export const products: FormProduct[] = [
     size: "10ml / 0.3 fl.oz",
     actives: "5% GHK-CU + 5% Snap-8",
     badge: "New",
+    image: "/products/ghkcu-facelift-cream.png",
+    secondImage: "/products/ghkcu-facelift-box.png",
     benefits: [
       "High-strength copper peptide concentration",
       "Snap-8 for expression-line appearance support",

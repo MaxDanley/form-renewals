@@ -32,7 +32,8 @@ Mirrored from seed.com’s live section architecture:
 | Brand color | Pantone 6207 U ≈ `#8A8664` |
 | `[FORM]` | Lexend Deca Regular |
 | `renewal` | News 701 BT Italic (web fallback: Newsreader Italic until licensed font files are added under `public/fonts`) |
-| Logo | `public/logo.pdf`, `public/logo-white.png`, `public/logo-dark.png` |
+| Logo | Real logo asset used sitewide via `BrandLogo` → `public/logo-white.png` / `public/logo-dark.png` (from provided logo photo) |
+| Product photos | Pulled from Purgo Labs into `public/products/` |
 
 ## Products
 

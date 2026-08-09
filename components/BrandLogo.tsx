@@ -2,62 +2,43 @@ import Image from "next/image";
 import Link from "next/link";
 
 type BrandLogoProps = {
-  href?: string;
+  href?: string | null;
   tone?: "light" | "dark";
   size?: "sm" | "md" | "lg" | "hero";
-  showWordmark?: boolean;
   className?: string;
 };
 
 const sizeMap = {
-  sm: { width: 120, height: 43, form: "text-[1.05rem]", renewal: "text-[0.72rem]" },
-  md: { width: 152, height: 55, form: "text-[1.35rem]", renewal: "text-[0.88rem]" },
-  lg: { width: 210, height: 76, form: "text-[1.9rem]", renewal: "text-[1.15rem]" },
-  hero: { width: 320, height: 115, form: "text-[2.8rem] md:text-[3.6rem]", renewal: "text-[1.35rem] md:text-[1.7rem]" },
+  sm: { width: 132, height: 40, className: "h-8 w-auto md:h-9" },
+  md: { width: 168, height: 50, className: "h-10 w-auto" },
+  lg: { width: 220, height: 66, className: "h-12 w-auto md:h-14" },
+  hero: { width: 340, height: 102, className: "h-16 w-auto md:h-24" },
 };
 
 export default function BrandLogo({
   href = "/",
   tone = "dark",
   size = "md",
-  showWordmark = true,
   className = "",
 }: BrandLogoProps) {
   const dims = sizeMap[size];
-  const isLight = tone === "light";
+  const src = tone === "light" ? "/logo-white.png" : "/logo-dark.png";
 
-  const mark = showWordmark ? (
-    <span className={`inline-flex flex-col items-start leading-none ${className}`}>
-      <span
-        className={`font-form uppercase ${dims.form} ${
-          isLight ? "text-white" : "text-ink"
-        }`}
-      >
-        [FORM]
-      </span>
-      <span
-        className={`font-renewal -mt-1 self-end pr-1 ${dims.renewal} ${
-          isLight ? "text-white/90" : "text-brand-deep"
-        }`}
-      >
-        renewal
-      </span>
-    </span>
-  ) : (
+  const mark = (
     <Image
-      src={isLight ? "/logo-white.png" : "/logo-dark.png"}
+      src={src}
       alt="[FORM] renewal"
       width={dims.width}
       height={dims.height}
-      className={`h-auto w-auto ${className}`}
-      priority={size === "hero" || size === "lg"}
+      className={`${dims.className} ${className}`}
+      priority={size === "hero" || size === "sm"}
     />
   );
 
   if (!href) return mark;
 
   return (
-    <Link href={href} aria-label="[FORM] renewal home" className="inline-flex">
+    <Link href={href} aria-label="[FORM] renewal home" className="inline-flex items-center">
       {mark}
     </Link>
   );
