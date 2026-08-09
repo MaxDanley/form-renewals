@@ -6,9 +6,24 @@ Peptide skincare brand frontend for **[FORM] renewal**.
 
 - Next.js (App Router) + React + TypeScript
 - Tailwind CSS
-- Framer Motion available for future motion work
+- Framer Motion (`whileInView`, `useScroll`, `useTransform`, stagger, AnimatePresence)
+- Lenis smooth scrolling
 
 Frontend shell only — no backend/checkout yet. Product purchase CTAs link to the matching listings on [Purgo Labs](https://www.purgolabs.com).
+
+## Homepage sections (Seed-aligned)
+
+Mirrored from seed.com’s live section architecture:
+
+1. Hero (parallax + entrance)
+2. Product lineup (staggered cards)
+3. Highlight / bundle pair
+4. Peptide tech sticky story + scroll-scrubbed counter (ViaCap-style)
+5. Science / education
+6. Stories carousel
+7. Horizontal UGC scroller (scroll-linked)
+8. Labs / Purgo fulfillment
+9. Bookend CTA
 
 ## Brand
 

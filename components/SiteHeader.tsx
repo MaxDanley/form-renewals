@@ -7,6 +7,7 @@ import { PURGO_ORIGIN } from "@/lib/brand";
 
 const nav = [
   { href: "/products", label: "Shop" },
+  { href: "/#lineup", label: "Lineup" },
   { href: "/#science", label: "Science" },
   { href: "/#routine", label: "Routine" },
 ];

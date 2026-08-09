@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lexend_Deca, Newsreader } from "next/font/google";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import SmoothScroll from "@/components/motion/SmoothScroll";
 import "./globals.css";
 
 const lexendDeca = Lexend_Deca({
@@ -42,9 +43,11 @@ export default function RootLayout({
       <body
         className={`${lexendDeca.variable} ${newsreader.variable} antialiased`}
       >
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
+        <SmoothScroll>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+        </SmoothScroll>
       </body>
     </html>
   );
