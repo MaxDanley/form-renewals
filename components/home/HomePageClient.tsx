@@ -43,23 +43,32 @@ const stories = [
 
 function HeroSection() {
   return (
-    <section className="relative px-3 pb-3 pt-20 md:px-5 md:pb-5 md:pt-24">
-      <div className="seed-shell relative mx-auto min-h-[78svh] max-w-[1400px] overflow-hidden bg-[linear-gradient(135deg,#6f6c52_0%,#8a8664_45%,#5f5c45_100%)]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(255,255,255,0.16),transparent_45%)]" />
-        <div className="relative grid min-h-[78svh] items-center gap-8 px-6 py-16 md:grid-cols-[1.05fr_0.95fr] md:px-12 md:py-20">
-          <div className="text-white">
+    <section className="relative bg-[#f4f2eb] px-3 pb-3 pt-3 md:px-5 md:pb-5">
+      <div className="seed-shell relative mx-auto min-h-[88svh] max-w-[1400px] overflow-hidden bg-[#eceae3]">
+        <Image
+          src="/hero.jpg"
+          alt="[FORM] renewal copper peptide lineup"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[68%_center] md:object-[72%_center]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f4f2eb]/92 via-[#f4f2eb]/72 to-transparent md:from-[#f4f2eb]/88 md:via-[#f4f2eb]/45 md:to-transparent" />
+
+        <div className="relative flex min-h-[88svh] items-center px-6 py-28 md:px-14 md:py-24">
+          <div className="max-w-xl text-[#1f2118]">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease }}
             >
-              <BrandLogo href="/" tone="light" size="lg" />
+              <BrandLogo href="/" tone="dark" size="lg" />
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.08, ease }}
-              className="mt-8 max-w-[14ch] text-4xl font-medium leading-[1.05] tracking-[-0.02em] text-balance md:text-6xl"
+              className="mt-8 max-w-[13ch] text-4xl font-medium leading-[1.05] tracking-[-0.02em] text-balance text-[#2f2e24] md:text-6xl"
             >
               A life-changing care routine, built around peptides.
             </motion.h1>
@@ -67,7 +76,7 @@ function HeroSection() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.16, ease }}
-              className="mt-5 max-w-md text-base leading-relaxed text-white/85 md:text-lg"
+              className="mt-5 max-w-md text-base leading-relaxed text-[#3d3c31] md:text-lg"
             >
               Transform scalp and skin with copper peptide formulas designed for
               real, repeatable results.
@@ -76,47 +85,19 @@ function HeroSection() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.24, ease }}
-              className="mt-8 flex flex-wrap gap-3"
+              className="mt-8 flex flex-wrap items-center gap-4"
             >
-              <PurgoButton href={PURGO_ORIGIN} variant="light">
+              <PurgoButton href={PURGO_ORIGIN} variant="primary">
                 Get Started
               </PurgoButton>
-              <PurgoButton href="/products" variant="secondary" external={false} className="!border-white/30 !text-white hover:!border-white/60">
-                Shop Now
-              </PurgoButton>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-1 text-[0.95rem] font-medium text-[#2f2e24] transition hover:opacity-70"
+              >
+                Shop Now <span aria-hidden>→</span>
+              </Link>
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 36 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.18, ease }}
-            className="seed-card relative mx-auto w-full max-w-md bg-white/10 p-4 backdrop-blur-sm md:max-w-none"
-          >
-            <div className="grid grid-cols-3 gap-3">
-              {products.map((product) => (
-                <Link
-                  key={product.slug}
-                  href={`/products/${product.slug}`}
-                  className="seed-card bg-paper-strong/95 p-2 transition hover:-translate-y-1"
-                >
-                  <div className="relative aspect-[3/4]">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-contain p-1"
-                      sizes="150px"
-                      priority
-                    />
-                  </div>
-                  <p className="mt-2 px-1 text-center text-[0.7rem] text-ink">
-                    {product.shortName}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
@@ -528,7 +509,7 @@ function BookendSection() {
 
 export default function HomePageClient() {
   return (
-    <div className="seed-page">
+    <div className="bg-[#f4f2eb]">
       <HeroSection />
       <ProductSection />
       <HighlightSection />

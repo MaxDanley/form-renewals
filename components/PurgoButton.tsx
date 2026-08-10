@@ -16,10 +16,11 @@ export default function PurgoButton({
   external = true,
 }: PurgoButtonProps) {
   const styles = {
-    primary: "bg-shell text-white hover:bg-shell-soft",
-    dark: "bg-ink text-white hover:bg-shell",
-    secondary: "bg-transparent text-ink border border-ink/15 hover:border-ink/40",
-    light: "bg-white text-ink hover:bg-paper",
+    primary: "bg-[#2f2e24] text-white hover:bg-[#3d3c31]",
+    dark: "bg-[#1f2118] text-white hover:bg-[#2f2e24]",
+    secondary:
+      "bg-transparent text-[#1f2118] border border-[#1f2118]/25 hover:border-[#1f2118]/55",
+    light: "bg-white text-[#1f2118] hover:bg-[#f4f2eb]",
   };
 
   const classes = `seed-pill inline-flex items-center justify-center px-6 py-3.5 text-[0.95rem] font-medium transition ${styles[variant]} ${className}`;
