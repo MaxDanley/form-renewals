@@ -56,27 +56,20 @@ function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#f4f2eb]/92 via-[#f4f2eb]/72 to-transparent md:from-[#f4f2eb]/88 md:via-[#f4f2eb]/40 md:to-transparent" />
 
         <div className="relative mx-auto flex min-h-[92svh] w-full max-w-[1400px] items-center px-6 py-28 md:px-14 md:py-24">
-          <div className="max-w-xl text-[#1f2118]">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease }}
-            >
-              <BrandLogo href="/" tone="dark" size="lg" />
-            </motion.div>
+          <div className="max-w-lg text-[#1f2118]">
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.08, ease }}
-              className="mt-8 max-w-[13ch] text-4xl font-medium leading-[1.05] tracking-[-0.02em] text-balance text-[#2f2e24] md:text-6xl"
+              transition={{ duration: 0.9, ease }}
+              className="max-w-[16ch] text-[1.75rem] font-medium leading-[1.12] tracking-[-0.02em] text-balance text-[#2f2e24] md:text-[2.35rem]"
             >
               A life-changing care routine, built around peptides.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.16, ease }}
-              className="mt-5 max-w-md text-base leading-relaxed text-[#3d3c31] md:text-lg"
+              transition={{ duration: 0.9, delay: 0.08, ease }}
+              className="mt-4 max-w-md text-sm leading-relaxed text-[#3d3c31] md:text-[0.95rem]"
             >
               Transform scalp and skin with copper peptide formulas designed for
               real, repeatable results.
@@ -84,8 +77,8 @@ function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.24, ease }}
-              className="mt-8 flex flex-wrap items-center gap-4"
+              transition={{ duration: 0.9, delay: 0.16, ease }}
+              className="mt-7 flex flex-wrap items-center gap-4"
             >
               <PurgoButton href={PURGO_ORIGIN} variant="primary">
                 Get Started
@@ -106,26 +99,31 @@ function HeroSection() {
 
 function ProductSection() {
   return (
-    <section id="lineup" className="bg-paper px-3 py-16 md:px-5 md:py-24">
-      <div className="mx-auto max-w-[1400px]">
-        <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm text-muted">Whole body care starts with peptides.</p>
-          <h2 className="mt-4 text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
-            Formulations that provide sustained support using clinically studied
-            copper peptides.
+    <section id="lineup" className="bg-[#f4f2eb] px-3 pb-3 md:px-5 md:pb-5">
+      <div className="seed-shell mx-auto max-w-[1400px] bg-[#7b7869] px-6 py-16 text-white md:px-12 md:py-24">
+        <Reveal className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end md:gap-16">
+          <h2 className="max-w-[14ch] text-3xl font-medium tracking-[-0.02em] text-white md:text-5xl">
+            Whole body care starts with peptides.
           </h2>
-          <div className="mt-6">
-            <PurgoButton href="/products" external={false} variant="primary">
-              Shop all
-            </PurgoButton>
+          <div>
+            <p className="max-w-md text-base leading-relaxed text-white/80">
+              Formulations that provide sustained support using clinically
+              studied copper peptides.
+            </p>
+            <Link
+              href="/products"
+              className="mt-5 inline-flex items-center gap-1 text-[0.95rem] font-medium text-white transition hover:opacity-70"
+            >
+              Shop All <span aria-hidden>→</span>
+            </Link>
           </div>
         </Reveal>
 
-        <Stagger className="mt-12 grid gap-5 md:grid-cols-3" delay={0.05}>
+        <Stagger className="mt-12 grid gap-4 md:grid-cols-3" delay={0.05}>
           {products.map((product) => (
             <StaggerItem key={product.slug}>
-              <div className="seed-card bg-paper-strong p-4 shadow-[0_20px_60px_rgba(47,46,36,0.06)] md:p-5">
-                <ProductCard product={product} />
+              <div className="seed-card bg-[#8a8778] p-4 md:p-5">
+                <ProductCard product={product} tone="onDark" />
               </div>
             </StaggerItem>
           ))}
