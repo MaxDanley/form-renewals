@@ -43,8 +43,8 @@ const stories = [
 
 function HeroSection() {
   return (
-    <section className="relative bg-[#f4f2eb] px-3 pb-3 pt-3 md:px-5 md:pb-5">
-      <div className="seed-shell relative mx-auto min-h-[88svh] max-w-[1400px] overflow-hidden bg-[#eceae3]">
+    <section className="relative w-full bg-[#f4f2eb] pb-3 md:pb-5">
+      <div className="seed-hero relative min-h-[92svh] w-full bg-[#eceae3]">
         <Image
           src="/hero.jpg"
           alt="[FORM] renewal copper peptide lineup"
@@ -53,9 +53,9 @@ function HeroSection() {
           sizes="100vw"
           className="object-cover object-[68%_center] md:object-[72%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f4f2eb]/92 via-[#f4f2eb]/72 to-transparent md:from-[#f4f2eb]/88 md:via-[#f4f2eb]/45 md:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f4f2eb]/92 via-[#f4f2eb]/72 to-transparent md:from-[#f4f2eb]/88 md:via-[#f4f2eb]/40 md:to-transparent" />
 
-        <div className="relative flex min-h-[88svh] items-center px-6 py-28 md:px-14 md:py-24">
+        <div className="relative mx-auto flex min-h-[92svh] w-full max-w-[1400px] items-center px-6 py-28 md:px-14 md:py-24">
           <div className="max-w-xl text-[#1f2118]">
             <motion.div
               initial={{ opacity: 0, y: 24 }}

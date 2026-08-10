@@ -105,6 +105,12 @@ a {
   overflow: hidden;
 }
 
+/* Seed-style full-bleed hero: flush top/sides, rounded bottom only */
+.seed-hero {
+  border-radius: 0 0 var(--radius-shell) var(--radius-shell);
+  overflow: hidden;
+}
+
 .seed-card {
   border-radius: var(--radius-card);
   overflow: hidden;
