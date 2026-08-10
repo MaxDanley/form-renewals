@@ -18,8 +18,8 @@ export default function ProductPageClient({
   otherProducts: FormProduct[];
 }) {
   return (
-    <div className="brand-atmosphere pb-24">
-      <section className="mx-auto grid max-w-6xl gap-10 px-5 py-10 md:grid-cols-2 md:gap-14 md:px-8 md:py-16">
+    <div className="min-h-screen bg-paper pb-24 pt-24">
+      <section className="mx-auto grid max-w-[1400px] gap-10 px-5 py-10 md:grid-cols-2 md:gap-14 md:px-10 md:py-16">
         <Reveal className="space-y-4" y={36}>
           <Parallax offset={40}>
             <ProductImage
@@ -49,16 +49,16 @@ export default function ProductPageClient({
         <Reveal delay={0.08} className="md:sticky md:top-28 md:self-start">
           <div className="flex flex-wrap items-center gap-3">
             {product.badge ? (
-              <span className="font-form text-[0.68rem] uppercase tracking-[0.16em] text-brand-deep">
+              <span className="seed-pill bg-brand-mist px-3 py-1 text-xs text-shell">
                 {product.badge}
               </span>
             ) : null}
-            <span className="font-form text-[0.68rem] uppercase tracking-[0.16em] text-muted">
+            <span className="text-xs uppercase tracking-[0.14em] text-muted">
               {product.code}
             </span>
           </div>
 
-          <h1 className="font-form mt-4 text-4xl uppercase tracking-[0.04em] md:text-5xl">
+          <h1 className="mt-4 text-4xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
             {product.name}
           </h1>
           <p className="font-renewal mt-2 text-xl text-brand-deep">renewal</p>
@@ -66,7 +66,7 @@ export default function ProductPageClient({
             {product.description}
           </p>
 
-          <p className="font-form mt-8 text-3xl tracking-[0.04em]">
+          <p className="mt-8 text-3xl tracking-[-0.02em] text-shell">
             {formatPrice(product.price)}
           </p>
           <p className="mt-2 text-sm text-muted">
@@ -77,12 +77,9 @@ export default function ProductPageClient({
             <PurgoButton href={product.purgoUrl} className="w-full sm:w-auto">
               Shop at Purgo Labs
             </PurgoButton>
-            <Link
-              href="/products"
-              className="inline-flex items-center justify-center rounded-full border border-ink/15 px-6 py-3.5 font-form text-[0.75rem] uppercase tracking-[0.16em] transition hover:border-ink/40"
-            >
+            <PurgoButton href="/products" external={false} variant="secondary">
               All formulas
-            </Link>
+            </PurgoButton>
           </div>
 
           <p className="mt-4 text-xs text-muted">
@@ -127,10 +124,10 @@ export default function ProductPageClient({
         </Reveal>
       </section>
 
-      <section className="section-rule bg-white/40">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <section className="bg-paper-strong">
+        <div className="mx-auto max-w-[1400px] px-5 py-20 md:px-10">
           <Reveal>
-            <h2 className="font-form max-w-xl text-3xl uppercase tracking-[0.04em] md:text-4xl">
+            <h2 className="max-w-xl text-3xl font-medium tracking-[-0.02em] text-shell md:text-4xl">
               Feel the difference of peptide-led care.
             </h2>
           </Reveal>
@@ -143,7 +140,7 @@ export default function ProductPageClient({
                   aspect="square"
                   sizes="(max-width: 768px) 90vw, 30vw"
                 />
-                <h3 className="font-form mt-5 text-lg uppercase tracking-[0.08em]">
+                <h3 className="mt-5 text-lg font-medium tracking-[-0.01em] text-shell">
                   {feature.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -155,10 +152,10 @@ export default function ProductPageClient({
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <section className="mx-auto max-w-[1400px] px-5 py-20 md:px-10">
         <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
           <Reveal>
-            <h2 className="font-form text-3xl uppercase tracking-[0.04em]">
+            <h2 className="text-3xl font-medium tracking-[-0.02em] text-shell">
               Unlike ordinary wash-and-go formulas.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted">
@@ -202,10 +199,10 @@ export default function ProductPageClient({
         </div>
       </section>
 
-      <section className="section-rule bg-white/40">
-        <div className="mx-auto max-w-3xl px-5 py-20 md:px-8">
+      <section className="bg-paper-strong">
+        <div className="mx-auto max-w-3xl px-5 py-20 md:px-10">
           <Reveal>
-            <h2 className="font-form text-3xl uppercase tracking-[0.04em]">
+            <h2 className="text-3xl font-medium tracking-[-0.02em] text-shell">
               Questions? We&apos;re here to help.
             </h2>
           </Reveal>
@@ -221,9 +218,9 @@ export default function ProductPageClient({
       </section>
 
       {otherProducts.length ? (
-        <section className="mx-auto max-w-6xl px-5 py-20 md:px-8">
+        <section className="mx-auto max-w-[1400px] px-5 py-20 md:px-10">
           <Reveal>
-            <h2 className="font-form text-2xl uppercase tracking-[0.06em]">
+            <h2 className="text-2xl font-medium tracking-[-0.02em] text-shell">
               More from [FORM]
             </h2>
           </Reveal>
@@ -232,7 +229,7 @@ export default function ProductPageClient({
               <StaggerItem key={item.slug}>
                 <Link
                   href={`/products/${item.slug}`}
-                  className="group grid gap-4 border border-line bg-white/40 p-4 transition hover:border-brand/40 sm:grid-cols-[140px_1fr]"
+                  className="seed-card group grid gap-4 bg-paper-strong p-4 transition hover:-translate-y-1 sm:grid-cols-[140px_1fr]"
                 >
                   <ProductImage
                     src={item.image}
@@ -241,11 +238,11 @@ export default function ProductPageClient({
                     sizes="140px"
                   />
                   <div className="flex flex-col justify-center">
-                    <p className="font-form text-lg uppercase tracking-[0.06em]">
+                    <p className="text-lg font-medium tracking-[-0.01em] text-shell">
                       {item.name}
                     </p>
                     <p className="mt-2 text-sm text-muted">{item.tagline}</p>
-                    <p className="mt-3 font-form text-sm">{formatPrice(item.price)}</p>
+                    <p className="mt-3 text-sm text-shell">{formatPrice(item.price)}</p>
                   </div>
                 </Link>
               </StaggerItem>

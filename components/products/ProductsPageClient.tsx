@@ -7,25 +7,24 @@ import { products } from "@/lib/products";
 
 export default function ProductsPageClient() {
   return (
-    <div className="brand-atmosphere">
-      <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+    <div className="seed-page min-h-screen bg-paper pt-24">
+      <section className="mx-auto max-w-[1400px] px-5 py-16 md:px-8 md:py-24">
         <Reveal>
-          <p className="font-form text-[0.7rem] uppercase tracking-[0.22em] text-muted">
-            Shop
-          </p>
-          <h1 className="font-form mt-3 max-w-2xl text-4xl uppercase tracking-[0.04em] md:text-5xl">
+          <p className="text-sm text-muted">Shop</p>
+          <h1 className="mt-3 max-w-2xl text-4xl font-medium tracking-[-0.02em] text-shell md:text-6xl">
             All formulas
           </h1>
           <p className="mt-4 max-w-xl text-base text-muted">
-            Three copper peptide products. Photos are placeholders for now — purchase
-            continues on Purgo Labs.
+            Three copper peptide products. Purchase continues on Purgo Labs.
           </p>
         </Reveal>
 
-        <Stagger className="mt-14 grid gap-10 md:grid-cols-3" delay={0.08}>
+        <Stagger className="mt-14 grid gap-5 md:grid-cols-3" delay={0.08}>
           {products.map((product) => (
             <StaggerItem key={product.slug}>
-              <ProductCard product={product} />
+              <div className="seed-card bg-paper-strong p-4 md:p-5">
+                <ProductCard product={product} />
+              </div>
             </StaggerItem>
           ))}
         </Stagger>

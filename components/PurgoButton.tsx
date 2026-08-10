@@ -1,8 +1,11 @@
+import Link from "next/link";
+
 type PurgoButtonProps = {
   href: string;
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "light";
+  variant?: "primary" | "secondary" | "light" | "dark";
   className?: string;
+  external?: boolean;
 };
 
 export default function PurgoButton({
@@ -10,22 +13,31 @@ export default function PurgoButton({
   children,
   variant = "primary",
   className = "",
+  external = true,
 }: PurgoButtonProps) {
   const styles = {
-    primary:
-      "bg-brand text-white hover:bg-brand-deep border border-transparent",
-    secondary:
-      "bg-transparent text-ink border border-ink/20 hover:border-ink/50",
-    light:
-      "bg-white text-ink hover:bg-brand-mist border border-transparent",
+    primary: "bg-shell text-white hover:bg-shell-soft",
+    dark: "bg-ink text-white hover:bg-shell",
+    secondary: "bg-transparent text-ink border border-ink/15 hover:border-ink/40",
+    light: "bg-white text-ink hover:bg-paper",
   };
+
+  const classes = `seed-pill inline-flex items-center justify-center px-6 py-3.5 text-[0.95rem] font-medium transition ${styles[variant]} ${className}`;
+
+  if (!external) {
+    return (
+      <Link href={href} className={classes}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center rounded-full px-6 py-3.5 font-form text-[0.75rem] uppercase tracking-[0.16em] transition ${styles[variant]} ${className}`}
+      className={classes}
     >
       {children}
     </a>
