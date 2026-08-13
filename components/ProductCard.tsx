@@ -24,14 +24,14 @@ export default function ProductCard({
       <Link href={`/products/${product.slug}`} className="block">
         <div
           className={`seed-card relative aspect-[4/5] overflow-hidden ${
-            onDark ? "bg-[#7b7869]/55" : "bg-brand-mist"
+            onDark ? "bg-[#6f6c5c]" : "bg-[#ebe8df]"
           }`}
         >
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-contain p-6 transition duration-500 group-hover:scale-[1.03]"
+            className="object-contain object-center p-8 transition duration-500 group-hover:scale-[1.02] md:p-10"
             sizes="(max-width: 768px) 90vw, 30vw"
           />
           {product.badge ? (
@@ -67,25 +67,21 @@ export default function ProductCard({
           </p>
         </div>
         <p className={`text-sm ${onDark ? "text-white/85" : "text-shell"}`}>
-          Starting at {formatPrice(product.price)}
+          From {formatPrice(product.price)}
         </p>
         <div className="mt-auto flex flex-wrap gap-2 pt-2">
-          {!onDark ? (
-            <PurgoButton
-              href={`/products/${product.slug}`}
-              external={false}
-              variant="secondary"
-              className="!px-4 !py-2.5 !text-sm"
-            >
-              View
-            </PurgoButton>
-          ) : null}
+          <PurgoButton
+            href={`/products/${product.slug}`}
+            external={false}
+            variant={onDark ? "light" : "secondary"}
+            className="!px-4 !py-2.5 !text-sm"
+          >
+            View
+          </PurgoButton>
           <PurgoButton
             href={product.purgoUrl}
             className={`!px-4 !py-2.5 !text-sm ${
-              onDark
-                ? "!bg-[#2f2e24] !text-white hover:!bg-black"
-                : ""
+              onDark ? "!bg-[#2f2e24] !text-white hover:!bg-black" : ""
             }`}
           >
             Shop Now

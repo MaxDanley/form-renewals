@@ -6,15 +6,15 @@ import { products } from "@/lib/products";
 export default function SiteFooter() {
   return (
     <footer className="bg-shell text-white">
-      <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:px-10 md:py-20">
-        <div className="space-y-6">
-          <BrandLogo tone="light" size="md" href="/" />
-          <p className="max-w-md text-2xl font-medium leading-snug tracking-[-0.02em] text-white md:text-3xl">
-            Pioneering peptide skincare for scalp and skin since [FORM] renewal.
+      <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-14 md:grid-cols-[1.3fr_1fr_1fr_1fr] md:px-10 md:py-16">
+        <div className="space-y-5">
+          <BrandLogo tone="light" size="sm" href="/" />
+          <p className="max-w-sm text-lg font-medium leading-snug tracking-[-0.02em] text-white md:text-xl">
+            Peptide skincare for scalp and skin.
           </p>
-          <p className="max-w-sm text-sm leading-relaxed text-white/70">
-            Science with [FORM]—product updates for your inbox. Purchase currently
-            fulfilled through Purgo Labs.
+          <p className="max-w-sm text-sm leading-relaxed text-white/65">
+            Formulas by [FORM] renewal. Purchase currently fulfilled through
+            Purgo Labs.
           </p>
         </div>
 
@@ -54,7 +54,12 @@ export default function SiteFooter() {
               </Link>
             </li>
             <li>
-              <a href={PURGO_ORIGIN} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              <a
+                href={PURGO_ORIGIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
                 Purgo Labs
               </a>
             </li>
@@ -67,14 +72,19 @@ export default function SiteFooter() {
           </p>
           <ul className="space-y-3 text-sm text-white/85">
             <li>
-              <a href={PURGO_ORIGIN} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              <a
+                href={PURGO_ORIGIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
                 Contact
               </a>
             </li>
             <li>
-              <a href={PURGO_ORIGIN} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                My Account
-              </a>
+              <Link href="/products" className="hover:text-white">
+                Shop
+              </Link>
             </li>
           </ul>
         </div>
@@ -83,7 +93,7 @@ export default function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-6 py-5 text-xs text-white/55 md:flex-row md:items-center md:justify-between md:px-10">
           <p>© {new Date().getFullYear()} [FORM] renewal</p>
-          <p>Pantone 6207 U · A Purgo Labs company</p>
+          <p>A Purgo Labs company</p>
         </div>
       </div>
     </footer>

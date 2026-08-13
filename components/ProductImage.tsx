@@ -8,6 +8,7 @@ type ProductImageProps = {
   className?: string;
   sizes?: string;
   rounded?: boolean;
+  fit?: "contain" | "cover";
 };
 
 const aspectClass = {
@@ -26,10 +27,11 @@ export default function ProductImage({
   className = "",
   sizes = "(max-width: 768px) 100vw, 40vw",
   rounded = true,
+  fit = "contain",
 }: ProductImageProps) {
   return (
     <div
-      className={`relative overflow-hidden bg-brand-mist ${
+      className={`relative overflow-hidden bg-[#ebe8df] ${
         rounded ? "seed-card" : ""
       } ${aspectClass[aspect]} ${className}`}
     >
@@ -39,7 +41,11 @@ export default function ProductImage({
         fill
         priority={priority}
         sizes={sizes}
-        className="object-contain object-center p-4 md:p-6"
+        className={
+          fit === "cover"
+            ? "object-cover object-center"
+            : "object-contain object-center p-6 md:p-8"
+        }
       />
     </div>
   );

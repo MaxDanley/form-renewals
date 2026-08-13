@@ -9,10 +9,10 @@ type BrandLogoProps = {
 };
 
 const sizeMap = {
-  sm: { width: 132, height: 40, className: "h-8 w-auto md:h-9" },
-  md: { width: 168, height: 50, className: "h-10 w-auto" },
-  lg: { width: 220, height: 66, className: "h-12 w-auto md:h-14" },
-  hero: { width: 340, height: 102, className: "h-16 w-auto md:h-24" },
+  sm: { width: 108, height: 32, className: "h-5 w-auto md:h-[1.35rem]" },
+  md: { width: 140, height: 42, className: "h-7 w-auto" },
+  lg: { width: 180, height: 54, className: "h-9 w-auto md:h-10" },
+  hero: { width: 260, height: 78, className: "h-12 w-auto md:h-14" },
 };
 
 export default function BrandLogo({

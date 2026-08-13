@@ -95,7 +95,7 @@ a {
 }
 
 .seed-page {
-  background: var(--shell);
+  background: var(--paper);
   color: var(--ink);
   overflow: clip;
 }

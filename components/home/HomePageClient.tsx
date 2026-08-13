@@ -10,7 +10,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import BrandLogo from "@/components/BrandLogo";
 import ProductCard from "@/components/ProductCard";
 import PurgoButton from "@/components/PurgoButton";
 import Reveal from "@/components/motion/Reveal";
@@ -80,14 +79,16 @@ function HeroSection() {
               transition={{ duration: 0.9, delay: 0.16, ease }}
               className="mt-7 flex flex-wrap items-center gap-4"
             >
-              <PurgoButton href={PURGO_ORIGIN} variant="primary">
-                Get Started
+              <PurgoButton href="/products" external={false} variant="primary">
+                Shop the lineup
               </PurgoButton>
               <Link
-                href="/products"
+                href={shampoo.purgoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-[0.95rem] font-medium text-[#2f2e24] transition hover:opacity-70"
               >
-                Shop Now <span aria-hidden>→</span>
+                Buy on Purgo <span aria-hidden>→</span>
               </Link>
             </motion.div>
           </div>
@@ -150,8 +151,8 @@ function HighlightSection() {
               clarity and firmer-looking skin in one quiet ritual.
             </p>
             <div className="mt-8">
-              <PurgoButton href={shampoo.purgoUrl} variant="primary">
-                Shop Copper Growth Duo
+              <PurgoButton href="/products" external={false} variant="primary">
+                Shop the lineup
               </PurgoButton>
             </div>
           </Reveal>
@@ -225,7 +226,7 @@ function TechSection() {
   return (
     <section
       ref={ref}
-      id="science"
+      id="technology"
       className="relative px-3 py-3 md:px-5 md:py-5"
     >
       <div className="seed-shell relative mx-auto min-h-[85svh] max-w-[1400px] overflow-hidden bg-[linear-gradient(160deg,#4a4838_0%,#6f6c52_40%,#8a8664_100%)]">
@@ -292,34 +293,33 @@ function TechSection() {
 
 function ScienceSection() {
   return (
-    <section id="routine" className="bg-paper px-3 py-16 md:px-5 md:py-24">
+    <section id="science" className="bg-paper px-3 py-16 md:px-5 md:py-24">
       <div className="mx-auto grid max-w-[1400px] items-center gap-10 md:grid-cols-2 md:gap-14">
         <Reveal>
-          <BrandLogo size="md" />
-          <h2 className="mt-8 max-w-[12ch] text-4xl font-medium tracking-[-0.02em] text-shell md:text-6xl">
-            You are more than surface.
+          <p className="text-sm uppercase tracking-[0.16em] text-muted">
+            Science
+          </p>
+          <h2 className="mt-4 max-w-[14ch] text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
+            Copper peptides, made simple.
           </h2>
           <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
-            Your scalp and skin respond to what you repeat. Take a few minutes to
-            learn how copper peptides fit a quiet daily ritual—and how to maximize
-            both.
+            Scalp and skin respond to what you repeat. Our formulas put GHK-Cu
+            and companion actives front and center—so the ritual stays clear,
+            calm, and consistent.
           </p>
           <div className="mt-8">
             <PurgoButton href="/products" external={false} variant="primary">
-              Discover
+              Explore formulas
             </PurgoButton>
           </div>
-          <p className="mt-4 text-sm uppercase tracking-[0.16em] text-muted">
-            Science / Peptides 101
-          </p>
         </Reveal>
         <Reveal delay={0.08}>
-          <div className="seed-card relative aspect-[4/5] bg-brand-mist md:aspect-square">
+          <div className="seed-card relative aspect-[4/5] bg-[#ebe8df] md:aspect-square">
             <Image
-              src={lift.image}
-              alt={lift.name}
+              src={shampoo.secondImage}
+              alt={shampoo.name}
               fill
-              className="object-contain p-10"
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, 45vw"
             />
           </div>
@@ -337,10 +337,10 @@ function ReviewSection() {
       <div className="mx-auto max-w-[1400px]">
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
-            Over a million reasons to begin a better ritual.
+            A quieter ritual, with clearer results.
           </h2>
           <p className="mt-4 text-base text-muted">
-            See how people are changing their care routine with [FORM].
+            Early notes from people building a copper peptide routine with [FORM].
           </p>
         </Reveal>
 
@@ -352,35 +352,32 @@ function ReviewSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.45, ease }}
-              className="seed-shell relative mx-auto aspect-[16/10] max-w-5xl overflow-hidden bg-shell"
+              className="seed-shell relative mx-auto aspect-[16/10] max-w-5xl overflow-hidden bg-[#ebe8df]"
             >
               <Image
                 src={stories[active].image}
                 alt={stories[active].name}
                 fill
-                className="object-contain p-16 opacity-90"
+                className="object-contain p-12 md:p-16"
                 sizes="900px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-shell/80 via-transparent to-shell/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2f2e24]/75 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6 text-white md:p-10">
                 <div>
-                  <p className="text-sm text-white/70">[FORM] Member Experiences</p>
+                  <p className="text-sm text-white/70">Member notes</p>
                   <p className="mt-2 max-w-md text-xl md:text-2xl">
                     “{stories[active].quote}”
                   </p>
                 </div>
-              </div>
-              <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3 seed-pill bg-shell/80 px-3 py-2 text-white backdrop-blur">
                 <button
                   type="button"
-                  className="seed-pill bg-white/15 px-3 py-1 text-sm"
+                  className="seed-pill bg-white/15 px-4 py-2 text-sm backdrop-blur"
                   onClick={() =>
                     setActive((value) => (value + 1) % stories.length)
                   }
                 >
-                  Play
+                  Next · {stories[active].name}
                 </button>
-                <span className="text-sm">{stories[active].name}</span>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -396,15 +393,23 @@ function UgcSection() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const x = useTransform(scrollYProgress, [0, 1], ["4%", "-35%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["4%", "-28%"]);
 
   const tiles = [
-    { src: shampoo.image, label: "Scalp ritual" },
-    { src: shampoo.secondImage, label: "Packaging" },
-    { src: capsule.image, label: "Capsule melt" },
-    { src: capsule.secondImage, label: "Press note" },
-    { src: lift.image, label: "Lift cream" },
-    { src: lift.secondImage, label: "Travel jar" },
+    { src: shampoo.image, label: "Copper Growth", fit: "contain" as const },
+    {
+      src: "/products/form-shampoo-lifestyle.png",
+      label: "Bathroom ritual",
+      fit: "cover" as const,
+    },
+    {
+      src: "/products/form-shampoo-packaging.jpg",
+      label: "Bottle + box",
+      fit: "cover" as const,
+    },
+    { src: capsule.image, label: "Capsule Cream", fit: "contain" as const },
+    { src: capsule.secondImage, label: "Packaging", fit: "contain" as const },
+    { src: lift.image, label: "Lift Cream", fit: "contain" as const },
   ];
 
   return (
@@ -412,8 +417,11 @@ function UgcSection() {
       <div className="mx-auto max-w-[1400px]">
         <Reveal>
           <h2 className="max-w-3xl text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
-            Stories from scientists, innovators, and members like you.
+            From the [FORM] lineup
           </h2>
+          <p className="mt-4 max-w-xl text-base text-muted">
+            Studio and lifestyle shots of the copper peptide formulas.
+          </p>
         </Reveal>
       </div>
 
@@ -421,16 +429,20 @@ function UgcSection() {
         {tiles.map((tile) => (
           <div
             key={tile.label}
-            className="seed-shell relative h-[360px] w-[240px] overflow-hidden bg-brand-mist md:h-[420px] md:w-[280px]"
+            className="seed-shell relative h-[360px] w-[240px] overflow-hidden bg-[#ebe8df] md:h-[420px] md:w-[280px]"
           >
             <Image
               src={tile.src}
               alt={tile.label}
               fill
-              className="object-cover"
+              className={
+                tile.fit === "cover"
+                  ? "object-cover object-center"
+                  : "object-contain object-center p-8"
+              }
               sizes="280px"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-shell/70 to-transparent p-4">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2f2e24]/65 to-transparent p-4">
               <p className="text-sm text-white">{tile.label}</p>
             </div>
           </div>
@@ -445,27 +457,27 @@ function BookendSection() {
     <section className="bg-paper px-3 pb-3 md:px-5 md:pb-5">
       <div className="mx-auto grid max-w-[1400px] gap-3 md:grid-cols-2 md:gap-5">
         <Reveal>
-          <div className="seed-shell relative min-h-[520px] overflow-hidden bg-shell">
+          <div className="seed-shell relative min-h-[480px] overflow-hidden bg-shell">
             <Image
-              src={lift.secondImage}
+              src="/products/form-shampoo-lifestyle.png"
               alt=""
               fill
-              className="object-cover opacity-35"
+              className="object-cover opacity-40"
               sizes="50vw"
             />
-            <div className="relative flex h-full min-h-[520px] flex-col justify-end p-8 text-white md:p-10">
+            <div className="relative flex h-full min-h-[480px] flex-col justify-end p-8 text-white md:p-10">
               <p className="text-xs uppercase tracking-[0.18em] text-white/70">
-                ● Purgo Labs
+                Purgo Labs
               </p>
-              <h2 className="mt-4 text-4xl font-medium tracking-[-0.02em]">
-                [FORM] Labs
+              <h2 className="mt-4 text-3xl font-medium tracking-[-0.02em] md:text-4xl">
+                Available through Purgo
               </h2>
               <p className="mt-3 max-w-sm text-white/80">
-                Because health is not just a product page.
+                Browse the formulas here, then complete purchase on Purgo Labs.
               </p>
               <div className="mt-6">
                 <PurgoButton href={PURGO_ORIGIN} variant="light">
-                  Read More
+                  Visit Purgo
                 </PurgoButton>
               </div>
             </div>
@@ -473,24 +485,24 @@ function BookendSection() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="seed-shell relative min-h-[520px] overflow-hidden bg-[linear-gradient(160deg,#6f6c52,#8a8664)]">
-            <div className="absolute inset-0 flex items-center justify-center opacity-90">
-              <div className="relative h-48 w-40 md:h-64 md:w-52">
+          <div className="seed-shell relative min-h-[480px] overflow-hidden bg-[#7b7869]">
+            <div className="absolute inset-y-0 right-0 flex w-[55%] items-center justify-center">
+              <div className="relative h-[70%] w-[70%]">
                 <Image
                   src={shampoo.image}
                   alt={shampoo.name}
                   fill
                   className="object-contain"
-                  sizes="220px"
+                  sizes="280px"
                 />
               </div>
             </div>
-            <div className="relative flex h-full min-h-[520px] flex-col justify-end p-8 text-white md:p-10">
-              <h2 className="max-w-[14ch] text-4xl font-medium tracking-[-0.02em]">
-                Change your peptide routine for good.
+            <div className="relative flex h-full min-h-[480px] flex-col justify-end p-8 text-white md:p-10">
+              <h2 className="max-w-[12ch] text-3xl font-medium tracking-[-0.02em] md:text-4xl">
+                Start with Copper Growth.
               </h2>
-              <p className="mt-3 max-w-sm text-white/85">
-                Start with Copper Growth Shampoo — from {formatPrice(shampoo.price)}.
+              <p className="mt-3 max-w-xs text-white/85">
+                From {formatPrice(shampoo.price)}
               </p>
               <div className="mt-6">
                 <PurgoButton href={shampoo.purgoUrl} variant="light">

@@ -13,6 +13,7 @@ export type FormProduct = {
   badge?: string;
   image: string;
   secondImage: string;
+  gallery: string[];
   benefits: string[];
   directions: string;
   ingredients: string;
@@ -32,10 +33,16 @@ export const products: FormProduct[] = [
       "A daily scalp cleanse powered by copper peptides. Formulated to support thicker-looking hair, elasticity, and shine while clearing excess oil and leaving the scalp balanced.",
     price: 69.99,
     size: "300ml / 10.14oz",
-    actives: "5% GHK-CU + 3% AHK-CU + BIOTIN",
+    actives: "5% GHK-CU + 1% AHK-CU + BIOTIN",
     badge: "Bestseller",
-    image: "/products/form-shampoo.png",
-    secondImage: "/products/form-shampoo-box.png",
+    image: "/products/form-shampoo-studio.png",
+    secondImage: "/products/form-shampoo-lifestyle.png",
+    gallery: [
+      "/products/form-shampoo-studio.png",
+      "/products/form-shampoo-lifestyle.png",
+      "/products/form-shampoo-packaging.jpg",
+      "/products/form-shampoo-box.png",
+    ],
     benefits: [
       "Supports thicker, fuller-looking hair",
       "Helps improve elasticity, resilience, and shine",
@@ -51,17 +58,17 @@ export const products: FormProduct[] = [
       {
         question: "How often should I use Copper Growth Shampoo?",
         answer:
-          "Use a maximum of 3–4 times weekly. Massage into wet hair and scalp, leave on for 3–5 minutes, then rinse.",
+          "Use up to 3–4 times a week. Massage into wet hair and scalp, leave on for 3–5 minutes, then rinse.",
       },
       {
         question: "What makes this a [FORM] formula?",
         answer:
-          "It is a finished copper peptide hair care preparation by [FORM] renewal, available for purchase through Purgo Labs while our storefront checkout is prepared.",
+          "It’s a finished copper peptide hair care formula from [FORM] renewal—clear actives, quiet packaging, and a ritual built for consistency.",
       },
       {
-        question: "Where do I buy it today?",
+        question: "Where do I buy it?",
         answer:
-          "Purchase is fulfilled on Purgo Labs. Use Shop at Purgo Labs on this page to go directly to the product listing.",
+          "Checkout currently runs through Purgo Labs. Use Shop Now to open the live product page.",
       },
     ],
     features: [
@@ -93,6 +100,10 @@ export const products: FormProduct[] = [
     badge: "New",
     image: "/products/form-capsule-cream.png",
     secondImage: "/products/form-capsule-cream-box.png",
+    gallery: [
+      "/products/form-capsule-cream.png",
+      "/products/form-capsule-cream-box.png",
+    ],
     benefits: [
       "Melt-on capsules for targeted application",
       "Helps reduce the appearance of fine lines",
@@ -108,17 +119,17 @@ export const products: FormProduct[] = [
       {
         question: "How do the capsules work?",
         answer:
-          "Each capsule melts on contact with skin, releasing copper peptide actives in a gel-cream texture meant for face and neck application.",
+          "Each capsule melts on contact, releasing copper peptide actives in a gel-cream texture for face and neck.",
       },
       {
         question: "Can I layer it with other products?",
         answer:
-          "Yes. Use after cleansing and before richer occlusives or sunscreen as part of your morning or evening routine.",
+          "Yes. Use after cleansing and before richer creams or sunscreen as part of your morning or evening routine.",
       },
       {
         question: "Where do I complete purchase?",
         answer:
-          "Checkout currently runs through Purgo Labs. The Shop at Purgo Labs button takes you to the live product page.",
+          "Checkout currently runs through Purgo Labs. Shop Now opens the live product page.",
       },
     ],
     features: [
@@ -150,6 +161,10 @@ export const products: FormProduct[] = [
     badge: "New",
     image: "/products/ghkcu-facelift-cream.png",
     secondImage: "/products/ghkcu-facelift-box.png",
+    gallery: [
+      "/products/ghkcu-facelift-cream.png",
+      "/products/ghkcu-facelift-box.png",
+    ],
     benefits: [
       "High-strength copper peptide concentration",
       "Snap-8 for expression-line appearance support",
@@ -175,7 +190,7 @@ export const products: FormProduct[] = [
       {
         question: "Is checkout on this site yet?",
         answer:
-          "Not yet. Purchase links take you to Purgo Labs for fulfillment while the [FORM] renewal storefront is completed.",
+          "Not yet. Shop Now takes you to Purgo Labs for purchase while the [FORM] renewal storefront is completed.",
       },
     ],
     features: [
