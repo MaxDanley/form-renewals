@@ -1,5 +1,14 @@
 "use client";
 
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  ExternalLink,
+  Lock,
+  ShoppingBag,
+  Truck,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -10,6 +19,10 @@ import StickyBuyBar from "@/components/StickyBuyBar";
 import Reveal from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { formatPrice, type FormProduct } from "@/lib/products";
+
+function isLifestyleShot(src: string) {
+  return src.includes("lifestyle") || src.includes("packaging");
+}
 
 export default function ProductPageClient({
   product,
@@ -23,15 +36,12 @@ export default function ProductPageClient({
     : [product.image, product.secondImage];
   const [active, setActive] = useState(0);
   const heroSrc = gallery[active] ?? product.image;
-  const lifestyleFit =
-    heroSrc.includes("lifestyle") || heroSrc.includes("packaging")
-      ? "cover"
-      : "contain";
+  const lifestyleFit = isLifestyleShot(heroSrc) ? "cover" : "contain";
 
   return (
     <div className="min-h-screen bg-[#f4f2eb] pb-24 pt-24">
       <section className="mx-auto grid max-w-[1400px] gap-10 px-5 py-10 md:grid-cols-[1.05fr_0.95fr] md:gap-14 md:px-10 md:py-16">
-        <Reveal className="space-y-4" y={36}>
+        <Reveal className="space-y-4" y={24}>
           <div className="seed-card relative aspect-[3/4] overflow-hidden bg-[#ebe8df]">
             <Image
               src={heroSrc}
@@ -66,7 +76,7 @@ export default function ProductPageClient({
                     fill
                     sizes="120px"
                     className={
-                      src.includes("lifestyle") || src.includes("packaging")
+                      isLifestyleShot(src)
                         ? "object-cover"
                         : "object-contain p-3"
                     }
@@ -77,7 +87,7 @@ export default function ProductPageClient({
           ) : null}
         </Reveal>
 
-        <Reveal delay={0.08} className="md:sticky md:top-28 md:self-start">
+        <Reveal delay={0.06} className="md:sticky md:top-28 md:self-start">
           <div className="flex flex-wrap items-center gap-3">
             {product.badge ? (
               <span className="seed-pill bg-[#ebe8df] px-3 py-1 text-xs text-shell">
@@ -103,17 +113,34 @@ export default function ProductPageClient({
           <p className="mt-1 text-sm text-muted">{product.actives}</p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <PurgoButton href={product.purgoUrl} className="w-full sm:w-auto">
+            <PurgoButton
+              href={product.purgoUrl}
+              className="w-full sm:w-auto"
+              icon={<ShoppingBag className="h-4 w-4" strokeWidth={1.75} />}
+              iconRight={<ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />}
+            >
               Shop Now
             </PurgoButton>
-            <PurgoButton href="/products" external={false} variant="secondary">
+            <PurgoButton
+              href="/products"
+              external={false}
+              variant="secondary"
+              icon={<ArrowLeft className="h-4 w-4" strokeWidth={1.75} />}
+            >
               Back to shop
             </PurgoButton>
           </div>
 
-          <p className="mt-4 text-xs text-muted">
-            Secure checkout on Purgo Labs · Free US shipping on qualifying orders
-          </p>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted">
+            <span className="inline-flex items-center gap-1.5">
+              <Lock className="h-3.5 w-3.5" strokeWidth={1.75} />
+              Secure checkout on Purgo Labs
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Truck className="h-3.5 w-3.5" strokeWidth={1.75} />
+              Free US shipping on qualifying orders
+            </span>
+          </div>
 
           <div className="mt-10">
             <Accordion
@@ -123,7 +150,13 @@ export default function ProductPageClient({
                   content: (
                     <ul className="space-y-2">
                       {product.benefits.map((benefit) => (
-                        <li key={benefit}>• {benefit}</li>
+                        <li key={benefit} className="flex items-start gap-2">
+                          <Check
+                            className="mt-0.5 h-4 w-4 shrink-0 text-brand-deep"
+                            strokeWidth={1.75}
+                          />
+                          <span>{benefit}</span>
+                        </li>
                       ))}
                     </ul>
                   ),
@@ -149,7 +182,7 @@ export default function ProductPageClient({
               Built for a ritual you can repeat.
             </h2>
           </Reveal>
-          <Stagger className="mt-10 grid gap-8 md:grid-cols-3" delay={0.05}>
+          <Stagger className="mt-10 grid gap-8 md:grid-cols-3" delay={0.04}>
             {product.features.map((feature) => (
               <StaggerItem key={feature.title}>
                 <h3 className="text-lg font-medium tracking-[-0.01em]">
@@ -170,7 +203,7 @@ export default function ProductPageClient({
             Questions
           </h2>
         </Reveal>
-        <Reveal delay={0.08} className="mt-8">
+        <Reveal delay={0.06} className="mt-8">
           <Accordion
             items={product.faqs.map((faq) => ({
               title: faq.question,
@@ -183,8 +216,9 @@ export default function ProductPageClient({
       {otherProducts.length ? (
         <section className="mx-auto max-w-[1400px] px-5 pb-16 md:px-10 md:pb-20">
           <Reveal>
-            <h2 className="text-2xl font-medium tracking-[-0.02em] text-shell">
+            <h2 className="inline-flex items-center gap-2 text-2xl font-medium tracking-[-0.02em] text-shell">
               More from the lineup
+              <ArrowRight className="h-5 w-5" strokeWidth={1.75} />
             </h2>
           </Reveal>
           <Stagger className="mt-8 grid gap-5 md:grid-cols-2">

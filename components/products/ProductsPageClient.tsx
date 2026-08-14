@@ -1,5 +1,13 @@
 "use client";
 
+import {
+  ArrowRight,
+  BadgePercent,
+  ExternalLink,
+  FlaskConical,
+  ShoppingBag,
+  Sparkles,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,7 +47,8 @@ function ShopProductCard({ product }: { product: FormProduct }) {
     <article className="seed-shell flex h-full min-h-[320px] flex-col overflow-hidden bg-[#fffcf7] md:min-h-[340px] md:flex-row">
       <div className="relative min-h-[220px] flex-1 bg-[#ebe8df] md:min-h-0">
         {product.badge ? (
-          <span className="seed-pill absolute left-4 top-4 z-10 bg-[#d9d4c4] px-3 py-1 text-xs text-shell">
+          <span className="seed-pill absolute left-4 top-4 z-10 inline-flex items-center gap-1 bg-[#d9d4c4] px-3 py-1 text-xs text-shell">
+            <Sparkles className="h-3 w-3" strokeWidth={1.75} />
             {product.badge}
           </span>
         ) : null}
@@ -70,6 +79,7 @@ function ShopProductCard({ product }: { product: FormProduct }) {
             external={false}
             variant="primary"
             className="!px-5 !py-2.5 !text-sm"
+            iconRight={<ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />}
           >
             Learn More
           </PurgoButton>
@@ -77,9 +87,10 @@ function ShopProductCard({ product }: { product: FormProduct }) {
             href={product.purgoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-shell underline underline-offset-4 transition hover:opacity-70"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-shell underline underline-offset-4 transition hover:opacity-70"
           >
             Shop Now
+            <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
           </a>
         </div>
       </div>
@@ -93,7 +104,8 @@ function BundleCard() {
   return (
     <article className="seed-shell flex h-full min-h-[320px] flex-col overflow-hidden bg-[#fffcf7] md:min-h-[340px] md:flex-row">
       <div className="relative min-h-[220px] flex-1 bg-[#ebe8df] md:min-h-0">
-        <span className="seed-pill absolute left-4 top-4 z-10 bg-[#c5c29a] px-3 py-1 text-xs text-shell">
+        <span className="seed-pill absolute left-4 top-4 z-10 inline-flex items-center gap-1 bg-[#c5c29a] px-3 py-1 text-xs text-shell">
+          <BadgePercent className="h-3.5 w-3.5" strokeWidth={1.75} />
           {duo.badge}
         </span>
         <div className="absolute inset-0 grid grid-cols-2 items-end gap-2 p-6 md:p-8">
@@ -132,6 +144,7 @@ function BundleCard() {
             external={false}
             variant="primary"
             className="!px-5 !py-2.5 !text-sm"
+            iconRight={<ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />}
           >
             Learn More
           </PurgoButton>
@@ -139,9 +152,10 @@ function BundleCard() {
             href={duo.purgoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-shell underline underline-offset-4 transition hover:opacity-70"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-shell underline underline-offset-4 transition hover:opacity-70"
           >
             Shop Now
+            <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
           </a>
         </div>
       </div>
@@ -254,6 +268,7 @@ export default function ProductsPageClient() {
                 external={false}
                 variant="light"
                 className="!px-5 !py-2.5 !text-sm"
+                iconRight={<ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />}
               >
                 Learn More
               </PurgoButton>
@@ -261,8 +276,9 @@ export default function ProductsPageClient() {
                 href={active.purgoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-white underline underline-offset-4 transition hover:opacity-70"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-white underline underline-offset-4 transition hover:opacity-70"
               >
+                <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.75} />
                 Shop Now
               </a>
             </div>
@@ -287,9 +303,11 @@ export default function ProductsPageClient() {
               </p>
               <Link
                 href="/#science"
-                className="mt-2 inline-flex text-sm font-medium text-white underline underline-offset-4"
+                className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-white underline underline-offset-4"
               >
-                Learn the science →
+                <FlaskConical className="h-3.5 w-3.5" strokeWidth={1.75} />
+                Learn the science
+                <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
               </Link>
             </div>
           </div>
@@ -313,7 +331,8 @@ export default function ProductsPageClient() {
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="relative flex h-full min-h-[320px] flex-col justify-end p-6 md:min-h-[340px] md:p-8">
-                <span className="seed-pill mb-3 inline-flex w-fit bg-[#c5c29a] px-3 py-1 text-xs text-shell">
+                <span className="seed-pill mb-3 inline-flex w-fit items-center gap-1 bg-[#c5c29a] px-3 py-1 text-xs text-shell">
+                  <BadgePercent className="h-3.5 w-3.5" strokeWidth={1.75} />
                   {bundles[1].badge}
                 </span>
                 <h3 className="max-w-[14ch] text-2xl font-medium tracking-[-0.02em] md:text-3xl">
@@ -333,6 +352,7 @@ export default function ProductsPageClient() {
                     href={bundles[1].purgoUrl}
                     variant="light"
                     className="!px-5 !py-2.5 !text-sm"
+                    icon={<ShoppingBag className="h-4 w-4" strokeWidth={1.75} />}
                   >
                     Shop the ritual
                   </PurgoButton>

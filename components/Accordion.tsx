@@ -1,5 +1,6 @@
 "use client";
 
+import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 
 type AccordionItem = {
@@ -29,8 +30,12 @@ export default function Accordion({ items }: AccordionProps) {
               <span className="font-form text-sm uppercase tracking-[0.12em]">
                 {item.title}
               </span>
-              <span className="font-form text-lg leading-none text-muted">
-                {open ? "−" : "+"}
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-line text-muted">
+                {open ? (
+                  <Minus className="h-3.5 w-3.5" strokeWidth={1.75} />
+                ) : (
+                  <Plus className="h-3.5 w-3.5" strokeWidth={1.75} />
+                )}
               </span>
             </button>
             {open ? (

@@ -3,13 +3,16 @@
 import {
   AnimatePresence,
   motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
 } from "framer-motion";
+import {
+  ArrowRight,
+  ExternalLink,
+  FlaskConical,
+  ShoppingBag,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import PurgoButton from "@/components/PurgoButton";
 import Reveal from "@/components/motion/Reveal";
@@ -79,16 +82,22 @@ function HeroSection() {
               transition={{ duration: 0.9, delay: 0.16, ease }}
               className="mt-7 flex flex-wrap items-center gap-4"
             >
-              <PurgoButton href="/products" external={false} variant="primary">
+              <PurgoButton
+                href="/products"
+                external={false}
+                variant="primary"
+                icon={<ShoppingBag className="h-4 w-4" strokeWidth={1.75} />}
+              >
                 Shop the lineup
               </PurgoButton>
               <Link
                 href={shampoo.purgoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[0.95rem] font-medium text-[#2f2e24] transition hover:opacity-70"
+                className="inline-flex items-center gap-1.5 text-[0.95rem] font-medium text-[#2f2e24] transition hover:opacity-70"
               >
-                Buy on Purgo <span aria-hidden>→</span>
+                Buy on Purgo
+                <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
               </Link>
             </motion.div>
           </div>
@@ -113,9 +122,10 @@ function ProductSection() {
             </p>
             <Link
               href="/products"
-              className="mt-5 inline-flex items-center gap-1 text-[0.95rem] font-medium text-white transition hover:opacity-70"
+              className="mt-5 inline-flex items-center gap-1.5 text-[0.95rem] font-medium text-white transition hover:opacity-70"
             >
-              Shop All <span aria-hidden>→</span>
+              Shop All
+              <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
             </Link>
           </div>
         </Reveal>
@@ -214,44 +224,36 @@ function HighlightSection() {
 }
 
 function TechSection() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const count = useTransform(scrollYProgress, [0.2, 0.55], [0, 12]);
-  const [display, setDisplay] = useState(0);
-  useMotionValueEvent(count, "change", (v) => setDisplay(Math.round(v)));
-
   return (
     <section
-      ref={ref}
       id="technology"
       className="relative px-3 py-3 md:px-5 md:py-5"
     >
-      <div className="seed-shell relative mx-auto min-h-[85svh] max-w-[1400px] overflow-hidden bg-[linear-gradient(160deg,#4a4838_0%,#6f6c52_40%,#8a8664_100%)]">
-        <div className="absolute inset-0 opacity-40">
+      <div className="seed-shell relative mx-auto min-h-[70svh] max-w-[1400px] overflow-hidden bg-[linear-gradient(160deg,#4a4838_0%,#6f6c52_40%,#8a8664_100%)]">
+        <div className="absolute inset-0 opacity-30">
           <Image
             src={capsule.secondImage}
             alt=""
             fill
-            className="object-cover blur-2xl scale-125"
+            className="object-cover blur-2xl scale-110"
             sizes="100vw"
+            quality={60}
           />
         </div>
 
-        <div className="relative flex min-h-[85svh] items-center px-4 py-16 md:px-10">
+        <div className="relative flex min-h-[70svh] items-center px-4 py-16 md:px-10">
           <div className="glass-panel seed-shell grid w-full gap-8 p-6 md:grid-cols-[1.1fr_0.9fr] md:p-10">
             <Reveal>
-              <p className="text-sm uppercase tracking-[0.18em] text-white/70">
-                ● Peptide technology
+              <p className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-white/70">
+                <FlaskConical className="h-3.5 w-3.5" strokeWidth={1.75} />
+                Peptide technology
               </p>
               <h2 className="mt-4 max-w-[16ch] text-3xl font-medium tracking-[-0.02em] text-white md:text-5xl">
                 Most formulas talk peptides—[FORM] doses them.
               </h2>
               <div className="mt-8 seed-card inline-flex items-center gap-3 bg-white/10 px-4 py-3 text-white">
                 <span className="text-sm text-white/75">Copper peptide focus</span>
-                <span className="text-2xl font-medium">↑{display}x</span>
+                <span className="text-2xl font-medium">Clinical calm</span>
               </div>
               <div className="mt-10 grid gap-6 md:grid-cols-2">
                 <div>
@@ -273,13 +275,13 @@ function TechSection() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.1}>
+            <Reveal delay={0.08}>
               <div className="seed-card relative mx-auto aspect-square max-w-md bg-white/10">
                 <Image
                   src={shampoo.image}
                   alt={shampoo.name}
                   fill
-                  className="object-contain p-8"
+                  className="object-contain p-10"
                   sizes="420px"
                 />
               </div>
@@ -307,11 +309,16 @@ function ScienceSection() {
             and companion actives front and center—so the ritual stays clear,
             calm, and consistent.
           </p>
-          <div className="mt-8">
-            <PurgoButton href="/products" external={false} variant="primary">
+            <div className="mt-8">
+            <PurgoButton
+              href="/products"
+              external={false}
+              variant="primary"
+              icon={<FlaskConical className="h-4 w-4" strokeWidth={1.75} />}
+            >
               Explore formulas
             </PurgoButton>
-          </div>
+            </div>
         </Reveal>
         <Reveal delay={0.08}>
           <div className="seed-card relative aspect-[4/5] bg-[#ebe8df] md:aspect-square">
@@ -388,13 +395,6 @@ function ReviewSection() {
 }
 
 function UgcSection() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const x = useTransform(scrollYProgress, [0, 1], ["4%", "-28%"]);
-
   const tiles = [
     { src: shampoo.image, label: "Copper Growth", fit: "contain" as const },
     {
@@ -413,7 +413,7 @@ function UgcSection() {
   ];
 
   return (
-    <section ref={ref} className="overflow-hidden bg-paper px-3 py-16 md:px-5 md:py-24">
+    <section className="bg-paper px-3 py-16 md:px-5 md:py-24">
       <div className="mx-auto max-w-[1400px]">
         <Reveal>
           <h2 className="max-w-3xl text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
@@ -425,11 +425,11 @@ function UgcSection() {
         </Reveal>
       </div>
 
-      <motion.div style={{ x }} className="mt-10 flex w-max gap-4 px-3 md:gap-5 md:px-5">
+      <div className="mt-10 flex gap-4 overflow-x-auto px-3 pb-2 md:gap-5 md:px-5 [scrollbar-width:thin]">
         {tiles.map((tile) => (
           <div
             key={tile.label}
-            className="seed-shell relative h-[360px] w-[240px] overflow-hidden bg-[#ebe8df] md:h-[420px] md:w-[280px]"
+            className="seed-shell relative h-[360px] w-[240px] shrink-0 overflow-hidden bg-[#ebe8df] md:h-[420px] md:w-[280px]"
           >
             <Image
               src={tile.src}
@@ -447,7 +447,7 @@ function UgcSection() {
             </div>
           </div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -476,7 +476,11 @@ function BookendSection() {
                 Browse the formulas here, then complete purchase on Purgo Labs.
               </p>
               <div className="mt-6">
-                <PurgoButton href={PURGO_ORIGIN} variant="light">
+                <PurgoButton
+                  href={PURGO_ORIGIN}
+                  variant="light"
+                  iconRight={<ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />}
+                >
                   Visit Purgo
                 </PurgoButton>
               </div>
@@ -505,7 +509,11 @@ function BookendSection() {
                 From {formatPrice(shampoo.price)}
               </p>
               <div className="mt-6">
-                <PurgoButton href={shampoo.purgoUrl} variant="light">
+                <PurgoButton
+                  href={shampoo.purgoUrl}
+                  variant="light"
+                  icon={<ShoppingBag className="h-4 w-4" strokeWidth={1.75} />}
+                >
                   Shop Now
                 </PurgoButton>
               </div>

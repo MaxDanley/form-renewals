@@ -9,9 +9,12 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     <ReactLenis
       root
       options={{
-        duration: 1.15,
+        // Snappier than the previous 1.15s curve — less lag when scrolling around.
+        duration: 0.75,
         smoothWheel: true,
-        touchMultiplier: 1.4,
+        wheelMultiplier: 0.9,
+        touchMultiplier: 1.1,
+        syncTouch: false,
         autoRaf: true,
       }}
     >

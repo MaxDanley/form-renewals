@@ -1,3 +1,11 @@
+import {
+  ArrowUpRight,
+  Beaker,
+  HelpCircle,
+  Mail,
+  Package,
+  ShoppingBag,
+} from "lucide-react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 import { PURGO_ORIGIN } from "@/lib/brand";
@@ -19,18 +27,26 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <p className="mb-4 text-xs uppercase tracking-[0.18em] text-white/50">
+          <p className="mb-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-white/50">
+            <Package className="h-3.5 w-3.5" strokeWidth={1.75} />
             Products
           </p>
           <ul className="space-y-3 text-sm text-white/85">
             <li>
-              <Link href="/products" className="hover:text-white">
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 hover:text-white"
+              >
+                <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.75} />
                 Shop All
               </Link>
             </li>
             {products.map((product) => (
               <li key={product.slug}>
-                <Link href={`/products/${product.slug}`} className="hover:text-white">
+                <Link
+                  href={`/products/${product.slug}`}
+                  className="hover:text-white"
+                >
                   {product.name}
                 </Link>
               </li>
@@ -39,7 +55,8 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <p className="mb-4 text-xs uppercase tracking-[0.18em] text-white/50">
+          <p className="mb-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-white/50">
+            <Beaker className="h-3.5 w-3.5" strokeWidth={1.75} />
             About
           </p>
           <ul className="space-y-3 text-sm text-white/85">
@@ -58,16 +75,18 @@ export default function SiteFooter() {
                 href={PURGO_ORIGIN}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white"
+                className="inline-flex items-center gap-1.5 hover:text-white"
               >
                 Purgo Labs
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
               </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="mb-4 text-xs uppercase tracking-[0.18em] text-white/50">
+          <p className="mb-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-white/50">
+            <HelpCircle className="h-3.5 w-3.5" strokeWidth={1.75} />
             Help
           </p>
           <ul className="space-y-3 text-sm text-white/85">
@@ -76,13 +95,18 @@ export default function SiteFooter() {
                 href={PURGO_ORIGIN}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white"
+                className="inline-flex items-center gap-2 hover:text-white"
               >
+                <Mail className="h-3.5 w-3.5" strokeWidth={1.75} />
                 Contact
               </a>
             </li>
             <li>
-              <Link href="/products" className="hover:text-white">
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 hover:text-white"
+              >
+                <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.75} />
                 Shop
               </Link>
             </li>

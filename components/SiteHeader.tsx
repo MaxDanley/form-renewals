@@ -1,5 +1,19 @@
 "use client";
 
+import {
+  ArrowRight,
+  Beaker,
+  BookOpen,
+  ExternalLink,
+  FlaskConical,
+  Lock,
+  Menu,
+  Package,
+  ShoppingBag,
+  Sparkles,
+  Truck,
+  X,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,9 +23,9 @@ import { bundles } from "@/lib/catalog";
 import { products } from "@/lib/products";
 
 const nav = [
-  { href: "/products", label: "Shop", hasMenu: true },
-  { href: "/#science", label: "Science", hasMenu: false },
-  { href: "/#stories", label: "Learn", hasMenu: false },
+  { href: "/products", label: "Shop", hasMenu: true, icon: ShoppingBag },
+  { href: "/#science", label: "Science", hasMenu: false, icon: FlaskConical },
+  { href: "/#stories", label: "Learn", hasMenu: false, icon: BookOpen },
 ];
 
 export default function SiteHeader() {
@@ -71,68 +85,65 @@ export default function SiteHeader() {
                   : "bg-white/75 text-[#1f2118] backdrop-blur-xl"
             }`}
           >
-            <BrandLogo
-              tone={lightChrome ? "light" : "dark"}
-              size="sm"
-            />
+            <BrandLogo tone={lightChrome ? "light" : "dark"} size="sm" />
             <nav className="ml-1.5 hidden items-center gap-0.5 md:flex">
-              {nav.map((item) =>
-                item.hasMenu ? (
-                  <button
-                    key={item.href}
-                    type="button"
-                    onClick={() => setShopOpen((value) => !value)}
-                    className={`rounded-full px-3 py-1.5 text-[0.88rem] transition ${
-                      lightChrome
-                        ? "text-white/90 hover:bg-white/10 hover:text-white"
-                        : "text-[#1f2118]/80 hover:bg-black/5 hover:text-[#1f2118]"
-                    } ${shopOpen ? (lightChrome ? "bg-white/10" : "bg-black/5") : ""}`}
-                    aria-expanded={shopOpen}
-                    aria-haspopup="true"
-                  >
-                    {item.label}
-                  </button>
-                ) : (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`rounded-full px-3 py-1.5 text-[0.88rem] transition ${
-                      lightChrome
-                        ? "text-white/90 hover:bg-white/10 hover:text-white"
-                        : "text-[#1f2118]/80 hover:bg-black/5 hover:text-[#1f2118]"
-                    }`}
-                  >
+              {nav.map((item) => {
+                const Icon = item.icon;
+                const itemClass = `inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.88rem] transition ${
+                  lightChrome
+                    ? "text-white/90 hover:bg-white/10 hover:text-white"
+                    : "text-[#1f2118]/80 hover:bg-black/5 hover:text-[#1f2118]"
+                }`;
+
+                if (item.hasMenu) {
+                  return (
+                    <button
+                      key={item.href}
+                      type="button"
+                      onClick={() => setShopOpen((value) => !value)}
+                      className={`${itemClass} ${
+                        shopOpen
+                          ? lightChrome
+                            ? "bg-white/10"
+                            : "bg-black/5"
+                          : ""
+                      }`}
+                      aria-expanded={shopOpen}
+                      aria-haspopup="true"
+                    >
+                      <Icon className="h-3.5 w-3.5" strokeWidth={1.75} />
+                      {item.label}
+                    </button>
+                  );
+                }
+
+                return (
+                  <Link key={item.href} href={item.href} className={itemClass}>
+                    <Icon className="h-3.5 w-3.5" strokeWidth={1.75} />
                     {item.label}
                   </Link>
-                )
-              )}
+                );
+              })}
             </nav>
             <button
               type="button"
               className={`ml-1 inline-flex h-8 w-8 items-center justify-center rounded-full md:hidden ${
                 lightChrome ? "text-white" : "text-[#1f2118]"
               }`}
-              aria-label="Toggle menu"
+              aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((value) => !value)}
             >
-              <span className="flex w-4 flex-col gap-1">
-                <span
-                  className={`h-px w-full ${lightChrome ? "bg-white" : "bg-[#1f2118]"}`}
-                />
-                <span
-                  className={`h-px w-full ${lightChrome ? "bg-white" : "bg-[#1f2118]"}`}
-                />
-                <span
-                  className={`h-px w-full ${lightChrome ? "bg-white" : "bg-[#1f2118]"}`}
-                />
-              </span>
+              {open ? (
+                <X className="h-4 w-4" strokeWidth={1.75} />
+              ) : (
+                <Menu className="h-4 w-4" strokeWidth={1.75} />
+              )}
             </button>
           </div>
 
-          {/* Desktop Shop dropdown */}
           <div
-            className={`absolute left-0 top-[calc(100%+0.35rem)] hidden w-[320px] origin-top transition md:block ${
+            className={`absolute left-0 top-[calc(100%+0.35rem)] hidden w-[340px] origin-top transition md:block ${
               shopOpen
                 ? "pointer-events-auto translate-y-0 opacity-100"
                 : "pointer-events-none -translate-y-1 opacity-0"
@@ -165,7 +176,8 @@ export default function SiteHeader() {
                         </span>
                       </span>
                       {product.badge === "New" ? (
-                        <span className="seed-pill ml-auto bg-[#d9d4c4] px-2 py-0.5 text-[0.65rem] text-shell">
+                        <span className="seed-pill ml-auto inline-flex items-center gap-1 bg-[#d9d4c4] px-2 py-0.5 text-[0.65rem] text-shell">
+                          <Sparkles className="h-3 w-3" strokeWidth={1.75} />
                           New
                         </span>
                       ) : null}
@@ -178,14 +190,8 @@ export default function SiteHeader() {
                     className="flex items-center gap-3 rounded-2xl px-2 py-2 transition hover:bg-black/5"
                     onClick={() => setShopOpen(false)}
                   >
-                    <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-[#ebe8df]">
-                      <Image
-                        src={products[0].image}
-                        alt=""
-                        fill
-                        className="object-contain p-1.5"
-                        sizes="44px"
-                      />
+                    <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#ebe8df]">
+                      <Package className="h-4 w-4 text-shell" strokeWidth={1.75} />
                     </span>
                     <span className="min-w-0">
                       <span className="block text-[0.68rem] uppercase tracking-[0.12em] text-muted">
@@ -206,8 +212,11 @@ export default function SiteHeader() {
                 onClick={() => setShopOpen(false)}
                 className="mt-2 flex items-center justify-between rounded-2xl px-3 py-3 text-sm font-medium text-shell transition hover:bg-black/5"
               >
-                Shop all products
-                <span aria-hidden>→</span>
+                <span className="inline-flex items-center gap-2">
+                  <ShoppingBag className="h-4 w-4" strokeWidth={1.75} />
+                  Shop all products
+                </span>
+                <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
               </Link>
             </div>
           </div>
@@ -215,12 +224,13 @@ export default function SiteHeader() {
 
         <Link
           href="/products"
-          className={`seed-pill inline-flex items-center justify-center px-4 py-2.5 text-[0.88rem] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.14)] transition ${
+          className={`seed-pill inline-flex items-center justify-center gap-2 px-4 py-2.5 text-[0.88rem] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.14)] transition ${
             lightChrome
               ? "bg-white text-[#1f2118] hover:bg-[#f4f2eb]"
               : "bg-[#2f2e24] text-white hover:bg-[#3d3c31]"
           }`}
         >
+          <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.75} />
           Shop
         </Link>
       </div>
@@ -228,7 +238,8 @@ export default function SiteHeader() {
       {open ? (
         <div className="pointer-events-auto mx-auto mt-2 max-w-[1400px] md:hidden">
           <div className="seed-card bg-white/95 px-3 py-3 text-[#1f2118] shadow-lg backdrop-blur-xl">
-            <p className="px-2 pb-2 text-xs uppercase tracking-[0.14em] text-muted">
+            <p className="flex items-center gap-2 px-2 pb-2 text-xs uppercase tracking-[0.14em] text-muted">
+              <Beaker className="h-3.5 w-3.5" strokeWidth={1.75} />
               Shop
             </p>
             <div className="flex flex-col gap-1">
@@ -254,24 +265,46 @@ export default function SiteHeader() {
               <Link
                 href="/products"
                 onClick={() => setOpen(false)}
-                className="rounded-full px-3 py-2 text-sm font-medium text-shell"
+                className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-shell"
               >
-                Shop all products →
+                Shop all products
+                <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
               </Link>
               <Link
                 href="/#science"
                 onClick={() => setOpen(false)}
-                className="rounded-full px-3 py-2 text-sm text-shell"
+                className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-shell"
               >
+                <FlaskConical className="h-4 w-4" strokeWidth={1.75} />
                 Science
               </Link>
               <Link
                 href="/#stories"
                 onClick={() => setOpen(false)}
-                className="rounded-full px-3 py-2 text-sm text-shell"
+                className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-shell"
               >
+                <BookOpen className="h-4 w-4" strokeWidth={1.75} />
                 Learn
               </Link>
+              <a
+                href="https://www.purgolabs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-shell"
+              >
+                <ExternalLink className="h-4 w-4" strokeWidth={1.75} />
+                Purgo Labs
+              </a>
+            </div>
+            <div className="mt-3 flex gap-3 border-t border-line px-2 pt-3 text-[0.7rem] text-muted">
+              <span className="inline-flex items-center gap-1">
+                <Lock className="h-3 w-3" strokeWidth={1.75} />
+                Secure checkout
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Truck className="h-3 w-3" strokeWidth={1.75} />
+                Free US shipping
+              </span>
             </div>
           </div>
         </div>

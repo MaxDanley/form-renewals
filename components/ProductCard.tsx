@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { ArrowRight, ShoppingBag, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import PurgoButton from "@/components/PurgoButton";
@@ -16,11 +16,7 @@ export default function ProductCard({
   const onDark = tone === "onDark";
 
   return (
-    <motion.article
-      className="group flex h-full flex-col"
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <article className="group flex h-full flex-col transition duration-300 hover:-translate-y-1">
       <Link href={`/products/${product.slug}`} className="block">
         <div
           className={`seed-card relative aspect-[4/5] overflow-hidden ${
@@ -35,7 +31,8 @@ export default function ProductCard({
             sizes="(max-width: 768px) 90vw, 30vw"
           />
           {product.badge ? (
-            <span className="seed-pill absolute left-3 top-3 bg-white px-3 py-1 text-xs text-shell shadow-sm">
+            <span className="seed-pill absolute left-3 top-3 inline-flex items-center gap-1 bg-white px-3 py-1 text-xs text-shell shadow-sm">
+              <Sparkles className="h-3 w-3" strokeWidth={1.75} />
               {product.badge}
             </span>
           ) : null}
@@ -75,6 +72,7 @@ export default function ProductCard({
             external={false}
             variant={onDark ? "light" : "secondary"}
             className="!px-4 !py-2.5 !text-sm"
+            iconRight={<ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />}
           >
             View
           </PurgoButton>
@@ -83,11 +81,12 @@ export default function ProductCard({
             className={`!px-4 !py-2.5 !text-sm ${
               onDark ? "!bg-[#2f2e24] !text-white hover:!bg-black" : ""
             }`}
+            icon={<ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.75} />}
           >
             Shop Now
           </PurgoButton>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }

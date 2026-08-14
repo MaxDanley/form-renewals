@@ -1,5 +1,6 @@
 "use client";
 
+import { ShoppingBag } from "lucide-react";
 import PurgoButton from "@/components/PurgoButton";
 import { formatPrice } from "@/lib/products";
 
@@ -17,7 +18,12 @@ export default function StickyBuyBar({ name, price, purgoUrl }: StickyBuyBarProp
           <p className="truncate text-sm font-medium">{name}</p>
           <p className="text-sm text-white/70">{formatPrice(price)}</p>
         </div>
-        <PurgoButton href={purgoUrl} variant="light" className="shrink-0 !px-5 !py-2.5 !text-sm">
+        <PurgoButton
+          href={purgoUrl}
+          variant="light"
+          className="shrink-0 !px-5 !py-2.5 !text-sm"
+          icon={<ShoppingBag className="h-4 w-4" strokeWidth={1.75} />}
+        >
           Shop Now
         </PurgoButton>
       </div>

@@ -35,13 +35,14 @@ export const products: FormProduct[] = [
     size: "300ml / 10.14oz",
     actives: "5% GHK-CU + 1% AHK-CU + BIOTIN",
     badge: "Bestseller",
-    image: "/products/form-shampoo-studio.png",
+    // Cutout PNG (transparent) for cards/bundles — matches Purgo listing asset.
+    image: "/products/form-shampoo.png",
     secondImage: "/products/form-shampoo-lifestyle.png",
     gallery: [
+      "/products/form-shampoo.png",
       "/products/form-shampoo-studio.png",
       "/products/form-shampoo-lifestyle.png",
       "/products/form-shampoo-packaging.jpg",
-      "/products/form-shampoo-box.png",
     ],
     benefits: [
       "Supports thicker, fuller-looking hair",
