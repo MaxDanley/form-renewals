@@ -1,5 +1,10 @@
 import { PURGO_ORIGIN } from "@/lib/brand";
 
+export type KeyActive = {
+  name: string;
+  percent?: string;
+};
+
 export type FormProduct = {
   slug: string;
   code: string;
@@ -7,13 +12,22 @@ export type FormProduct = {
   shortName: string;
   tagline: string;
   description: string;
+  story: string[];
   price: number;
   size: string;
   actives: string;
+  keyActives: KeyActive[];
+  greatFor: string[];
   badge?: string;
   image: string;
   secondImage: string;
   gallery: string[];
+  videoSrc?: string;
+  ritualLabel: string;
+  ritualTitle: string;
+  ritualSteps: string[];
+  formulaBlurb: string;
+  ingredientCount: number;
   benefits: string[];
   directions: string;
   ingredients: string;
@@ -30,12 +44,22 @@ export const products: FormProduct[] = [
     shortName: "Shampoo",
     tagline: "Copper peptide scalp care for fuller-looking hair.",
     description:
-      "A daily scalp cleanse powered by copper peptides. Formulated to support thicker-looking hair, elasticity, and shine while clearing excess oil and leaving the scalp balanced.",
+      "A performance-driven cleanse designed to support fuller, stronger, and healthier-looking hair—powered by copper peptides at meaningful concentrations.",
+    story: [
+      "A performance-driven formula designed to support fuller, stronger, and healthier-looking hair. Powered by GHK-Cu and AHK-Cu copper peptides, this advanced shampoo helps fortify hair at the root, support scalp balance, and improve overall hair vitality.",
+      "Infused with biotin, niacinamide, and caffeine, it works to energize the scalp, strengthen the look of follicles, and promote thicker-looking hair over time. Gentle yet effective cleansers remove buildup without stripping, while conditioning agents help maintain softness and manageability.",
+      "Balanced for repeated weekly use, this formula cleanses, revitalizes, and supports a healthier scalp environment—creating the foundation for stronger, denser-looking hair.",
+    ],
     price: 69.99,
     size: "300ml / 10.14oz",
     actives: "5% GHK-CU + 1% AHK-CU + BIOTIN",
+    keyActives: [
+      { name: "GHK-Cu", percent: "5%" },
+      { name: "AHK-Cu", percent: "1%" },
+      { name: "Biotin" },
+    ],
+    greatFor: ["Thinning hair", "Scalp health", "Strength"],
     badge: "Bestseller",
-    // Cutout PNG (transparent) for cards/bundles — matches Purgo listing asset.
     image: "/products/form-shampoo.png",
     secondImage: "/products/form-shampoo-lifestyle.png",
     gallery: [
@@ -44,6 +68,16 @@ export const products: FormProduct[] = [
       "/products/form-shampoo-lifestyle.png",
       "/products/form-shampoo-packaging.jpg",
     ],
+    ritualLabel: "How to use · Shampoo",
+    ritualTitle: "The ritual",
+    ritualSteps: [
+      "Massage into wet scalp and hair.",
+      "Leave on for 3–5 minutes, then rinse.",
+      "Use up to 3–4 times weekly.",
+    ],
+    formulaBlurb:
+      "A scalp-focused shampoo with copper peptides, biotin, niacinamide, caffeine, and conditioning botanicals.",
+    ingredientCount: 26,
     benefits: [
       "Supports thicker, fuller-looking hair",
       "Helps improve elasticity, resilience, and shine",
@@ -94,10 +128,17 @@ export const products: FormProduct[] = [
     shortName: "Capsule Cream",
     tagline: "Melt-on copper peptide capsules for firmer-looking skin.",
     description:
-      "Capsule-gel fusion copper peptide capsules melt on contact, delivering sustained-release actives that help reduce the look of fine lines and leave skin feeling firmer and plumper.",
+      "A next-level restorative treatment designed to firm, refine, and visibly transform the look of skin—delivered in melt-on copper peptide capsules.",
+    story: [
+      "A next-level anti-aging treatment designed to restore, firm, and visibly transform the skin. Powered by GHK-Cu copper peptides, this dual-phase capsule formula supports deep skin repair, enhances elasticity, and promotes a smoother, more refined complexion over time.",
+      "As the concentrated capsules melt into the skin, they release a high-performance blend of copper peptides, niacinamide, and squalane to strengthen the skin barrier, improve firmness, and deliver lasting nourishment. The hydrating gel base—infused with centella asiatica, aloe, chamomile, and hyaluronic acid—calms, soothes, and replenishes moisture for a balanced, healthy glow.",
+      "Advanced, restorative, and effortlessly luxurious—this cream elevates your routine with visible results and long-term skin resilience.",
+    ],
     price: 69.99,
     size: "50g / 1.76 fl.oz · 50000 MG",
     actives: "GHK-Cu Copper Peptide Capsules",
+    keyActives: [{ name: "GHK-Cu" }, { name: "Niacinamide" }, { name: "Squalane" }],
+    greatFor: ["Fine lines", "Firmness", "Barrier support"],
     badge: "New",
     image: "/products/form-capsule-cream.png",
     secondImage: "/products/form-capsule-cream-box.png",
@@ -105,6 +146,16 @@ export const products: FormProduct[] = [
       "/products/form-capsule-cream.png",
       "/products/form-capsule-cream-box.png",
     ],
+    ritualLabel: "How to use · Moisturizer",
+    ritualTitle: "The ritual",
+    ritualSteps: [
+      "Warm a capsule between fingertips until it melts.",
+      "Press into clean face and neck until absorbed.",
+      "Use morning or evening as your treatment step.",
+    ],
+    formulaBlurb:
+      "Melt-on copper peptide capsules in a calming gel-cream base with niacinamide, squalane, and hyaluronic acid.",
+    ingredientCount: 28,
     benefits: [
       "Melt-on capsules for targeted application",
       "Helps reduce the appearance of fine lines",
@@ -153,19 +204,43 @@ export const products: FormProduct[] = [
     code: "LC–03",
     name: "Lift Cream",
     shortName: "Lift Cream",
-    tagline: "5% GHK-Cu + 5% Snap-8 for expression-line appearance support.",
+    tagline: "5% GHK-Cu + 5% Snap-8 for firmer-looking skin.",
     description:
-      "A concentrated copper peptide face cream formulated with 5% GHK-Cu and 5% Snap-8 (Acetyl Hexapeptide-8) to support firmer-looking skin and the appearance of expression lines.",
+      "A concentrated copper peptide lift cream with 5% GHK-Cu and 5% Snap-8, designed to firm, refine, and support the appearance of expression lines.",
+    story: [
+      "A concentrated anti-aging treatment designed to firm, refine, and visibly transform the look of skin. Powered by 5% GHK-Cu copper peptides and 5% Snap-8, this lift cream supports elasticity, smoothness, and a more lifted appearance over consistent use.",
+      "The dual-peptide formula pairs copper peptide repair signaling with Snap-8 (Acetyl Hexapeptide-8) for expression-line appearance support, while a multi-weight hyaluronic acid complex helps replenish moisture and leave skin feeling soft and refined.",
+      "Advanced, precise, and clinically calm—this 10ml format elevates your routine with high-strength actives and long-term skin resilience.",
+    ],
     price: 69.99,
     size: "10ml / 0.3 fl.oz",
     actives: "5% GHK-CU + 5% Snap-8",
+    keyActives: [
+      { name: "GHK-Cu", percent: "5%" },
+      { name: "Snap-8", percent: "5%" },
+    ],
+    greatFor: ["Expression lines", "Firmness", "Refined texture"],
     badge: "New",
     image: "/products/ghkcu-facelift-cream.png",
-    secondImage: "/products/ghkcu-facelift-box.png",
+    secondImage: "/products/form-facelift-cream-4.jpg",
     gallery: [
+      "/products/form-facelift-cream.jpg",
+      "/products/form-facelift-cream-2.jpg",
+      "/products/form-facelift-cream-3.jpg",
+      "/products/form-facelift-cream-4.jpg",
       "/products/ghkcu-facelift-cream.png",
-      "/products/ghkcu-facelift-box.png",
     ],
+    videoSrc: "/products/form-facelift-cream.mp4",
+    ritualLabel: "How to use · Lift cream",
+    ritualTitle: "The ritual",
+    ritualSteps: [
+      "Dispense a thin layer onto clean fingertips.",
+      "Smooth over areas of concern on face and neck.",
+      "Use morning and/or evening as your focused treatment.",
+    ],
+    formulaBlurb:
+      "A high-strength lift cream with 5% GHK-Cu, 5% Snap-8, collagen, and multi-weight hyaluronic acids.",
+    ingredientCount: 24,
     benefits: [
       "High-strength copper peptide concentration",
       "Snap-8 for expression-line appearance support",
@@ -189,9 +264,9 @@ export const products: FormProduct[] = [
           "Use a thin layer on clean skin, focusing on areas where expression lines appear. A little goes a long way in the 10ml format.",
       },
       {
-        question: "Is checkout on this site yet?",
+        question: "Where do I buy it?",
         answer:
-          "Not yet. Shop Now takes you to Purgo Labs for purchase while the [FORM] renewal storefront is completed.",
+          "Checkout currently runs through Purgo Labs. Shop Now takes you to the live product page.",
       },
     ],
     features: [
@@ -200,7 +275,7 @@ export const products: FormProduct[] = [
         body: "GHK-Cu and Snap-8 are dosed together for a concentrated face cream aimed at firmness and expression-line appearance.",
       },
       {
-        title: "Precision jar",
+        title: "Precision format",
         body: "A compact 10ml format keeps the ritual focused—apply where you want visible refinement.",
       },
       {
