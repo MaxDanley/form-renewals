@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { productImageClass } from "@/lib/images";
 
 type ProductImageProps = {
   src: string;
@@ -8,7 +9,7 @@ type ProductImageProps = {
   className?: string;
   sizes?: string;
   rounded?: boolean;
-  fit?: "contain" | "cover";
+  fit?: "contain" | "cover" | "auto";
 };
 
 const aspectClass = {
@@ -27,8 +28,15 @@ export default function ProductImage({
   className = "",
   sizes = "(max-width: 768px) 100vw, 40vw",
   rounded = true,
-  fit = "contain",
+  fit = "auto",
 }: ProductImageProps) {
+  const imageClass =
+    fit === "cover"
+      ? "object-cover object-center"
+      : fit === "contain"
+        ? "object-contain object-center p-6 md:p-8"
+        : productImageClass(src);
+
   return (
     <div
       className={`relative overflow-hidden bg-[#ebe8df] ${
@@ -41,11 +49,7 @@ export default function ProductImage({
         fill
         priority={priority}
         sizes={sizes}
-        className={
-          fit === "cover"
-            ? "object-cover object-center"
-            : "object-contain object-center p-6 md:p-8"
-        }
+        className={imageClass}
       />
     </div>
   );

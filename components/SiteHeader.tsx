@@ -34,8 +34,7 @@ export default function SiteHeader() {
   const [shopOpen, setShopOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const shopRef = useRef<HTMLDivElement>(null);
-  const onProductsHero = pathname === "/products" && !scrolled;
-  const lightChrome = onProductsHero;
+  const lightChrome = false;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -158,18 +157,18 @@ export default function SiteHeader() {
                       className="flex items-center gap-3 rounded-2xl px-2 py-2 transition hover:bg-black/5"
                       onClick={() => setShopOpen(false)}
                     >
-                      <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-[#ebe8df]">
+                      <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-[#1c1c16]">
                         <Image
-                          src={product.image}
+                          src={product.cardImage}
                           alt=""
                           fill
-                          className="object-contain p-1.5"
+                          className="object-cover"
                           sizes="44px"
                         />
                       </span>
                       <span className="min-w-0">
                         <span className="block text-[0.68rem] uppercase tracking-[0.12em] text-muted">
-                          {product.code}
+                          {product.benefitTags[0]}
                         </span>
                         <span className="block truncate text-sm font-medium text-shell">
                           {product.name}
@@ -250,12 +249,12 @@ export default function SiteHeader() {
                   onClick={() => setOpen(false)}
                   className="flex items-center gap-3 rounded-2xl px-2 py-2"
                 >
-                  <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-[#ebe8df]">
+                  <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-[#1c1c16]">
                     <Image
-                      src={product.image}
+                      src={product.cardImage}
                       alt=""
                       fill
-                      className="object-contain p-1"
+                      className="object-cover"
                       sizes="40px"
                     />
                   </span>

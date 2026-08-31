@@ -5,9 +5,19 @@ export type KeyActive = {
   percent?: string;
 };
 
+export type BenefitGroup = {
+  title: string;
+  items: string[];
+};
+
+export type FeaturedIngredient = {
+  name: string;
+  why: string;
+  image: string;
+};
+
 export type FormProduct = {
   slug: string;
-  code: string;
   name: string;
   shortName: string;
   tagline: string;
@@ -18,8 +28,11 @@ export type FormProduct = {
   actives: string;
   keyActives: KeyActive[];
   greatFor: string[];
+  benefitTags: string[];
+  concerns: string[];
   badge?: string;
   image: string;
+  cardImage: string;
   secondImage: string;
   gallery: string[];
   videoSrc?: string;
@@ -29,6 +42,8 @@ export type FormProduct = {
   formulaBlurb: string;
   ingredientCount: number;
   benefits: string[];
+  benefitGroups: BenefitGroup[];
+  featuredIngredients: FeaturedIngredient[];
   directions: string;
   ingredients: string;
   purgoUrl: string;
@@ -39,9 +54,8 @@ export type FormProduct = {
 export const products: FormProduct[] = [
   {
     slug: "copper-growth-shampoo",
-    code: "CG–01",
     name: "Copper Growth Shampoo",
-    shortName: "Shampoo",
+    shortName: "Copper Growth Shampoo",
     tagline: "Copper peptide scalp care for fuller-looking hair.",
     description:
       "A performance-driven cleanse designed to support fuller, stronger, and healthier-looking hair—powered by copper peptides at meaningful concentrations.",
@@ -59,8 +73,11 @@ export const products: FormProduct[] = [
       { name: "Biotin" },
     ],
     greatFor: ["Thinning hair", "Scalp health", "Strength"],
+    benefitTags: ["Strength", "Vitality", "Scalp"],
+    concerns: ["hair", "thinning", "scalp"],
     badge: "Bestseller",
     image: "/products/form-shampoo.png",
+    cardImage: "/products/form-shampoo-lifestyle.png",
     secondImage: "/products/form-shampoo-lifestyle.png",
     gallery: [
       "/products/form-shampoo.png",
@@ -83,6 +100,49 @@ export const products: FormProduct[] = [
       "Helps improve elasticity, resilience, and shine",
       "Deeply cleanses the scalp and removes excess oil",
       "Copper peptide + biotin actives for daily scalp care",
+    ],
+    benefitGroups: [
+      {
+        title: "Volume",
+        items: [
+          "Helps hair look denser and more resilient at the root.",
+          "Supports the appearance of thicker, fuller strands over consistent use.",
+          "Leaves hair with a cleaner, more polished shine after rinse.",
+        ],
+      },
+      {
+        title: "Scalp",
+        items: [
+          "GHK-Cu and AHK-Cu are paired for a scalp-first cleanse.",
+          "Caffeine and niacinamide help refresh the look of a balanced scalp.",
+          "A short 3–5 minute leave-on window before rinse.",
+        ],
+      },
+      {
+        title: "Strength",
+        items: [
+          "Biotin and hydrolyzed keratin support the look of stronger hair.",
+          "Conditioning botanicals keep the formula from feeling stripped.",
+          "Built for repeated weekly use, not a one-wash stunt.",
+        ],
+      },
+    ],
+    featuredIngredients: [
+      {
+        name: "GHK-Cu",
+        why: "Copper tripeptide-1 is the core signaling peptide here, used at 5% to support a healthier-looking scalp environment and stronger-looking hair.",
+        image: "/products/form-shampoo-studio.png",
+      },
+      {
+        name: "AHK-Cu",
+        why: "A companion copper peptide at 1%, included to complement GHK-Cu in a cleanse designed for thinning or fine-looking hair.",
+        image: "/products/form-shampoo-lifestyle.png",
+      },
+      {
+        name: "Biotin + Caffeine",
+        why: "Biotin supports the look of keratin-rich hair. Caffeine is included to energize the scalp during the leave-on window.",
+        image: "/products/form-shampoo-packaging.jpg",
+      },
     ],
     directions:
       "Apply to wet hair and scalp. Massage thoroughly and leave on for 3–5 minutes before rinsing. Use a maximum of 3–4 times weekly.",
@@ -123,7 +183,6 @@ export const products: FormProduct[] = [
   },
   {
     slug: "capsule-cream",
-    code: "CC–02",
     name: "Capsule Cream",
     shortName: "Capsule Cream",
     tagline: "Melt-on copper peptide capsules for firmer-looking skin.",
@@ -139,8 +198,11 @@ export const products: FormProduct[] = [
     actives: "GHK-Cu Copper Peptide Capsules",
     keyActives: [{ name: "GHK-Cu" }, { name: "Niacinamide" }, { name: "Squalane" }],
     greatFor: ["Fine lines", "Firmness", "Barrier support"],
+    benefitTags: ["Smoother", "Firmer", "Bouncier"],
+    concerns: ["wrinkles", "firmness", "smoothness", "acne", "collagen"],
     badge: "New",
     image: "/products/form-capsule-cream.png",
+    cardImage: "/products/form-capsule-cream.png",
     secondImage: "/products/form-capsule-cream-box.png",
     gallery: [
       "/products/form-capsule-cream.png",
@@ -161,6 +223,49 @@ export const products: FormProduct[] = [
       "Helps reduce the appearance of fine lines",
       "Supports elasticity for firmer-looking skin",
       "Leaves skin looking smoother and plumper",
+    ],
+    benefitGroups: [
+      {
+        title: "Firmness",
+        items: [
+          "GHK-Cu copper peptides support the look of elasticity and bounce.",
+          "A measured capsule dose keeps the ritual precise.",
+          "Designed for skin that wants to look firmer over consistent use.",
+        ],
+      },
+      {
+        title: "Smoothness",
+        items: [
+          "Niacinamide helps refine the look of texture and tone.",
+          "Hyaluronic acid and squalane leave skin looking plumper and softer.",
+          "A gel-cream finish that layers under the rest of a routine.",
+        ],
+      },
+      {
+        title: "Calm",
+        items: [
+          "Centella, aloe, and chamomile help soothe the look of stressed skin.",
+          "A good match when barrier comfort and uneven texture are the goal.",
+          "Melt, press, and move on — no extra steps required.",
+        ],
+      },
+    ],
+    featuredIngredients: [
+      {
+        name: "GHK-Cu",
+        why: "Copper tripeptide-1 is used here for the look of firmer, more resilient skin — the same peptide family as the rest of the [FORM] lineup.",
+        image: "/products/form-capsule-cream.png",
+      },
+      {
+        name: "Niacinamide",
+        why: "A well-studied vitamin B3 derivative for the look of smoother texture, more even tone, and a stronger-feeling barrier — including skin that gets congested.",
+        image: "/products/form-capsule-cream-box.png",
+      },
+      {
+        name: "Squalane + Centella",
+        why: "Squalane replenishes slip and moisture. Centella, aloe, and chamomile calm the look of irritation so the cream stays wearable daily.",
+        image: "/hero.jpg",
+      },
     ],
     directions:
       "Apply one capsule to clean skin morning or evening. Melt between fingertips and press into face and neck until absorbed.",
@@ -201,7 +306,6 @@ export const products: FormProduct[] = [
   },
   {
     slug: "lift-cream",
-    code: "LC–03",
     name: "Lift Cream",
     shortName: "Lift Cream",
     tagline: "5% GHK-Cu + 5% Snap-8 for firmer-looking skin.",
@@ -220,8 +324,11 @@ export const products: FormProduct[] = [
       { name: "Snap-8", percent: "5%" },
     ],
     greatFor: ["Expression lines", "Firmness", "Refined texture"],
+    benefitTags: ["Lift", "Smooth", "Refine"],
+    concerns: ["wrinkles", "expression", "firmness", "collagen"],
     badge: "New",
     image: "/products/ghkcu-facelift-cream.png",
+    cardImage: "/products/form-facelift-cream-4.jpg",
     secondImage: "/products/form-facelift-cream-4.jpg",
     gallery: [
       "/products/form-facelift-cream.jpg",
@@ -246,6 +353,49 @@ export const products: FormProduct[] = [
       "Snap-8 for expression-line appearance support",
       "Helps skin look firmer and more refined",
       "Compact 10ml format for focused application",
+    ],
+    benefitGroups: [
+      {
+        title: "Lift",
+        items: [
+          "5% GHK-Cu is dosed for the look of firmer, more lifted skin.",
+          "A compact 10ml format keeps application focused on areas of concern.",
+          "Built as a treatment step, not a heavy cream.",
+        ],
+      },
+      {
+        title: "Expression lines",
+        items: [
+          "5% Snap-8 (Acetyl Hexapeptide-8) is included for the appearance of expression lines.",
+          "Use on forehead, crow’s feet, and smile lines where movement shows.",
+          "Pairs with copper peptide repair signaling in one concentrated cream.",
+        ],
+      },
+      {
+        title: "Refinement",
+        items: [
+          "A multi-weight hyaluronic acid complex helps skin look smoother and more hydrated.",
+          "Collagen in the formula supports a soft, refined finish.",
+          "A little goes a long way — thin layer, then the rest of your ritual.",
+        ],
+      },
+    ],
+    featuredIngredients: [
+      {
+        name: "5% GHK-Cu",
+        why: "A high-strength copper peptide dose aimed at the look of firmness, elasticity, and long-term skin resilience.",
+        image: "/products/form-facelift-cream.jpg",
+      },
+      {
+        name: "5% Snap-8",
+        why: "Acetyl Hexapeptide-8 is used in topical formulas for the appearance of expression lines — forehead, smile lines, and crow’s feet.",
+        image: "/products/form-facelift-cream-2.jpg",
+      },
+      {
+        name: "Hyaluronic complex",
+        why: "Multiple weights of hyaluronic acid plus collagen help skin look plumper, smoother, and more refined after application.",
+        image: "/products/form-facelift-cream-4.jpg",
+      },
     ],
     directions:
       "Apply a thin layer to clean skin on areas of concern morning and/or evening. Follow with moisturizer if needed.",

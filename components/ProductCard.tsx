@@ -4,6 +4,7 @@ import { ArrowRight, ShoppingBag, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import PurgoButton from "@/components/PurgoButton";
+import { productImageClass } from "@/lib/images";
 import { formatPrice, type FormProduct } from "@/lib/products";
 
 export default function ProductCard({
@@ -14,24 +15,21 @@ export default function ProductCard({
   tone?: "light" | "onDark";
 }) {
   const onDark = tone === "onDark";
+  const src = product.cardImage ?? product.image;
 
   return (
     <article className="group flex h-full flex-col transition duration-300 hover:-translate-y-1">
       <Link href={`/products/${product.slug}`} className="block">
-        <div
-          className={`seed-card relative aspect-[4/5] overflow-hidden ${
-            onDark ? "bg-[#6f6c5c]" : "bg-[#ebe8df]"
-          }`}
-        >
+        <div className="seed-card relative aspect-[4/5] overflow-hidden bg-[#1c1c16]">
           <Image
-            src={product.image}
+            src={src}
             alt={product.name}
             fill
-            className="object-contain object-center p-8 transition duration-500 group-hover:scale-[1.02] md:p-10"
+            className={`${productImageClass(src)} transition duration-500 group-hover:scale-[1.03]`}
             sizes="(max-width: 768px) 90vw, 30vw"
           />
           {product.badge ? (
-            <span className="seed-pill absolute left-3 top-3 inline-flex items-center gap-1 bg-white px-3 py-1 text-xs text-shell shadow-sm">
+            <span className="seed-pill absolute left-3 top-3 inline-flex items-center gap-1 bg-white/92 px-3 py-1 text-xs text-shell shadow-sm backdrop-blur">
               <Sparkles className="h-3 w-3" strokeWidth={1.75} />
               {product.badge}
             </span>
@@ -46,7 +44,7 @@ export default function ProductCard({
               onDark ? "text-white/65" : "text-muted"
             }`}
           >
-            {product.code}
+            {product.benefitTags.join(" · ")}
           </p>
           <h3
             className={`mt-2 text-xl font-medium tracking-[-0.01em] ${

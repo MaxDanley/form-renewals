@@ -18,6 +18,7 @@ import PurgoButton from "@/components/PurgoButton";
 import Reveal from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { PURGO_ORIGIN } from "@/lib/brand";
+import { isScenePhoto, productImageClass } from "@/lib/images";
 import { formatPrice, products } from "@/lib/products";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -169,30 +170,30 @@ function HighlightSection() {
 
           <Reveal delay={0.08}>
             <div className="space-y-4">
-              <div className="seed-card relative aspect-[5/4] bg-brand-mist">
-                <div className="absolute inset-0 grid grid-cols-2 items-end gap-2 p-6">
-                  <div className="relative h-full">
+              <div className="seed-card relative aspect-[5/4] overflow-hidden bg-[#1c1c16]">
+                <div className="absolute inset-0 grid grid-cols-2">
+                  <div className="relative">
                     <Image
-                      src={shampoo.image}
+                      src={shampoo.cardImage}
                       alt={shampoo.name}
                       fill
-                      className="object-contain"
+                      className={productImageClass(shampoo.cardImage)}
                       sizes="280px"
                     />
-                    <span className="absolute left-1/2 top-2 -translate-x-1/2 seed-pill bg-white px-2 py-1 text-[0.7rem] text-shell shadow">
-                      {shampoo.code}
+                    <span className="absolute left-3 top-3 seed-pill bg-white/92 px-2 py-1 text-[0.7rem] text-shell shadow">
+                      {shampoo.name}
                     </span>
                   </div>
-                  <div className="relative h-full">
+                  <div className="relative">
                     <Image
-                      src={capsule.image}
+                      src={capsule.cardImage}
                       alt={capsule.name}
                       fill
-                      className="object-contain"
+                      className={productImageClass(capsule.cardImage)}
                       sizes="280px"
                     />
-                    <span className="absolute left-1/2 top-2 -translate-x-1/2 seed-pill bg-white px-2 py-1 text-[0.7rem] text-shell shadow">
-                      {capsule.code}
+                    <span className="absolute left-3 top-3 seed-pill bg-white/92 px-2 py-1 text-[0.7rem] text-shell shadow">
+                      {capsule.name}
                     </span>
                   </div>
                 </div>
@@ -202,13 +203,17 @@ function HighlightSection() {
                   (src, index) => (
                     <div
                       key={`${src}-${index}`}
-                      className="seed-card relative aspect-square bg-brand-mist"
+                      className="seed-card relative aspect-square overflow-hidden bg-[#1c1c16]"
                     >
                       <Image
                         src={src}
                         alt=""
                         fill
-                        className="object-contain p-3"
+                        className={
+                          isScenePhoto(src)
+                            ? "object-cover object-center"
+                            : "object-contain object-center p-3"
+                        }
                         sizes="160px"
                       />
                     </div>
@@ -276,12 +281,12 @@ function TechSection() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <div className="seed-card relative mx-auto aspect-square max-w-md bg-white/10">
+              <div className="seed-card relative mx-auto aspect-square max-w-md overflow-hidden bg-[#1c1c16]">
                 <Image
-                  src={shampoo.image}
+                  src={shampoo.cardImage}
                   alt={shampoo.name}
                   fill
-                  className="object-contain p-10"
+                  className={productImageClass(shampoo.cardImage)}
                   sizes="420px"
                 />
               </div>
@@ -365,7 +370,7 @@ function ReviewSection() {
                 src={stories[active].image}
                 alt={stories[active].name}
                 fill
-                className="object-contain p-12 md:p-16"
+                className={productImageClass(stories[active].image)}
                 sizes="900px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2f2e24]/75 via-transparent to-transparent" />
@@ -396,20 +401,12 @@ function ReviewSection() {
 
 function UgcSection() {
   const tiles = [
-    { src: shampoo.image, label: "Copper Growth", fit: "contain" as const },
-    {
-      src: "/products/form-shampoo-lifestyle.png",
-      label: "Bathroom ritual",
-      fit: "cover" as const,
-    },
-    {
-      src: "/products/form-shampoo-packaging.jpg",
-      label: "Bottle + box",
-      fit: "cover" as const,
-    },
-    { src: capsule.image, label: "Capsule Cream", fit: "contain" as const },
-    { src: capsule.secondImage, label: "Packaging", fit: "contain" as const },
-    { src: lift.image, label: "Lift Cream", fit: "contain" as const },
+    { src: shampoo.cardImage, label: "Copper Growth Shampoo" },
+    { src: "/products/form-shampoo-lifestyle.png", label: "Bathroom ritual" },
+    { src: "/products/form-shampoo-packaging.jpg", label: "Bottle + box" },
+    { src: capsule.cardImage, label: "Capsule Cream" },
+    { src: capsule.secondImage, label: "Capsule Cream packaging" },
+    { src: lift.cardImage, label: "Lift Cream" },
   ];
 
   return (
@@ -435,11 +432,7 @@ function UgcSection() {
               src={tile.src}
               alt={tile.label}
               fill
-              className={
-                tile.fit === "cover"
-                  ? "object-cover object-center"
-                  : "object-contain object-center p-8"
-              }
+              className={productImageClass(tile.src)}
               sizes="280px"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2f2e24]/65 to-transparent p-4">
@@ -490,17 +483,14 @@ function BookendSection() {
 
         <Reveal delay={0.08}>
           <div className="seed-shell relative min-h-[480px] overflow-hidden bg-[#7b7869]">
-            <div className="absolute inset-y-0 right-0 flex w-[55%] items-center justify-center">
-              <div className="relative h-[70%] w-[70%]">
-                <Image
-                  src={shampoo.image}
-                  alt={shampoo.name}
-                  fill
-                  className="object-contain"
-                  sizes="280px"
-                />
-              </div>
-            </div>
+            <Image
+              src={shampoo.cardImage}
+              alt={shampoo.name}
+              fill
+              className="object-cover"
+              sizes="50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#7b7869] via-[#7b7869]/70 to-transparent" />
             <div className="relative flex h-full min-h-[480px] flex-col justify-end p-8 text-white md:p-10">
               <h2 className="max-w-[12ch] text-3xl font-medium tracking-[-0.02em] md:text-4xl">
                 Start with Copper Growth.
