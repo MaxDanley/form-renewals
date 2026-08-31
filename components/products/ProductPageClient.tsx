@@ -186,7 +186,7 @@ export default function ProductPageClient({
   otherProducts: FormProduct[];
 }) {
   const [openGroup, setOpenGroup] = useState(0);
-  const scene = product.cardImage ?? product.secondImage;
+  const scene = product.benefitImage ?? product.cardImage ?? product.secondImage;
 
   return (
     <div className="min-h-screen bg-[#f4f2eb] pb-24">
@@ -431,6 +431,17 @@ export default function ProductPageClient({
           <div className="mt-10 grid gap-8 md:grid-cols-3 md:gap-10">
             {product.ritualSteps.map((step, index) => (
               <Reveal key={step} delay={index * 0.05}>
+                {product.ritualImages?.[index] ? (
+                  <div className="relative mb-5 aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-[#ebe8df]">
+                    <Image
+                      src={product.ritualImages[index]}
+                      alt=""
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 30vw"
+                    />
+                  </div>
+                ) : null}
                 <p className="text-sm text-muted">{index + 1}</p>
                 <p className="mt-4 font-renewal text-2xl leading-snug text-shell md:text-3xl">
                   {step}

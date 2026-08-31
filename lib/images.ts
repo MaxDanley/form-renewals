@@ -8,7 +8,7 @@ const SCENE_PATHS = new Set([
 
 export function isScenePhoto(src: string): boolean {
   const path = src.split("?")[0].toLowerCase();
-  return SCENE_PATHS.has(path);
+  return path.startsWith("/images/") || SCENE_PATHS.has(path);
 }
 
 export function productImageClass(src: string, compact = false): string {

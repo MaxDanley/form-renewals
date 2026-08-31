@@ -37,19 +37,20 @@ export const quizConcerns: {
   id: QuizConcern;
   label: string;
   hint: string;
+  image: string;
 }[] = [
-  { id: "hair", label: "Hair fullness", hint: "Thinning, density, scalp" },
-  { id: "wrinkles", label: "Fine lines", hint: "Soft wrinkles, texture" },
-  { id: "expression", label: "Expression lines", hint: "Forehead, smile lines" },
-  { id: "acne", label: "Acne-prone skin", hint: "Congestion, uneven texture" },
-  { id: "collagen", label: "Firmness & bounce", hint: "Collagen look, smoothness" },
-  { id: "everything", label: "A bit of everything", hint: "Scalp and skin together" },
+  { id: "hair", label: "Hair fullness", hint: "Thinning, density, scalp", image: "/images/quiz/q2-hair.jpg" },
+  { id: "wrinkles", label: "Fine lines", hint: "Soft wrinkles, texture", image: "/images/quiz/q3-fine-lines.jpg" },
+  { id: "expression", label: "Expression lines", hint: "Forehead, smile lines", image: "/images/quiz/q4-expression.jpg" },
+  { id: "acne", label: "Acne-prone skin", hint: "Congestion, uneven texture", image: "/images/quiz/q5-acne.jpg" },
+  { id: "collagen", label: "Firmness & bounce", hint: "Collagen look, smoothness", image: "/images/quiz/q6-firmness.jpg" },
+  { id: "everything", label: "A bit of everything", hint: "Scalp and skin together", image: "/images/quiz/q7-everything.jpg" },
 ];
 
-export const quizScopes: { id: QuizScope; label: string; hint: string }[] = [
-  { id: "hair", label: "Hair and scalp", hint: "Wash-day care" },
-  { id: "skin", label: "Face and neck", hint: "Leave-on treatments" },
-  { id: "both", label: "Both", hint: "A full ritual" },
+export const quizScopes: { id: QuizScope; label: string; hint: string; image: string }[] = [
+  { id: "hair", label: "Hair and scalp", hint: "Wash-day care", image: "/images/quiz/q8-hair.jpg" },
+  { id: "skin", label: "Face and neck", hint: "Leave-on treatments", image: "/images/quiz/q9-face.jpg" },
+  { id: "both", label: "Both", hint: "A full ritual", image: "/images/quiz/q10-both.jpg" },
 ];
 
 export const quizStyles: { id: QuizStyle; label: string; hint: string }[] = [

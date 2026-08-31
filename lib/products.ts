@@ -39,6 +39,8 @@ export type FormProduct = {
   ritualLabel: string;
   ritualTitle: string;
   ritualSteps: string[];
+  ritualImages?: string[];
+  benefitImage?: string;
   formulaBlurb: string;
   ingredientCount: number;
   benefits: string[];
@@ -77,12 +79,15 @@ export const products: FormProduct[] = [
     concerns: ["hair", "thinning", "scalp"],
     badge: "Bestseller",
     image: "/products/form-shampoo-lifestyle.png",
-    cardImage: "/products/form-shampoo-lifestyle.png",
+    cardImage: "/images/home/h2-shampoo-ledge.jpg",
     secondImage: "/products/form-shampoo-packaging.jpg",
     gallery: [
       "/products/form-shampoo-lifestyle.png",
-      "/products/form-shampoo-packaging.jpg",
       "/products/form-shampoo-studio.png",
+      "/products/form-shampoo-packaging.jpg",
+      "/images/people/p-sh-4-hand.jpg",
+      "/images/texture/p-sh-5-texture.jpg",
+      "/images/people/p-sh-6-inuse.jpg",
     ],
     ritualLabel: "How to use · Shampoo",
     ritualTitle: "The ritual",
@@ -91,6 +96,12 @@ export const products: FormProduct[] = [
       "Leave on for 3–5 minutes, then rinse.",
       "Use up to 3–4 times weekly.",
     ],
+    ritualImages: [
+      "/images/ritual/r-sh-1.jpg",
+      "/images/ritual/r-sh-2.jpg",
+      "/images/ritual/r-sh-3.jpg",
+    ],
+    benefitImage: "/images/people/p-sh-ben.jpg",
     formulaBlurb:
       "A scalp-focused shampoo with copper peptides, biotin, niacinamide, caffeine, and conditioning botanicals.",
     ingredientCount: 26,
@@ -130,17 +141,17 @@ export const products: FormProduct[] = [
       {
         name: "GHK-Cu",
         why: "Copper tripeptide-1 is the core signaling peptide here, used at 5% to support a healthier-looking scalp environment and stronger-looking hair.",
-        image: "/products/form-shampoo-studio.png",
+        image: "/images/ingredients/i01-ghk-cu.jpg",
       },
       {
         name: "AHK-Cu",
         why: "A companion copper peptide at 1%, included to complement GHK-Cu in a cleanse designed for thinning or fine-looking hair.",
-        image: "/products/form-shampoo-lifestyle.png",
+        image: "/images/ingredients/i02-ahk-cu.jpg",
       },
       {
         name: "Biotin + Caffeine",
         why: "Biotin supports the look of keratin-rich hair. Caffeine is included to energize the scalp during the leave-on window.",
-        image: "/products/form-shampoo-packaging.jpg",
+        image: "/images/ingredients/i04-biotin.jpg",
       },
     ],
     directions:
@@ -200,12 +211,16 @@ export const products: FormProduct[] = [
     benefitTags: ["Smoother", "Firmer", "Bouncier"],
     concerns: ["wrinkles", "firmness", "smoothness", "acne", "collagen"],
     badge: "New",
-    image: "/products/form-capsule-cream.png",
-    cardImage: "/products/form-capsule-cream.png",
+    image: "/images/home/p-cc-3-scene.jpg",
+    cardImage: "/images/home/h3-capsule-ledge.jpg",
     secondImage: "/products/form-capsule-cream-box.png",
     gallery: [
+      "/images/home/p-cc-3-scene.jpg",
       "/products/form-capsule-cream.png",
       "/products/form-capsule-cream-box.png",
+      "/images/people/p-cc-4-hand.jpg",
+      "/images/texture/p-cc-5-texture.jpg",
+      "/images/people/p-cc-6-inuse.jpg",
     ],
     ritualLabel: "How to use · Moisturizer",
     ritualTitle: "The ritual",
@@ -214,6 +229,12 @@ export const products: FormProduct[] = [
       "Press into clean face and neck until absorbed.",
       "Use morning or evening as your treatment step.",
     ],
+    ritualImages: [
+      "/images/ritual/r-cc-1.jpg",
+      "/images/ritual/r-cc-2.jpg",
+      "/images/ritual/r-cc-3.jpg",
+    ],
+    benefitImage: "/images/people/p-cc-ben.jpg",
     formulaBlurb:
       "Melt-on copper peptide capsules in a calming gel-cream base with niacinamide, squalane, and hyaluronic acid.",
     ingredientCount: 28,
@@ -253,17 +274,17 @@ export const products: FormProduct[] = [
       {
         name: "GHK-Cu",
         why: "Copper tripeptide-1 is used here for the look of firmer, more resilient skin — the same peptide family as the rest of the [FORM] lineup.",
-        image: "/products/form-capsule-cream.png",
+        image: "/images/ingredients/i01-ghk-cu.jpg",
       },
       {
         name: "Niacinamide",
         why: "A well-studied vitamin B3 derivative for the look of smoother texture, more even tone, and a stronger-feeling barrier — including skin that gets congested.",
-        image: "/products/form-capsule-cream-box.png",
+        image: "/images/ingredients/i05-niacinamide.jpg",
       },
       {
         name: "Squalane + Centella",
         why: "Squalane replenishes slip and moisture. Centella, aloe, and chamomile calm the look of irritation so the cream stays wearable daily.",
-        image: "/hero.jpg",
+        image: "/images/ingredients/i08-centella.jpg",
       },
     ],
     directions:
@@ -326,14 +347,16 @@ export const products: FormProduct[] = [
     benefitTags: ["Lift", "Smooth", "Refine"],
     concerns: ["wrinkles", "expression", "firmness", "collagen"],
     badge: "New",
-    image: "/products/form-facelift-cream-4.jpg",
-    cardImage: "/products/form-facelift-cream-4.jpg",
+    image: "/images/home/p-lc-5-scene.jpg",
+    cardImage: "/images/home/h4-lift-ledge.jpg",
     secondImage: "/products/form-facelift-cream.jpg",
     gallery: [
+      "/images/home/p-lc-5-scene.jpg",
       "/products/form-facelift-cream-4.jpg",
       "/products/form-facelift-cream.jpg",
-      "/products/form-facelift-cream-3.jpg",
-      "/products/form-facelift-cream-2.jpg",
+      "/images/people/p-lc-6-hand.jpg",
+      "/images/texture/p-lc-7-texture.jpg",
+      "/images/people/p-lc-8-inuse.jpg",
     ],
     videoSrc: "/products/form-facelift-cream.mp4",
     ritualLabel: "How to use · Lift cream",
@@ -343,6 +366,12 @@ export const products: FormProduct[] = [
       "Smooth over areas of concern on face and neck.",
       "Use morning and/or evening as your focused treatment.",
     ],
+    ritualImages: [
+      "/images/ritual/r-lc-1.jpg",
+      "/images/ritual/r-lc-2.jpg",
+      "/images/ritual/r-lc-3.jpg",
+    ],
+    benefitImage: "/images/people/p-lc-ben.jpg",
     formulaBlurb:
       "A high-strength lift cream with 5% GHK-Cu, 5% Snap-8, collagen, and multi-weight hyaluronic acids.",
     ingredientCount: 24,
@@ -382,17 +411,17 @@ export const products: FormProduct[] = [
       {
         name: "5% GHK-Cu",
         why: "A high-strength copper peptide dose aimed at the look of firmness, elasticity, and long-term skin resilience.",
-        image: "/products/form-facelift-cream.jpg",
+        image: "/images/ingredients/i01-ghk-cu.jpg",
       },
       {
         name: "5% Snap-8",
         why: "Acetyl Hexapeptide-8 is used in topical formulas for the appearance of expression lines — forehead, smile lines, and crow’s feet.",
-        image: "/products/form-facelift-cream-3.jpg",
+        image: "/images/ingredients/i03-snap-8.jpg",
       },
       {
         name: "Hyaluronic complex",
         why: "Multiple weights of hyaluronic acid plus collagen help skin look plumper, smoother, and more refined after application.",
-        image: "/products/form-facelift-cream-4.jpg",
+        image: "/images/ingredients/i09-hyaluronic.jpg",
       },
     ],
     directions:

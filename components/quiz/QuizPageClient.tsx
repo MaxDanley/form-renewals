@@ -40,8 +40,19 @@ export default function QuizPageClient() {
     (step === 2 && answers.style);
 
   return (
-    <div className="min-h-screen bg-[#f4f2eb] px-5 pb-16 pt-28 md:px-10 md:pt-36">
-      <div className="mx-auto max-w-3xl">
+    <div className="relative min-h-screen bg-[#f4f2eb] px-5 pb-16 pt-28 md:px-10 md:pt-36">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[42vh] overflow-hidden opacity-50">
+        <Image
+          src="/images/quiz/q1-bg.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f4f2eb]/30 via-[#f4f2eb]/70 to-[#f4f2eb]" />
+      </div>
+      <div className="relative mx-auto max-w-3xl">
         <p className="text-center text-xs uppercase tracking-[0.18em] text-muted">
           Find your ritual
         </p>
@@ -71,16 +82,27 @@ export default function QuizPageClient() {
                         concern: option.id as QuizConcern,
                       }))
                     }
-                    className={`seed-card flex min-h-[140px] flex-col items-center justify-center gap-2 bg-white px-4 py-6 text-center transition ${
+                    className={`seed-card flex min-h-[180px] flex-col overflow-hidden bg-white text-center transition ${
                       selected
                         ? "ring-2 ring-[#2f2e24]"
                         : "hover:-translate-y-0.5"
                     }`}
                   >
-                    <span className="text-sm font-medium text-shell">
-                      {option.label}
+                    <span className="relative aspect-[5/4] w-full bg-[#ebe8df]">
+                      <Image
+                        src={option.image}
+                        alt=""
+                        fill
+                        className="object-cover object-center"
+                        sizes="180px"
+                      />
                     </span>
-                    <span className="text-xs text-muted">{option.hint}</span>
+                    <span className="flex flex-1 flex-col items-center justify-center gap-1 px-4 py-4">
+                      <span className="text-sm font-medium text-shell">
+                        {option.label}
+                      </span>
+                      <span className="text-xs text-muted">{option.hint}</span>
+                    </span>
                   </button>
                 );
               })}
@@ -107,16 +129,27 @@ export default function QuizPageClient() {
                         scope: option.id as QuizScope,
                       }))
                     }
-                    className={`seed-card flex min-h-[140px] flex-col items-center justify-center gap-2 bg-white px-4 py-6 text-center transition ${
+                    className={`seed-card flex min-h-[180px] flex-col overflow-hidden bg-white text-center transition ${
                       selected
                         ? "ring-2 ring-[#2f2e24]"
                         : "hover:-translate-y-0.5"
                     }`}
                   >
-                    <span className="text-sm font-medium text-shell">
-                      {option.label}
+                    <span className="relative aspect-[5/4] w-full bg-[#ebe8df]">
+                      <Image
+                        src={option.image}
+                        alt=""
+                        fill
+                        className="object-cover object-center"
+                        sizes="220px"
+                      />
                     </span>
-                    <span className="text-xs text-muted">{option.hint}</span>
+                    <span className="flex flex-1 flex-col items-center justify-center gap-1 px-4 py-4">
+                      <span className="text-sm font-medium text-shell">
+                        {option.label}
+                      </span>
+                      <span className="text-xs text-muted">{option.hint}</span>
+                    </span>
                   </button>
                 );
               })}
@@ -180,14 +213,14 @@ export default function QuizPageClient() {
                   src={
                     result.product?.cardImage ??
                     result.bundle?.image ??
-                    "/products/form-shampoo-lifestyle.png"
+                    "/images/quiz/q11-result.jpg"
                   }
                   alt={result.title}
                   fill
                   className={productImageClass(
                     result.product?.cardImage ??
                       result.bundle?.image ??
-                      "/products/form-shampoo-lifestyle.png"
+                      "/images/quiz/q11-result.jpg"
                   )}
                   sizes="560px"
                 />

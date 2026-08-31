@@ -30,17 +30,17 @@ const stories = [
   {
     name: "Maya",
     quote: "The shampoo ritual finally feels clinical and calm.",
-    image: shampoo.image,
+    image: "/images/people/h25-maya.jpg",
   },
   {
     name: "Jordan",
     quote: "Capsule Cream melted in and layered under everything else.",
-    image: capsule.image,
+    image: "/images/people/h26-jordan.jpg",
   },
   {
     name: "Avery",
     quote: "Lift Cream is the small jar I actually finish.",
-    image: lift.image,
+    image: "/images/people/h27-avery.jpg",
   },
 ];
 
@@ -49,7 +49,7 @@ function HeroSection() {
     <section className="relative w-full bg-[#f4f2eb] pb-3 md:pb-5">
       <div className="seed-hero relative min-h-[92svh] w-full bg-[#eceae3]">
         <Image
-          src="/hero.jpg"
+          src="/images/home/h1-hero.jpg"
           alt="[FORM] renewal copper peptide lineup"
           fill
           priority
@@ -199,8 +199,11 @@ function HighlightSection() {
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-3">
-                {[shampoo.image, shampoo.secondImage, capsule.secondImage].map(
-                  (src, index) => (
+                {[
+                  "/images/home/h7-wet-scalp.jpg",
+                  "/images/home/h8-capsule-palm.jpg",
+                  "/images/home/h9-cream-swatch.jpg",
+                ].map((src, index) => (
                     <div
                       key={`${src}-${index}`}
                       className="seed-card relative aspect-square overflow-hidden bg-[#ebe8df]"
@@ -237,7 +240,7 @@ function TechSection() {
       <div className="seed-shell relative mx-auto min-h-[70svh] max-w-[1400px] overflow-hidden bg-[linear-gradient(160deg,#4a4838_0%,#6f6c52_40%,#8a8664_100%)]">
         <div className="absolute inset-0 opacity-30">
           <Image
-            src={capsule.secondImage}
+            src="/images/home/h10-tech-fluid.jpg"
             alt=""
             fill
             className="object-cover blur-2xl scale-110"
@@ -283,10 +286,10 @@ function TechSection() {
             <Reveal delay={0.08}>
               <div className="seed-card relative mx-auto aspect-square max-w-md overflow-hidden bg-[#ebe8df]">
                 <Image
-                  src={shampoo.cardImage}
+                  src="/images/home/h11-tech-portrait.jpg"
                   alt={shampoo.name}
                   fill
-                  className={productImageClass(shampoo.cardImage)}
+                  className="object-cover object-center"
                   sizes="420px"
                 />
               </div>
@@ -302,16 +305,19 @@ const peptidePrimers = [
   {
     name: "GHK-Cu",
     also: "Copper Tripeptide-1",
+    image: "/images/ingredients/i01-ghk-cu.jpg",
     body: "A copper-binding tripeptide used across the [FORM] lineup for the look of resilience—on the scalp in Copper Growth Shampoo (5%) and Lift Cream (5%), and in Capsule Cream as the melt-on copper peptide.",
   },
   {
     name: "AHK-Cu",
     also: "Copper Tripeptide-3",
+    image: "/images/ingredients/i02-ahk-cu.jpg",
     body: "A companion copper peptide reserved for scalp care. Copper Growth Shampoo pairs it at 1% with 5% GHK-Cu so the cleanse stays scalp-first, not a generic hair wash with a peptide mention.",
   },
   {
     name: "Snap-8",
     also: "Acetyl Hexapeptide-8",
+    image: "/images/ingredients/i03-snap-8.jpg",
     body: "A topical peptide used for the appearance of expression lines. Lift Cream doses it at 5% alongside 5% GHK-Cu—forehead, smile lines, and crow’s feet, in one concentrated cream.",
   },
 ];
@@ -320,31 +326,37 @@ const supportingActives = [
   {
     name: "Biotin",
     where: "Copper Growth Shampoo",
+    image: "/images/ingredients/i04-biotin.jpg",
     body: "Included to support the look of keratin-rich, stronger-feeling hair alongside hydrolyzed keratin in the cleanse.",
   },
   {
     name: "Niacinamide",
     where: "Shampoo + Capsule Cream",
+    image: "/images/ingredients/i05-niacinamide.jpg",
     body: "Vitamin B3 for the look of a balanced scalp in the shampoo, and smoother texture, tone, and barrier comfort in Capsule Cream.",
   },
   {
     name: "Caffeine",
     where: "Copper Growth Shampoo",
+    image: "/images/ingredients/i06-caffeine.jpg",
     body: "Used to refresh and energize the look of the scalp during the 3–5 minute leave-on window before rinse.",
   },
   {
     name: "Squalane",
     where: "Capsule Cream",
+    image: "/images/ingredients/i07-squalane.jpg",
     body: "A lightweight lipid that restores slip and moisture so the melt-on capsules finish soft, not tight.",
   },
   {
     name: "Centella",
     where: "Capsule Cream",
+    image: "/images/ingredients/i08-centella.jpg",
     body: "Centella asiatica, with aloe and chamomile, calms the look of stressed skin in the gel-cream base.",
   },
   {
     name: "Hyaluronic acid",
     where: "Capsule Cream + Lift Cream",
+    image: "/images/ingredients/i09-hyaluronic.jpg",
     body: "Sodium hyaluronate in the capsules; a multi-weight hyaluronic complex plus collagen in Lift Cream for a plumper, more refined look.",
   },
 ];
@@ -383,10 +395,10 @@ function ScienceSection() {
           <Reveal delay={0.08}>
             <div className="seed-card relative aspect-[4/5] bg-[#ebe8df] md:aspect-square">
               <Image
-                src="/products/form-shampoo-lifestyle.png"
-                alt="Copper Growth Shampoo in a bathroom ritual"
+                src="/images/home/h12-science-dose.jpg"
+                alt="A measured copper peptide capsule dose"
                 fill
-                className={productImageClass("/products/form-shampoo-lifestyle.png")}
+                className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 45vw"
               />
             </div>
@@ -396,14 +408,25 @@ function ScienceSection() {
         <Stagger className="mt-16 grid gap-4 md:grid-cols-3" delay={0.04}>
           {peptidePrimers.map((item) => (
             <StaggerItem key={item.name}>
-              <article className="seed-card h-full bg-[#fffcf7] p-6 md:p-8">
-                <p className="font-renewal text-3xl text-shell">{item.name}</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.14em] text-muted">
-                  {item.also}
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-muted">
-                  {item.body}
-                </p>
+              <article className="seed-card h-full overflow-hidden bg-[#fffcf7]">
+                <div className="relative aspect-square bg-[#ebe8df]">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 30vw"
+                  />
+                </div>
+                <div className="p-6 md:p-8">
+                  <p className="font-renewal text-3xl text-shell">{item.name}</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.14em] text-muted">
+                    {item.also}
+                  </p>
+                  <p className="mt-4 text-sm leading-relaxed text-muted">
+                    {item.body}
+                  </p>
+                </div>
               </article>
             </StaggerItem>
           ))}
@@ -419,14 +442,25 @@ function ScienceSection() {
             </h3>
             <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {supportingActives.map((item) => (
-                <div key={item.name}>
-                  <p className="text-lg font-medium text-shell">{item.name}</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.12em] text-muted">
-                    {item.where}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
-                    {item.body}
-                  </p>
+                <div key={item.name} className="flex gap-4">
+                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-[#ebe8df]">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover object-center"
+                      sizes="80px"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-lg font-medium text-shell">{item.name}</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.12em] text-muted">
+                      {item.where}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted">
+                      {item.body}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -446,6 +480,7 @@ function ScienceSection() {
             {[
               {
                 product: shampoo,
+                image: "/images/home/h22-scalp-first.jpg",
                 points: [
                   "5% GHK-Cu + 1% AHK-Cu for a scalp-first cleanse.",
                   "Biotin, niacinamide, and caffeine during a 3–5 minute leave-on window.",
@@ -454,6 +489,7 @@ function ScienceSection() {
               },
               {
                 product: capsule,
+                image: "/images/home/h23-skin-daily.jpg",
                 points: [
                   "GHK-Cu delivered in melt-on capsules, not a generic cream smear.",
                   "Niacinamide, squalane, and hyaluronic acid for firmness and slip.",
@@ -462,21 +498,22 @@ function ScienceSection() {
               },
               {
                 product: lift,
+                image: "/images/home/h24-lift-eye.jpg",
                 points: [
                   "5% GHK-Cu paired with 5% Snap-8 for expression-line appearance.",
                   "Multi-weight hyaluronic acids plus collagen for a refined finish.",
                   "A 10ml format—thin layer on forehead, smile lines, and crow’s feet.",
                 ],
               },
-            ].map(({ product, points }) => (
+            ].map(({ product, image, points }) => (
               <StaggerItem key={product.slug}>
                 <article className="seed-card flex h-full flex-col overflow-hidden bg-[#fffcf7]">
                   <div className="relative aspect-[4/5] bg-[#ebe8df]">
                     <Image
-                      src={product.cardImage}
+                      src={image}
                       alt={product.name}
                       fill
-                      className={productImageClass(product.cardImage)}
+                      className="object-cover object-center"
                       sizes="(max-width: 768px) 100vw, 30vw"
                     />
                   </div>
@@ -607,12 +644,12 @@ function ReviewSection() {
 
 function UgcSection() {
   const tiles = [
-    { src: shampoo.cardImage, label: "Copper Growth Shampoo" },
-    { src: "/products/form-shampoo-lifestyle.png", label: "Bathroom ritual" },
+    { src: "/images/home/h2-shampoo-ledge.jpg", label: "Copper Growth Shampoo" },
+    { src: "/images/home/h29-shelfie.jpg", label: "Bathroom shelf" },
     { src: "/products/form-shampoo-packaging.jpg", label: "Bottle + box" },
-    { src: capsule.cardImage, label: "Capsule Cream" },
-    { src: capsule.secondImage, label: "Capsule Cream packaging" },
-    { src: lift.cardImage, label: "Lift Cream" },
+    { src: "/images/home/h3-capsule-ledge.jpg", label: "Capsule Cream" },
+    { src: "/images/home/h32-flatlay.jpg", label: "Morning flat lay" },
+    { src: "/images/home/h4-lift-ledge.jpg", label: "Lift Cream" },
   ];
 
   return (
@@ -658,7 +695,7 @@ function BookendSection() {
         <Reveal>
           <div className="seed-shell relative min-h-[480px] overflow-hidden bg-shell">
             <Image
-              src="/products/form-shampoo-lifestyle.png"
+              src="/images/home/h34-bookend-texture.jpg"
               alt=""
               fill
               className="object-cover opacity-40"
@@ -690,10 +727,10 @@ function BookendSection() {
         <Reveal delay={0.08}>
           <div className="seed-shell relative min-h-[480px] overflow-hidden bg-[#7b7869]">
             <Image
-              src={shampoo.cardImage}
+              src="/images/home/h35-shampoo-steam.jpg"
               alt={shampoo.name}
               fill
-              className="object-cover"
+              className="object-cover object-[72%_center]"
               sizes="50vw"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#7b7869] via-[#7b7869]/70 to-transparent" />
@@ -721,6 +758,318 @@ function BookendSection() {
   );
 }
 
+const expectWeeks = [
+  {
+    week: "Week 1",
+    title: "A quieter scalp",
+    body: "The cleanse starts to feel like a ritual — clearer roots, less residue, a calmer wash day.",
+    image: "/images/home/n1a-week1.jpg",
+  },
+  {
+    week: "Week 4",
+    title: "Less in the brush",
+    body: "Hair in the brush and drain often looks lighter as the scalp environment settles.",
+    image: "/images/home/n1b-week4.jpg",
+  },
+  {
+    week: "Week 8",
+    title: "A finer edge",
+    body: "Baby hairs at the hairline start to catch the light. Skin looks a little more rested.",
+    image: "/images/home/n1c-week8.jpg",
+  },
+  {
+    week: "Week 12",
+    title: "The look of density",
+    body: "Strands separate in backlight. The ritual feels ordinary — which is the point.",
+    image: "/images/home/n1d-week12.jpg",
+  },
+];
+
+const peptideBars = [
+  { name: "GHK-Cu", where: "Shampoo + Lift", percent: 5 },
+  { name: "AHK-Cu", where: "Shampoo", percent: 1 },
+  { name: "Snap-8", where: "Lift Cream", percent: 5 },
+];
+
+const standards = [
+  {
+    title: "Named actives",
+    body: "Percentages you can read: 5% GHK-Cu, 1% AHK-Cu, 5% Snap-8.",
+    image: "/images/lab/n3a-powder.jpg",
+  },
+  {
+    title: "Lab-made, small batch",
+    body: "Compounded in a clean cosmetic lab — precise, not theatrical.",
+    image: "/images/lab/n3b-vial.jpg",
+  },
+  {
+    title: "Sulfate and paraben free",
+    body: "Printed on the Lift Cream carton, and true across the lineup.",
+    image: "/images/lab/n3c-vessel.jpg",
+  },
+  {
+    title: "Cruelty free",
+    body: "Recyclable packaging, no animal testing — the quiet standards.",
+    image: "/images/lab/n3d-coa.jpg",
+  },
+];
+
+function ExpectSection() {
+  return (
+    <section className="bg-paper px-3 pb-16 md:px-5 md:pb-24">
+      <div className="mx-auto max-w-[1400px]">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.16em] text-muted">
+            What to expect
+          </p>
+          <h2 className="mt-3 max-w-[16ch] text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
+            A twelve-week peptide ritual.
+          </h2>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
+            Consistency is the active. These are the look-and-feel notes we hear
+            as people stay with the lineup.
+          </p>
+        </Reveal>
+        <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" delay={0.04}>
+          {expectWeeks.map((item) => (
+            <StaggerItem key={item.week}>
+              <article className="seed-card overflow-hidden bg-[#fffcf7]">
+                <div className="relative aspect-square bg-[#ebe8df]">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="p-5">
+                  <p className="text-xs uppercase tracking-[0.14em] text-muted">
+                    {item.week}
+                  </p>
+                  <h3 className="mt-2 text-lg font-medium text-shell">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {item.body}
+                  </p>
+                </div>
+              </article>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
+
+function PeptideWorkSection() {
+  return (
+    <section className="bg-paper px-3 pb-16 md:px-5 md:pb-24">
+      <div className="mx-auto max-w-[1400px]">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.16em] text-muted">
+            How copper peptides work
+          </p>
+          <h2 className="mt-3 max-w-[18ch] text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
+            Scalp first. Skin next. Same peptide family.
+          </h2>
+        </Reveal>
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {[
+            {
+              src: "/images/home/n2a-scalp.jpg",
+              label: "Scalp",
+              body: "GHK-Cu and AHK-Cu travel with the cleanse toward the follicle environment during a 3–5 minute leave-on window.",
+            },
+            {
+              src: "/images/home/n2b-skin.jpg",
+              label: "Skin",
+              body: "Melt-on capsules and Lift Cream use the same copper peptide family for the look of bounce, smoothness, and expression-line refinement.",
+            },
+          ].map((item) => (
+            <Reveal key={item.label}>
+              <article className="seed-card overflow-hidden bg-[#fffcf7]">
+                <div className="relative aspect-[4/3] bg-[#ebe8df]">
+                  <Image
+                    src={item.src}
+                    alt={item.label}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="p-6 md:p-8">
+                  <p className="text-xs uppercase tracking-[0.14em] text-muted">
+                    {item.label}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">
+                    {item.body}
+                  </p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="mt-4">
+          <div className="seed-shell grid overflow-hidden bg-[#fffcf7] md:grid-cols-2">
+            <div className="relative min-h-[260px] bg-[#ebe8df]">
+              <Image
+                src="/images/home/g2-bodymap.jpg"
+                alt=""
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="flex flex-col justify-center gap-6 p-6 md:p-10">
+              <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                Which formula, where
+              </p>
+              {[
+                { zone: "Scalp", product: "Copper Growth Shampoo" },
+                { zone: "Full face", product: "Capsule Cream" },
+                { zone: "Expression zones", product: "Lift Cream" },
+              ].map((item) => (
+                <div key={item.zone}>
+                  <p className="text-sm font-medium text-shell">{item.zone}</p>
+                  <p className="mt-1 text-sm text-muted">{item.product}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+        <Reveal className="mt-4">
+          <div className="seed-shell bg-[#fffcf7] px-6 py-8 md:px-12 md:py-10">
+            <p className="text-xs uppercase tracking-[0.16em] text-muted">
+              Published doses
+            </p>
+            <div className="mt-6 space-y-5">
+              {peptideBars.map((bar) => (
+                <div key={`${bar.name}-${bar.where}`}>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <p className="text-sm font-medium text-shell">
+                      {bar.name}
+                      <span className="ml-2 text-xs font-normal uppercase tracking-[0.12em] text-muted">
+                        {bar.where}
+                      </span>
+                    </p>
+                    <p className="font-renewal text-2xl text-shell">{bar.percent}%</p>
+                  </div>
+                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-brand-mist">
+                    <div
+                      className="h-full rounded-full bg-[#8a8664]"
+                      style={{ width: `${(bar.percent / 5) * 100}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function StandardsSection() {
+  return (
+    <section className="bg-paper px-3 pb-16 md:px-5 md:pb-24">
+      <div className="mx-auto max-w-[1400px]">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.16em] text-muted">
+            Our standards
+          </p>
+          <h2 className="mt-3 max-w-[16ch] text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
+            Quiet rules we actually keep.
+          </h2>
+        </Reveal>
+        <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" delay={0.04}>
+          {standards.map((item) => (
+            <StaggerItem key={item.title}>
+              <article className="seed-card overflow-hidden bg-[#fffcf7]">
+                <div className="relative aspect-square bg-[#ebe8df]">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-medium text-shell">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {item.body}
+                  </p>
+                </div>
+              </article>
+            </StaggerItem>
+          ))}
+        </Stagger>
+        <Reveal className="mt-4">
+          <div className="seed-shell relative min-h-[220px] overflow-hidden md:min-h-[280px]">
+            <Image
+              src="/images/lab/n4-lab.jpg"
+              alt="A small clean cosmetic lab"
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2f2e24]/70 via-[#2f2e24]/25 to-transparent" />
+            <div className="relative flex min-h-[220px] items-end p-8 text-white md:min-h-[280px] md:p-10">
+              <p className="max-w-md text-lg font-medium md:text-2xl">
+                Made in a small clean lab — bone surfaces, stainless, no noise.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function TextureSection() {
+  const tiles = [
+    { src: "/images/texture/n6a-lather.jpg", label: "Copper Growth lather" },
+    { src: "/images/texture/n6b-burst.jpg", label: "Capsule melt" },
+    { src: "/images/texture/n6c-liftgel.jpg", label: "Lift gel" },
+  ];
+
+  return (
+    <section className="bg-paper px-3 pb-8 md:px-5 md:pb-12">
+      <div className="mx-auto max-w-[1400px]">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.16em] text-muted">
+            Texture
+          </p>
+          <h2 className="mt-3 max-w-[16ch] text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
+            How each formula feels.
+          </h2>
+        </Reveal>
+        <Stagger className="mt-10 grid gap-4 md:grid-cols-3" delay={0.04}>
+          {tiles.map((tile) => (
+            <StaggerItem key={tile.label}>
+              <div className="seed-card relative aspect-square overflow-hidden bg-[#ebe8df]">
+                <Image
+                  src={tile.src}
+                  alt={tile.label}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2f2e24]/60 to-transparent p-5">
+                  <p className="text-sm text-white">{tile.label}</p>
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
+
 export default function HomePageClient() {
   return (
     <div className="bg-[#f4f2eb]">
@@ -729,7 +1078,11 @@ export default function HomePageClient() {
       <HighlightSection />
       <TechSection />
       <ScienceSection />
+      <ExpectSection />
+      <PeptideWorkSection />
+      <StandardsSection />
       <ReviewSection />
+      <TextureSection />
       <UgcSection />
       <BookendSection />
     </div>

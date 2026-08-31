@@ -76,10 +76,10 @@ function BundlePromo() {
   return (
     <article className="seed-shell relative min-h-[420px] overflow-hidden bg-shell text-white md:min-h-full">
       <Image
-        src="/products/form-shampoo-packaging.jpg"
+        src="/images/home/s5-bundle.jpg"
         alt=""
         fill
-        className="object-cover"
+        className="object-cover object-[center_20%]"
         sizes="(max-width: 768px) 100vw, 33vw"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c16] via-[#1c1c16]/55 to-[#1c1c16]/20" />
@@ -125,20 +125,31 @@ export default function ProductsPageClient() {
 
   return (
     <div className="min-h-screen bg-[#f4f2eb]">
-      <section className="px-5 pb-8 pt-28 md:px-10 md:pb-12 md:pt-36">
-        <div className="mx-auto max-w-[1400px]">
-          <p className="text-xs uppercase tracking-[0.18em] text-muted">
-            The lineup
-          </p>
-          <div className="mt-4 grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-end">
-            <h1 className="max-w-xl text-4xl font-medium leading-[1.12] tracking-[-0.03em] text-shell md:max-w-3xl md:text-6xl">
-              Excellence.
-              <span className="block">Made effortless.</span>
-            </h1>
-            <p className="max-w-md text-base leading-relaxed text-muted">
-              Three copper peptide formulas for scalp and skin. No internal
-              codes — just the ritual: shampoo, capsules, and lift cream.
-            </p>
+      <section className="px-3 pb-3 pt-20 md:px-5 md:pb-5 md:pt-24">
+        <div className="seed-shell relative mx-auto min-h-[42svh] max-w-[1400px] overflow-hidden bg-[#eceae3] md:min-h-[52svh]">
+          <Image
+            src="/images/home/s1-shop-hero.jpg"
+            alt="[FORM] renewal copper peptide lineup"
+            fill
+            priority
+            className="object-cover object-[center_60%]"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#f4f2eb]/90 via-[#f4f2eb]/55 to-transparent" />
+          <div className="relative flex min-h-[42svh] items-end px-6 py-10 md:min-h-[52svh] md:px-12 md:py-14">
+            <div>
+              <p className="text-xs uppercase tracking-[0.18em] text-muted">
+                The lineup
+              </p>
+              <h1 className="mt-4 max-w-xl text-4xl font-medium leading-[1.12] tracking-[-0.03em] text-shell md:max-w-3xl md:text-6xl">
+                Excellence.
+                <span className="block">Made effortless.</span>
+              </h1>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
+                Three copper peptide formulas for scalp and skin. No internal
+                codes — just the ritual: shampoo, capsules, and lift cream.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -158,8 +169,8 @@ export default function ProductsPageClient() {
         <div className="seed-shell mx-auto grid max-w-[1400px] overflow-hidden bg-[#fffcf7] md:grid-cols-2">
           <div className="relative min-h-[320px] overflow-hidden md:min-h-[480px]">
             <Image
-              src="/products/form-shampoo-lifestyle.png"
-              alt="Copper Growth Shampoo in a bathroom ritual"
+              src="/images/home/s6-duo.jpg"
+              alt="Copper Growth Shampoo and Capsule Cream"
               fill
               className="object-cover object-[72%_center]"
               sizes="(max-width: 768px) 100vw, 50vw"

@@ -26,7 +26,7 @@ export const bundles: FormBundle[] = [
     description:
       "Copper Growth Shampoo and Capsule Cream together for a daily peptide ritual across scalp and skin.",
     badge: "Bundle + Save 25%",
-    image: shampoo.image,
+    image: "/images/home/s6-duo.jpg",
     productSlugs: [shampoo.slug, capsule.slug],
     price: Number(((shampoo.price + capsule.price) * 0.75).toFixed(2)),
     compareAt: Number((shampoo.price + capsule.price).toFixed(2)),
@@ -40,7 +40,7 @@ export const bundles: FormBundle[] = [
     description:
       "The complete [FORM] renewal lineup in one ritual—scalp, face capsules, and focused lift cream.",
     badge: "Bundle + Save 20%",
-    image: shampoo.secondImage,
+    image: "/images/home/s5-bundle.jpg",
     productSlugs: [shampoo.slug, capsule.slug, lift.slug],
     price: Number(
       ((shampoo.price + capsule.price + lift.price) * 0.8).toFixed(2)
