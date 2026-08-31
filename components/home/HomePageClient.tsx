@@ -396,7 +396,7 @@ function ScienceSection() {
             <div className="seed-card relative aspect-[4/5] bg-[#ebe8df] md:aspect-square">
               <Image
                 src="/images/home/h12-science-dose.jpg"
-                alt="A measured copper peptide capsule dose"
+                alt="The small white scooper used with Capsule Cream"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 45vw"
