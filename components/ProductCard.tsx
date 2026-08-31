@@ -3,6 +3,7 @@
 import { ArrowRight, ShoppingBag, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import ComingSoonTag from "@/components/ComingSoonTag";
 import PurgoButton from "@/components/PurgoButton";
 import { productImageClass } from "@/lib/images";
 import { formatPrice, type FormProduct } from "@/lib/products";
@@ -62,7 +63,9 @@ export default function ProductCard({
           </p>
         </div>
         <p className={`text-sm ${onDark ? "text-white/85" : "text-shell"}`}>
-          From {formatPrice(product.price)}
+          {product.comingSoon || product.price === undefined
+            ? "Price at launch"
+            : `From ${formatPrice(product.price)}`}
         </p>
         <div className="mt-auto flex flex-wrap gap-2 pt-2">
           <PurgoButton
@@ -74,15 +77,22 @@ export default function ProductCard({
           >
             View
           </PurgoButton>
-          <PurgoButton
-            href={product.purgoUrl}
-            className={`!px-4 !py-2.5 !text-sm ${
-              onDark ? "!bg-[#2f2e24] !text-white hover:!bg-black" : ""
-            }`}
-            icon={<ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.75} />}
-          >
-            Shop Now
-          </PurgoButton>
+          {product.purgoUrl ? (
+            <PurgoButton
+              href={product.purgoUrl}
+              className={`!px-4 !py-2.5 !text-sm ${
+                onDark ? "!bg-[#2f2e24] !text-white hover:!bg-black" : ""
+              }`}
+              icon={<ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.75} />}
+            >
+              Shop Now
+            </PurgoButton>
+          ) : (
+            <ComingSoonTag
+              tone={onDark ? "onDark" : "light"}
+              className="!px-4 !py-2.5 !text-sm"
+            />
+          )}
         </div>
       </div>
     </article>

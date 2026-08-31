@@ -23,7 +23,8 @@ export type FormProduct = {
   tagline: string;
   description: string;
   story: string[];
-  price: number;
+  /** Omitted while a product is `comingSoon` — nothing is priced until launch. */
+  price?: number;
   size: string;
   actives: string;
   keyActives: KeyActive[];
@@ -48,7 +49,9 @@ export type FormProduct = {
   featuredIngredients: FeaturedIngredient[];
   directions: string;
   ingredients: string;
-  purgoUrl: string;
+  /** Absent until the product is live on Purgo. Pair with `comingSoon`. */
+  purgoUrl?: string;
+  comingSoon?: boolean;
   faqs: { question: string; answer: string }[];
   features: { title: string; body: string }[];
 };
@@ -458,6 +461,141 @@ export const products: FormProduct[] = [
       {
         title: "Same brand system",
         body: "Part of the [FORM] renewal copper peptide lineup, consistent in language, finish, and clinical calm.",
+      },
+    ],
+  },
+  {
+    slug: "hair-growth-scalp-serum",
+    name: "Hair Growth & Scalp Serum",
+    shortName: "Scalp Serum",
+    tagline: "5% GHK-Cu leave-on serum for the scalp.",
+    description:
+      "A leave-on copper peptide serum dosed at 5% GHK-Cu and applied directly to the scalp\u2014the daily counterpart to the wash-day cleanse.",
+    story: [
+      "A leave-on scalp treatment built around the same copper peptide system as the rest of the [FORM] lineup, dosed at 5% GHK-Cu and paired with Copper Tripeptide-3. Where the shampoo works in a short rinse-off window, the serum stays on the scalp.",
+      "Niacinamide, caffeine, and salicylic acid round out the formula\u2014niacinamide for the look of a balanced scalp, caffeine to energize, and salicylic acid to help keep the follicle area clear of buildup between washes.",
+      "A 30ml dropper format for targeted application: two to three drops on the areas you want to treat, massaged in and left to absorb. Built to sit alongside Copper Growth Shampoo, not replace it.",
+    ],
+    size: "30ml / 1.01 fl.oz",
+    actives: "5% GHK-CU + COPPER TRIPEPTIDE-3",
+    keyActives: [
+      { name: "GHK-Cu", percent: "5%" },
+      { name: "Copper Tripeptide-3" },
+      { name: "Caffeine" },
+    ],
+    greatFor: ["Thinning hair", "Scalp health", "Daily use"],
+    benefitTags: ["Density", "Scalp", "Leave-on"],
+    concerns: ["hair", "thinning", "scalp"],
+    badge: "Coming soon",
+    comingSoon: true,
+    image: "/images/home/sr4-serum-scene.jpg",
+    cardImage: "/images/home/sr1-serum-ledge.jpg",
+    secondImage: "/images/home/sr2-serum-pack.jpg",
+    gallery: [
+      "/images/home/sr4-serum-scene.jpg",
+      "/images/home/sr1-serum-ledge.jpg",
+      "/images/home/sr2-serum-pack.jpg",
+      "/images/people/sr6-serum-drop.jpg",
+      "/images/texture/sr8-serum-drop-macro.jpg",
+    ],
+    ritualLabel: "How to use \u00b7 Scalp serum",
+    ritualTitle: "The ritual",
+    ritualSteps: [
+      "Apply 2\u20133 drops directly to the scalp in the area to be treated.",
+      "Massage into the scalp with your fingers.",
+      "Work through various parts of the scalp and hair until fully absorbed.",
+    ],
+    ritualImages: [
+      "/images/people/sr6-serum-drop.jpg",
+      "/images/people/p-sh-ben.jpg",
+      "/images/texture/sr8-serum-drop-macro.jpg",
+    ],
+    benefitImage: "/images/people/sr6-serum-drop.jpg",
+    formulaBlurb:
+      "A leave-on scalp serum with 5% GHK-Cu, Copper Tripeptide-3, niacinamide, caffeine, and salicylic acid.",
+    ingredientCount: 13,
+    benefits: [
+      "5% GHK-Cu in a leave-on scalp format",
+      "Copper Tripeptide-3 alongside the core peptide",
+      "Salicylic acid helps keep the follicle area clear",
+      "A 30ml dropper for targeted daily application",
+    ],
+    benefitGroups: [
+      {
+        title: "Density",
+        items: [
+          "5% GHK-Cu is dosed for the look of fuller, denser hair at the root.",
+          "Copper Tripeptide-3 carries the same scalp-first pairing as the shampoo.",
+          "Built for daily use between wash days.",
+        ],
+      },
+      {
+        title: "Scalp",
+        items: [
+          "Salicylic acid helps keep buildup from collecting around the follicle.",
+          "Niacinamide supports the look of a balanced, comfortable scalp.",
+          "A leave-on format\u2014no rinse, no wait, no wash-day dependency.",
+        ],
+      },
+      {
+        title: "Precision",
+        items: [
+          "A dropper puts 2\u20133 drops exactly where you want them.",
+          "30ml sized for a focused area, not a whole head of hair.",
+          "Pairs with Copper Growth Shampoo rather than replacing it.",
+        ],
+      },
+    ],
+    featuredIngredients: [
+      {
+        name: "5% GHK-Cu",
+        why: "Copper tripeptide-1 at 5%, the same core peptide that runs through the [FORM] lineup \u2014 here in a leave-on format that stays on the scalp instead of rinsing away.",
+        image: "/images/ingredients/i01-ghk-cu.jpg",
+      },
+      {
+        name: "Copper Tripeptide-3",
+        why: "The companion copper peptide reserved for scalp care, included alongside GHK-Cu so the serum stays scalp-first rather than a general-purpose hair product.",
+        image: "/images/ingredients/i02-ahk-cu.jpg",
+      },
+      {
+        name: "Caffeine + Salicylic Acid",
+        why: "Caffeine is included to energize the look of the scalp. Salicylic acid helps keep the follicle area clear of buildup between washes.",
+        image: "/images/ingredients/i06-caffeine.jpg",
+      },
+    ],
+    directions:
+      "Apply 2\u20133 drops of serum directly to the scalp in the area to be treated. Massage into the scalp with your fingers, then gently massage various parts of the scalp and hair until fully absorbed.",
+    ingredients:
+      "Aqua, Propanediol, Copper Tripeptide-1, Copper Tripeptide-3, Sodium Citrate, Gluconolactone, Citric Acid, Sodium Hydroxide, Xanthan Gum, Sodium Benzoate, Niacinamide, Salicylic Acid, Caffeine.",
+    faqs: [
+      {
+        question: "When does the Scalp Serum launch?",
+        answer:
+          "It\u2019s in production now. The formula and packaging are final \u2014 pricing and the checkout link go live at launch.",
+      },
+      {
+        question: "How is this different from Copper Growth Shampoo?",
+        answer:
+          "The shampoo is a rinse-off cleanse with a 3\u20135 minute leave-on window, used 3\u20134 times weekly. The serum stays on the scalp and is applied directly to the areas you want to treat. They are built to be used together.",
+      },
+      {
+        question: "Can I use it with the shampoo?",
+        answer:
+          "Yes. Wash with Copper Growth Shampoo, then apply the serum to a towel-dried scalp. On non-wash days, apply the serum on its own.",
+      },
+    ],
+    features: [
+      {
+        title: "Leave-on delivery",
+        body: "5% GHK-Cu stays on the scalp instead of rinsing away\u2014the daily counterpart to a wash-day cleanse.",
+      },
+      {
+        title: "Dropper precision",
+        body: "A 30ml dropper places 2\u20133 drops on the areas you actually want to treat.",
+      },
+      {
+        title: "Same peptide system",
+        body: "Copper Tripeptide-1 and -3, the same pairing as Copper Growth Shampoo, in a format built for daily use.",
       },
     ],
   },

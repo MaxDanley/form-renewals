@@ -97,10 +97,11 @@ export default function SiteHeader() {
 
                 if (item.hasMenu) {
                   return (
-                    <button
+                    <Link
                       key={item.href}
-                      type="button"
-                      onClick={() => setShopOpen((value) => !value)}
+                      href={item.href}
+                      onClick={() => setShopOpen(false)}
+                      onFocus={() => setShopOpen(true)}
                       className={`${itemClass} ${
                         shopOpen
                           ? lightChrome
@@ -113,7 +114,7 @@ export default function SiteHeader() {
                     >
                       <Icon className="h-3.5 w-3.5" strokeWidth={1.75} />
                       {item.label}
-                    </button>
+                    </Link>
                   );
                 }
 
@@ -175,10 +176,10 @@ export default function SiteHeader() {
                           {product.name}
                         </span>
                       </span>
-                      {product.badge === "New" ? (
+                      {product.badge ? (
                         <span className="seed-pill ml-auto inline-flex items-center gap-1 bg-[#d9d4c4] px-2 py-0.5 text-[0.65rem] text-shell">
                           <Sparkles className="h-3 w-3" strokeWidth={1.75} />
-                          New
+                          {product.badge}
                         </span>
                       ) : null}
                     </Link>

@@ -228,7 +228,9 @@ export default function QuizPageClient() {
               <div className="space-y-5 p-6 md:p-8">
                 <p className="text-xl font-medium text-shell">
                   {result.product
-                    ? formatPrice(result.product.price)
+                    ? result.product.price === undefined
+                      ? "Price at launch"
+                      : formatPrice(result.product.price)
                     : result.bundle
                       ? formatPrice(result.bundle.price)
                       : null}

@@ -627,3 +627,78 @@ After adding files, two code touches are needed:
 Claims language: keep every caption in the existing "supports the look of / appearance
 of" register used throughout `lib/products.ts`. Don't let a new image caption drift
 into a stronger claim than the product copy already makes.
+
+---
+
+## 12. Hair Growth & Scalp Serum (coming soon)
+
+Base photo: the 30ml blue serum in a clear dropper bottle with a silver collar and
+white bulb, beside its greige carton. **Every prompt here is [REF]** — attach that base
+photo. The dropper bottle's blue liquid and the `[FORM]` dot-cluster mark are the two
+things a model will destroy if left to invent them.
+
+**Required files** (referenced in `lib/products.ts`, currently 404):
+- `public/products/form-scalp-serum.png` — the bottle alone, transparent or white bg
+- `public/products/form-scalp-serum-box.png` — bottle + carton, the shot you sent
+
+### SR-1 — Lineup card, matched to H2/H3/H4
+4:5 · this is the one that matters most — it sits beside the other three on the home
+lineup row and the shop grid.
+> The clear glass dropper bottle of bright blue serum standing alone on a warm-bone
+> plaster ledge, three-quarter view, slightly below eye level. Seamless warm oat wall
+> in soft gradient behind. A single soft shadow pooling to the right. The blue liquid
+> lit from behind so it glows. Nothing else in frame. Vertical 4:5. + STYLE + AVOID
+
+### SR-2 — Packshot, front
+1:1 · straight-on studio, for the gallery
+> The dropper bottle centered and shot dead-on against a seamless white-to-bone
+> gradient, soft symmetrical lighting, one clean reflection below. Square 1:1.
+> + STYLE + AVOID
+
+### SR-3 — Bottle + carton
+3:4 · essentially the base photo, cleaned
+> The dropper bottle standing beside its upright greige carton on a seamless pale grey
+> surface, both lit softly from the front left, gentle reflection beneath. Slight
+> three-quarter angle on the carton so its side panel catches light. Vertical 3:4.
+> + STYLE + AVOID
+
+### SR-4 — Lifestyle scene
+3:4 · the shot the other two new products were missing
+> The dropper bottle on a bone bathroom counter beside a folded oat linen cloth, a
+> brushed gold tap edge softly out of focus behind, morning light from a window at the
+> left throwing a long soft shadow. The blue liquid is the only color in the frame.
+> Vertical 3:4. + STYLE + AVOID
+
+### SR-5 — In hand / scale
+3:4
+> A hand holding the dropper bottle upright between thumb and forefinger against a plain
+> warm oat wall, the 30ml scale obvious against the fingers, sleeve of an oat knit
+> visible at the wrist. Vertical 3:4. + STYLE + AVOID
+
+### SR-6 — Dropper in use *(this product's signature shot)*
+3:4 · generate product-free and composite, or [REF]
+> Close crop of a scalp part-line with dark hair pushed to either side, a glass dropper
+> held just above it releasing a single clear drop onto the skin. Shot from above at a
+> slight angle, sharp on the drop. Clean, procedural, almost clinical. Vertical 3:4.
+> + STYLE + AVOID
+
+### SR-7 — Massage step
+4:5 · pairs with ritual step 2
+> Two fingertips pressed into a scalp part-line, mid-massage, hair parted around them,
+> skin calm and clear. Tight crop, no face. Vertical 4:5. + STYLE + AVOID
+
+### SR-8 — Texture macro
+1:1
+> Extreme macro of a single drop of pale blue serum on a fingertip, thin and watery
+> rather than viscous, catching one crisp highlight. Square 1:1. + STYLE + AVOID
+
+### SR-9 — Paired with the shampoo *(the "use together" shot)*
+3:2
+> The greige shampoo pump bottle and the blue dropper serum standing together on a
+> bone plaster ledge, the shampoo slightly behind and left, the serum forward and right.
+> Same seamless oat wall and lighting as the rest of the lineup set. Aspect 3:2.
+> + STYLE + AVOID
+
+**Ingredient cards** reuse the existing library — no new renders needed:
+5% GHK-Cu → `i01-ghk-cu.jpg` · Copper Tripeptide-3 → `i02-ahk-cu.jpg` ·
+Caffeine + Salicylic Acid → `i06-caffeine.jpg`

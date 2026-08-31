@@ -15,6 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Accordion from "@/components/Accordion";
+import ComingSoonTag from "@/components/ComingSoonTag";
 import PurgoButton from "@/components/PurgoButton";
 import StickyBuyBar from "@/components/StickyBuyBar";
 import Reveal from "@/components/motion/Reveal";
@@ -215,7 +216,9 @@ export default function ProductPageClient({
               Size · {product.size}
             </p>
             <p className="mt-4 text-3xl tracking-[-0.02em] text-shell">
-              {formatPrice(product.price)}
+              {product.price === undefined
+                ? "Price at launch"
+                : formatPrice(product.price)}
             </p>
 
             <div className="mt-6">
@@ -235,16 +238,20 @@ export default function ProductPageClient({
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <PurgoButton
-                href={product.purgoUrl}
-                className="w-full sm:w-auto"
-                icon={<ShoppingBag className="h-4 w-4" strokeWidth={1.75} />}
-                iconRight={
-                  <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
-                }
-              >
-                Shop Now
-              </PurgoButton>
+              {product.purgoUrl ? (
+                <PurgoButton
+                  href={product.purgoUrl}
+                  className="w-full sm:w-auto"
+                  icon={<ShoppingBag className="h-4 w-4" strokeWidth={1.75} />}
+                  iconRight={
+                    <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
+                  }
+                >
+                  Shop Now
+                </PurgoButton>
+              ) : (
+                <ComingSoonTag className="w-full sm:w-auto" />
+              )}
               <PurgoButton
                 href="/products"
                 external={false}
@@ -258,11 +265,15 @@ export default function ProductPageClient({
             <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted">
               <span className="inline-flex items-center gap-1.5">
                 <Lock className="h-3.5 w-3.5" strokeWidth={1.75} />
-                Concentrated clinical actives · Secure checkout
+                {product.comingSoon
+                  ? "Concentrated clinical actives · Formula final"
+                  : "Concentrated clinical actives · Secure checkout"}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Truck className="h-3.5 w-3.5" strokeWidth={1.75} />
-                Free US shipping on qualifying orders
+                {product.comingSoon
+                  ? "Launching soon on Purgo Labs"
+                  : "Free US shipping on qualifying orders"}
               </span>
             </div>
 
@@ -505,7 +516,9 @@ export default function ProductPageClient({
                       </p>
                       <p className="mt-2 text-sm text-muted">{item.tagline}</p>
                       <p className="mt-3 text-sm text-shell">
-                        {formatPrice(item.price)}
+                        {item.price === undefined
+                          ? "Coming soon"
+                          : formatPrice(item.price)}
                       </p>
                     </div>
                   </Link>

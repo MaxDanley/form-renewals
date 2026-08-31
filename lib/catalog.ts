@@ -1,3 +1,4 @@
+import { PURGO_ORIGIN } from "@/lib/brand";
 import { products, type FormProduct } from "@/lib/products";
 
 export type FormBundle = {
@@ -14,6 +15,20 @@ export type FormBundle = {
   purgoUrl: string;
 };
 
+/**
+ * Bundles only ever contain launched products, so an unpriced member is a data
+ * error rather than a display case — fail loudly at build instead of quietly
+ * pricing it at zero.
+ */
+function listPrice(product: FormProduct): number {
+  if (product.price === undefined) {
+    throw new Error(
+      `Bundle includes an unpriced product: ${product.slug}. Give it a price or drop it from the bundle.`
+    );
+  }
+  return product.price;
+}
+
 const shampoo = products[0];
 const capsule = products[1];
 const lift = products[2];
@@ -28,10 +43,10 @@ export const bundles: FormBundle[] = [
     badge: "Bundle + Save 25%",
     image: "/images/home/s6-duo.jpg",
     productSlugs: [shampoo.slug, capsule.slug],
-    price: Number(((shampoo.price + capsule.price) * 0.75).toFixed(2)),
-    compareAt: Number((shampoo.price + capsule.price).toFixed(2)),
+    price: Number(((listPrice(shampoo) + listPrice(capsule)) * 0.75).toFixed(2)),
+    compareAt: Number((listPrice(shampoo) + listPrice(capsule)).toFixed(2)),
     savePercent: 25,
-    purgoUrl: shampoo.purgoUrl,
+    purgoUrl: shampoo.purgoUrl ?? PURGO_ORIGIN,
   },
   {
     slug: "full-ritual",
@@ -43,13 +58,13 @@ export const bundles: FormBundle[] = [
     image: "/images/home/s5-bundle.jpg",
     productSlugs: [shampoo.slug, capsule.slug, lift.slug],
     price: Number(
-      ((shampoo.price + capsule.price + lift.price) * 0.8).toFixed(2)
+      ((listPrice(shampoo) + listPrice(capsule) + listPrice(lift)) * 0.8).toFixed(2)
     ),
     compareAt: Number(
-      (shampoo.price + capsule.price + lift.price).toFixed(2)
+      (listPrice(shampoo) + listPrice(capsule) + listPrice(lift)).toFixed(2)
     ),
     savePercent: 20,
-    purgoUrl: shampoo.purgoUrl,
+    purgoUrl: shampoo.purgoUrl ?? PURGO_ORIGIN,
   },
 ];
 

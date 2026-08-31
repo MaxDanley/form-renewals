@@ -6,9 +6,12 @@ import {
 } from "framer-motion";
 import {
   ArrowRight,
+  Droplets,
   ExternalLink,
   FlaskConical,
+  ScanFace,
   ShoppingBag,
+  Sparkles,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +19,8 @@ import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import PurgoButton from "@/components/PurgoButton";
 import Reveal from "@/components/motion/Reveal";
+import ScrollScale from "@/components/motion/ScrollScale";
+import ScrollShift from "@/components/motion/ScrollShift";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { PURGO_ORIGIN } from "@/lib/brand";
 import { isScenePhoto, productImageClass } from "@/lib/images";
@@ -48,14 +53,16 @@ function HeroSection() {
   return (
     <section className="relative w-full bg-[#f4f2eb] pb-3 md:pb-5">
       <div className="seed-hero relative min-h-[92svh] w-full bg-[#eceae3]">
-        <Image
-          src="/images/home/h1-hero.jpg"
-          alt="[FORM] renewal copper peptide lineup"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[68%_center] md:object-[72%_center]"
-        />
+        <ScrollScale className="absolute inset-0" from={1.16} to={1.04}>
+          <Image
+            src="/images/home/h1-hero.jpg"
+            alt="[FORM] renewal copper peptide lineup"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[68%_center] md:object-[72%_center]"
+          />
+        </ScrollScale>
         <div className="absolute inset-0 bg-gradient-to-r from-[#f4f2eb]/92 via-[#f4f2eb]/72 to-transparent md:from-[#f4f2eb]/88 md:via-[#f4f2eb]/40 md:to-transparent" />
 
         <div className="relative mx-auto flex min-h-[92svh] w-full max-w-[1400px] items-center px-6 py-28 md:px-14 md:py-24">
@@ -92,7 +99,7 @@ function HeroSection() {
                 Shop the lineup
               </PurgoButton>
               <Link
-                href={shampoo.purgoUrl}
+                href={shampoo.purgoUrl ?? PURGO_ORIGIN}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-[0.95rem] font-medium text-[#2f2e24] transition hover:opacity-70"
@@ -131,7 +138,10 @@ function ProductSection() {
           </div>
         </Reveal>
 
-        <Stagger className="mt-12 grid gap-4 md:grid-cols-3" delay={0.05}>
+        <Stagger
+          className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4"
+          delay={0.05}
+        >
           {products.map((product) => (
             <StaggerItem key={product.slug}>
               <div className="seed-card bg-[#8a8778] p-4 md:p-5">
@@ -208,17 +218,19 @@ function HighlightSection() {
                       key={`${src}-${index}`}
                       className="seed-card relative aspect-square overflow-hidden bg-[#ebe8df]"
                     >
-                      <Image
-                        src={src}
-                        alt=""
-                        fill
-                        className={
-                          isScenePhoto(src)
-                            ? "object-cover object-center"
-                            : "object-contain object-center p-3"
-                        }
-                        sizes="160px"
-                      />
+                      <ScrollScale className="absolute inset-0" from={1.16} to={1}>
+                        <Image
+                          src={src}
+                          alt=""
+                          fill
+                          className={
+                            isScenePhoto(src)
+                              ? "object-cover object-center"
+                              : "object-contain object-center p-3"
+                          }
+                          sizes="160px"
+                        />
+                      </ScrollScale>
                     </div>
                   )
                 )}
@@ -393,14 +405,16 @@ function ScienceSection() {
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <div className="seed-card relative aspect-[4/5] bg-[#ebe8df] md:aspect-square">
-              <Image
-                src="/images/home/h12-science-dose.jpg"
-                alt="The small white scooper used with Capsule Cream"
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 100vw, 45vw"
-              />
+            <div className="seed-card relative aspect-[4/5] overflow-hidden bg-[#ebe8df] md:aspect-square">
+              <ScrollScale className="absolute inset-0" from={1.2} to={1}>
+                <Image
+                  src="/images/home/h12-science-dose.jpg"
+                  alt="The small white scooper used with Capsule Cream"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
+              </ScrollScale>
             </div>
           </Reveal>
         </div>
@@ -551,32 +565,54 @@ function ScienceSection() {
             <h3 className="mt-3 max-w-[18ch] text-2xl font-medium tracking-[-0.02em] md:text-4xl">
               How they work together.
             </h3>
-            <div className="mt-8 grid gap-8 md:grid-cols-3">
-              <div>
-                <p className="text-sm font-medium">Scalp, first</p>
-                <p className="mt-2 text-sm leading-relaxed text-white/80">
-                  Copper Growth Shampoo clears the way 3–4 times a week. Massage
-                  into wet scalp, leave on 3–5 minutes, rinse. GHK-Cu, AHK-Cu,
-                  biotin, and caffeine stay in contact before they wash away.
-                </p>
-              </div>
-              <div>
-                <p className="text-sm font-medium">Skin, daily</p>
-                <p className="mt-2 text-sm leading-relaxed text-white/80">
-                  Capsule Cream is the melt-on treatment for face and neck.
-                  Warm a capsule, press until absorbed—morning or evening—after
-                  cleansing and before richer layers.
-                </p>
-              </div>
-              <div>
-                <p className="text-sm font-medium">Lift, where movement shows</p>
-                <p className="mt-2 text-sm leading-relaxed text-white/80">
-                  Lift Cream is the focused step: a thin layer of 5% GHK-Cu and
-                  5% Snap-8 on expression areas. Same copper peptide family,
-                  different job than the capsules.
-                </p>
-              </div>
-            </div>
+            <Stagger className="mt-10 grid gap-8 md:grid-cols-3" delay={0.08}>
+              {[
+                {
+                  icon: Droplets,
+                  title: "Scalp, first",
+                  body: "Copper Growth Shampoo clears the way 3–4 times a week. Massage into wet scalp, leave on 3–5 minutes, rinse. GHK-Cu, AHK-Cu, biotin, and caffeine stay in contact before they wash away.",
+                },
+                {
+                  icon: Sparkles,
+                  title: "Skin, daily",
+                  body: "Capsule Cream is the melt-on treatment for face and neck. Warm a capsule, press until absorbed—morning or evening—after cleansing and before richer layers.",
+                },
+                {
+                  icon: ScanFace,
+                  title: "Lift, where movement shows",
+                  body: "Lift Cream is the focused step: a thin layer of 5% GHK-Cu and 5% Snap-8 on expression areas. Same copper peptide family, different job than the capsules.",
+                },
+              ].map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <StaggerItem key={step.title}>
+                    <motion.div
+                      className="h-full"
+                      whileInView={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, y: 24 }}
+                      viewport={{ once: false, amount: 0.4 }}
+                      transition={{ duration: 0.6, delay: index * 0.08, ease }}
+                    >
+                      <motion.span
+                        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/12"
+                        whileInView={{ scale: [0.8, 1.08, 1] }}
+                        viewport={{ once: false, amount: 0.6 }}
+                        transition={{ duration: 0.7, delay: index * 0.1, ease }}
+                      >
+                        <Icon className="h-5 w-5" strokeWidth={1.6} />
+                      </motion.span>
+                      <p className="mt-4 text-xs uppercase tracking-[0.16em] text-white/55">
+                        0{index + 1}
+                      </p>
+                      <p className="mt-2 text-sm font-medium">{step.title}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-white/80">
+                        {step.body}
+                      </p>
+                    </motion.div>
+                  </StaggerItem>
+                );
+              })}
+            </Stagger>
           </div>
         </Reveal>
       </div>
@@ -650,6 +686,7 @@ function UgcSection() {
     { src: "/images/home/h3-capsule-ledge.jpg", label: "Capsule Cream" },
     { src: "/images/home/h32-flatlay.jpg", label: "Morning flat lay" },
     { src: "/images/home/h4-lift-ledge.jpg", label: "Lift Cream" },
+    { src: "/images/home/sr1-serum-ledge.jpg", label: "Scalp Serum · soon" },
   ];
 
   return (
@@ -665,25 +702,29 @@ function UgcSection() {
         </Reveal>
       </div>
 
-      <div className="mt-10 flex gap-4 overflow-x-auto px-3 pb-2 md:gap-5 md:px-5 [scrollbar-width:thin]">
-        {tiles.map((tile) => (
-          <div
-            key={tile.label}
-            className="seed-shell relative h-[360px] w-[240px] shrink-0 overflow-hidden bg-[#ebe8df] md:h-[420px] md:w-[280px]"
-          >
-            <Image
-              src={tile.src}
-              alt={tile.label}
-              fill
-              className={productImageClass(tile.src)}
-              sizes="280px"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2f2e24]/65 to-transparent p-4">
-              <p className="text-sm text-white">{tile.label}</p>
+      <ScrollShift className="mt-10" from={40} to={-56}>
+        <div className="flex w-max gap-4 px-3 pb-2 md:gap-5 md:px-5">
+          {tiles.map((tile) => (
+            <div
+              key={tile.label}
+              className="seed-shell relative h-[360px] w-[240px] shrink-0 overflow-hidden bg-[#ebe8df] md:h-[420px] md:w-[280px]"
+            >
+              <ScrollScale className="absolute inset-0" from={1.14} to={1}>
+                <Image
+                  src={tile.src}
+                  alt={tile.label}
+                  fill
+                  className={productImageClass(tile.src)}
+                  sizes="280px"
+                />
+              </ScrollScale>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2f2e24]/65 to-transparent p-4">
+                <p className="text-sm text-white">{tile.label}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </ScrollShift>
     </section>
   );
 }
@@ -739,11 +780,13 @@ function BookendSection() {
                 Start with Copper Growth.
               </h2>
               <p className="mt-3 max-w-xs text-white/85">
-                From {formatPrice(shampoo.price)}
+                {shampoo.price === undefined
+                  ? "Price at launch"
+                  : `From ${formatPrice(shampoo.price)}`}
               </p>
               <div className="mt-6">
                 <PurgoButton
-                  href={shampoo.purgoUrl}
+                  href={shampoo.purgoUrl ?? PURGO_ORIGIN}
                   variant="light"
                   icon={<ShoppingBag className="h-4 w-4" strokeWidth={1.75} />}
                 >
@@ -786,7 +829,7 @@ const expectWeeks = [
 ];
 
 const peptideBars = [
-  { name: "GHK-Cu", where: "Shampoo + Lift", percent: 5 },
+  { name: "GHK-Cu", where: "Shampoo + Serum + Lift", percent: 5 },
   { name: "AHK-Cu", where: "Shampoo", percent: 1 },
   { name: "Snap-8", where: "Lift Cream", percent: 5 },
 ];
@@ -798,9 +841,9 @@ const standards = [
     image: "/images/lab/n3a-powder.jpg",
   },
   {
-    title: "Lab-made, small batch",
-    body: "Compounded in a clean cosmetic lab — precise, not theatrical.",
-    image: "/images/lab/n3b-vial.jpg",
+    title: "Measured doses",
+    body: "A scooper, a capsule, a thin layer — the ritual stays precise.",
+    image: "/images/home/h12-science-dose.jpg",
   },
   {
     title: "Sulfate and paraben free",
@@ -927,7 +970,7 @@ function PeptideWorkSection() {
                 Which formula, where
               </p>
               {[
-                { zone: "Scalp", product: "Copper Growth Shampoo" },
+                { zone: "Scalp", product: "Copper Growth Shampoo + Scalp Serum" },
                 { zone: "Full face", product: "Capsule Cream" },
                 { zone: "Expression zones", product: "Lift Cream" },
               ].map((item) => (
@@ -1009,17 +1052,19 @@ function StandardsSection() {
         </Stagger>
         <Reveal className="mt-4">
           <div className="seed-shell relative min-h-[220px] overflow-hidden md:min-h-[280px]">
-            <Image
-              src="/images/lab/n4-lab.jpg"
-              alt="A small clean cosmetic lab"
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#2f2e24]/70 via-[#2f2e24]/25 to-transparent" />
+            <ScrollScale className="absolute inset-0" from={1.2} to={1}>
+              <Image
+                src="/images/home/h10-tech-fluid.jpg"
+                alt=""
+                fill
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+            </ScrollScale>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2f2e24]/75 via-[#2f2e24]/30 to-transparent" />
             <div className="relative flex min-h-[220px] items-end p-8 text-white md:min-h-[280px] md:p-10">
               <p className="max-w-md text-lg font-medium md:text-2xl">
-                Made in a small clean lab — bone surfaces, stainless, no noise.
+                Named actives. Quiet packaging. A ritual you can keep.
               </p>
             </div>
           </div>
@@ -1051,13 +1096,15 @@ function TextureSection() {
           {tiles.map((tile) => (
             <StaggerItem key={tile.label}>
               <div className="seed-card relative aspect-square overflow-hidden bg-[#ebe8df]">
-                <Image
-                  src={tile.src}
-                  alt={tile.label}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
+                <ScrollScale className="absolute inset-0" from={1.2} to={1}>
+                  <Image
+                    src={tile.src}
+                    alt={tile.label}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </ScrollScale>
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2f2e24]/60 to-transparent p-5">
                   <p className="text-sm text-white">{tile.label}</p>
                 </div>
