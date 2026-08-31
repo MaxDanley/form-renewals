@@ -22,7 +22,7 @@ function ShopProductCard({ product }: { product: FormProduct }) {
     <article className="group flex h-full flex-col">
       <Link
         href={`/products/${product.slug}`}
-        className="seed-card relative aspect-[4/5] overflow-hidden bg-[#1c1c16]"
+        className="seed-card relative aspect-[4/5] overflow-hidden bg-[#ebe8df]"
       >
         <Image
           src={src}
@@ -131,8 +131,9 @@ export default function ProductsPageClient() {
             The lineup
           </p>
           <div className="mt-4 grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-end">
-            <h1 className="max-w-[16ch] text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-shell md:text-6xl">
-              Excellence. Made effortless.
+            <h1 className="max-w-xl text-4xl font-medium leading-[1.12] tracking-[-0.03em] text-shell md:max-w-3xl md:text-6xl">
+              Excellence.
+              <span className="block">Made effortless.</span>
             </h1>
             <p className="max-w-md text-base leading-relaxed text-muted">
               Three copper peptide formulas for scalp and skin. No internal
@@ -160,7 +161,7 @@ export default function ProductsPageClient() {
               src="/products/form-shampoo-lifestyle.png"
               alt="Copper Growth Shampoo in a bathroom ritual"
               fill
-              className="object-cover"
+              className="object-cover object-[72%_center]"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>

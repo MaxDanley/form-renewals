@@ -20,7 +20,7 @@ export default function ProductCard({
   return (
     <article className="group flex h-full flex-col transition duration-300 hover:-translate-y-1">
       <Link href={`/products/${product.slug}`} className="block">
-        <div className="seed-card relative aspect-[4/5] overflow-hidden bg-[#1c1c16]">
+        <div className="seed-card relative aspect-[4/5] overflow-hidden bg-[#ebe8df]">
           <Image
             src={src}
             alt={product.name}

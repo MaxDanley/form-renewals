@@ -175,7 +175,7 @@ export default function QuizPageClient() {
             </p>
 
             <article className="seed-shell mx-auto mt-10 max-w-xl overflow-hidden bg-white">
-              <div className="relative aspect-[5/4] overflow-hidden bg-[#1c1c16]">
+              <div className="relative aspect-[5/4] overflow-hidden bg-[#ebe8df]">
                 <Image
                   src={
                     result.product?.cardImage ??
@@ -255,7 +255,7 @@ export default function QuizPageClient() {
                       href={`/products/${item.slug}`}
                       className="seed-card overflow-hidden bg-white transition hover:-translate-y-0.5"
                     >
-                      <div className="relative aspect-[16/10] overflow-hidden bg-[#1c1c16]">
+                      <div className="relative aspect-[16/10] overflow-hidden bg-[#ebe8df]">
                         <Image
                           src={item.cardImage}
                           alt={item.name}

@@ -170,7 +170,7 @@ function HighlightSection() {
 
           <Reveal delay={0.08}>
             <div className="space-y-4">
-              <div className="seed-card relative aspect-[5/4] overflow-hidden bg-[#1c1c16]">
+              <div className="seed-card relative aspect-[5/4] overflow-hidden bg-[#ebe8df]">
                 <div className="absolute inset-0 grid grid-cols-2">
                   <div className="relative">
                     <Image
@@ -203,7 +203,7 @@ function HighlightSection() {
                   (src, index) => (
                     <div
                       key={`${src}-${index}`}
-                      className="seed-card relative aspect-square overflow-hidden bg-[#1c1c16]"
+                      className="seed-card relative aspect-square overflow-hidden bg-[#ebe8df]"
                     >
                       <Image
                         src={src}
@@ -281,7 +281,7 @@ function TechSection() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <div className="seed-card relative mx-auto aspect-square max-w-md overflow-hidden bg-[#1c1c16]">
+              <div className="seed-card relative mx-auto aspect-square max-w-md overflow-hidden bg-[#ebe8df]">
                 <Image
                   src={shampoo.cardImage}
                   alt={shampoo.name}
@@ -298,42 +298,248 @@ function TechSection() {
   );
 }
 
+const peptidePrimers = [
+  {
+    name: "GHK-Cu",
+    also: "Copper Tripeptide-1",
+    body: "A copper-binding tripeptide used across the [FORM] lineup for the look of resilience—on the scalp in Copper Growth Shampoo (5%) and Lift Cream (5%), and in Capsule Cream as the melt-on copper peptide.",
+  },
+  {
+    name: "AHK-Cu",
+    also: "Copper Tripeptide-3",
+    body: "A companion copper peptide reserved for scalp care. Copper Growth Shampoo pairs it at 1% with 5% GHK-Cu so the cleanse stays scalp-first, not a generic hair wash with a peptide mention.",
+  },
+  {
+    name: "Snap-8",
+    also: "Acetyl Hexapeptide-8",
+    body: "A topical peptide used for the appearance of expression lines. Lift Cream doses it at 5% alongside 5% GHK-Cu—forehead, smile lines, and crow’s feet, in one concentrated cream.",
+  },
+];
+
+const supportingActives = [
+  {
+    name: "Biotin",
+    where: "Copper Growth Shampoo",
+    body: "Included to support the look of keratin-rich, stronger-feeling hair alongside hydrolyzed keratin in the cleanse.",
+  },
+  {
+    name: "Niacinamide",
+    where: "Shampoo + Capsule Cream",
+    body: "Vitamin B3 for the look of a balanced scalp in the shampoo, and smoother texture, tone, and barrier comfort in Capsule Cream.",
+  },
+  {
+    name: "Caffeine",
+    where: "Copper Growth Shampoo",
+    body: "Used to refresh and energize the look of the scalp during the 3–5 minute leave-on window before rinse.",
+  },
+  {
+    name: "Squalane",
+    where: "Capsule Cream",
+    body: "A lightweight lipid that restores slip and moisture so the melt-on capsules finish soft, not tight.",
+  },
+  {
+    name: "Centella",
+    where: "Capsule Cream",
+    body: "Centella asiatica, with aloe and chamomile, calms the look of stressed skin in the gel-cream base.",
+  },
+  {
+    name: "Hyaluronic acid",
+    where: "Capsule Cream + Lift Cream",
+    body: "Sodium hyaluronate in the capsules; a multi-weight hyaluronic complex plus collagen in Lift Cream for a plumper, more refined look.",
+  },
+];
+
 function ScienceSection() {
   return (
     <section id="science" className="bg-paper px-3 py-16 md:px-5 md:py-24">
-      <div className="mx-auto grid max-w-[1400px] items-center gap-10 md:grid-cols-2 md:gap-14">
-        <Reveal>
-          <p className="text-sm uppercase tracking-[0.16em] text-muted">
-            Science
-          </p>
-          <h2 className="mt-4 max-w-[14ch] text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
-            Copper peptides, made simple.
-          </h2>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
-            Scalp and skin respond to what you repeat. Our formulas put GHK-Cu
-            and companion actives front and center—so the ritual stays clear,
-            calm, and consistent.
-          </p>
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
+          <Reveal>
+            <p className="text-sm uppercase tracking-[0.16em] text-muted">
+              Science
+            </p>
+            <h2 className="mt-4 max-w-[16ch] text-3xl font-medium tracking-[-0.02em] text-shell md:text-5xl">
+              Copper peptides, written for scalp and skin.
+            </h2>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
+              [FORM] formulas put named actives at the front of the ritual—not
+              buried at the end of a label. GHK-Cu is the copper peptide that
+              runs through the lineup. AHK-Cu stays with the scalp. Snap-8 is
+              reserved for the look of expression lines. Supporting ingredients
+              are chosen to match each format: a leave-on cleanse, a melt-on
+              capsule, and a concentrated lift cream.
+            </p>
             <div className="mt-8">
-            <PurgoButton
-              href="/products"
-              external={false}
-              variant="primary"
-              icon={<FlaskConical className="h-4 w-4" strokeWidth={1.75} />}
-            >
-              Explore formulas
-            </PurgoButton>
+              <PurgoButton
+                href="/products"
+                external={false}
+                variant="primary"
+                icon={<FlaskConical className="h-4 w-4" strokeWidth={1.75} />}
+              >
+                Explore formulas
+              </PurgoButton>
             </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="seed-card relative aspect-[4/5] bg-[#ebe8df] md:aspect-square">
+              <Image
+                src="/products/form-shampoo-lifestyle.png"
+                alt="Copper Growth Shampoo in a bathroom ritual"
+                fill
+                className={productImageClass("/products/form-shampoo-lifestyle.png")}
+                sizes="(max-width: 768px) 100vw, 45vw"
+              />
+            </div>
+          </Reveal>
+        </div>
+
+        <Stagger className="mt-16 grid gap-4 md:grid-cols-3" delay={0.04}>
+          {peptidePrimers.map((item) => (
+            <StaggerItem key={item.name}>
+              <article className="seed-card h-full bg-[#fffcf7] p-6 md:p-8">
+                <p className="font-renewal text-3xl text-shell">{item.name}</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.14em] text-muted">
+                  {item.also}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-muted">
+                  {item.body}
+                </p>
+              </article>
+            </StaggerItem>
+          ))}
+        </Stagger>
+
+        <Reveal className="mt-16">
+          <div className="seed-shell bg-[#fffcf7] px-6 py-10 md:px-12 md:py-14">
+            <p className="text-xs uppercase tracking-[0.16em] text-muted">
+              In the formulas
+            </p>
+            <h3 className="mt-3 max-w-[18ch] text-2xl font-medium tracking-[-0.02em] text-shell md:text-4xl">
+              Supporting actives, tied to the lineup.
+            </h3>
+            <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {supportingActives.map((item) => (
+                <div key={item.name}>
+                  <p className="text-lg font-medium text-shell">{item.name}</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.12em] text-muted">
+                    {item.where}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </Reveal>
-        <Reveal delay={0.08}>
-          <div className="seed-card relative aspect-[4/5] bg-[#ebe8df] md:aspect-square">
-            <Image
-              src={shampoo.secondImage}
-              alt={shampoo.name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 45vw"
-            />
+
+        <div className="mt-16">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.16em] text-muted">
+              How each formula uses them
+            </p>
+            <h3 className="mt-3 max-w-[16ch] text-2xl font-medium tracking-[-0.02em] text-shell md:text-4xl">
+              Three products, one peptide system.
+            </h3>
+          </Reveal>
+          <Stagger className="mt-10 grid gap-4 md:grid-cols-3" delay={0.05}>
+            {[
+              {
+                product: shampoo,
+                points: [
+                  "5% GHK-Cu + 1% AHK-Cu for a scalp-first cleanse.",
+                  "Biotin, niacinamide, and caffeine during a 3–5 minute leave-on window.",
+                  "Use up to 3–4 times weekly—foundation for the rest of the ritual.",
+                ],
+              },
+              {
+                product: capsule,
+                points: [
+                  "GHK-Cu delivered in melt-on capsules, not a generic cream smear.",
+                  "Niacinamide, squalane, and hyaluronic acid for firmness and slip.",
+                  "Centella, aloe, and chamomile keep the gel-cream wearable daily.",
+                ],
+              },
+              {
+                product: lift,
+                points: [
+                  "5% GHK-Cu paired with 5% Snap-8 for expression-line appearance.",
+                  "Multi-weight hyaluronic acids plus collagen for a refined finish.",
+                  "A 10ml format—thin layer on forehead, smile lines, and crow’s feet.",
+                ],
+              },
+            ].map(({ product, points }) => (
+              <StaggerItem key={product.slug}>
+                <article className="seed-card flex h-full flex-col overflow-hidden bg-[#fffcf7]">
+                  <div className="relative aspect-[4/5] bg-[#ebe8df]">
+                    <Image
+                      src={product.cardImage}
+                      alt={product.name}
+                      fill
+                      className={productImageClass(product.cardImage)}
+                      sizes="(max-width: 768px) 100vw, 30vw"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="text-xs uppercase tracking-[0.14em] text-muted">
+                      {product.actives}
+                    </p>
+                    <h4 className="mt-2 text-xl font-medium tracking-[-0.01em] text-shell">
+                      {product.name}
+                    </h4>
+                    <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted">
+                      {points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                    <Link
+                      href={`/products/${product.slug}`}
+                      className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-shell transition hover:opacity-70"
+                    >
+                      View {product.name}
+                      <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                    </Link>
+                  </div>
+                </article>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+
+        <Reveal className="mt-16">
+          <div className="seed-shell bg-[#7b7869] px-6 py-10 text-white md:px-12 md:py-14">
+            <p className="text-xs uppercase tracking-[0.16em] text-white/65">
+              The ritual
+            </p>
+            <h3 className="mt-3 max-w-[18ch] text-2xl font-medium tracking-[-0.02em] md:text-4xl">
+              How they work together.
+            </h3>
+            <div className="mt-8 grid gap-8 md:grid-cols-3">
+              <div>
+                <p className="text-sm font-medium">Scalp, first</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/80">
+                  Copper Growth Shampoo clears the way 3–4 times a week. Massage
+                  into wet scalp, leave on 3–5 minutes, rinse. GHK-Cu, AHK-Cu,
+                  biotin, and caffeine stay in contact before they wash away.
+                </p>
+              </div>
+              <div>
+                <p className="text-sm font-medium">Skin, daily</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/80">
+                  Capsule Cream is the melt-on treatment for face and neck.
+                  Warm a capsule, press until absorbed—morning or evening—after
+                  cleansing and before richer layers.
+                </p>
+              </div>
+              <div>
+                <p className="text-sm font-medium">Lift, where movement shows</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/80">
+                  Lift Cream is the focused step: a thin layer of 5% GHK-Cu and
+                  5% Snap-8 on expression areas. Same copper peptide family,
+                  different job than the capsules.
+                </p>
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>

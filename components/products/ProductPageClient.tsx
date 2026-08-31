@@ -57,7 +57,7 @@ function ProductGallery({ product }: { product: FormProduct }) {
 
   return (
     <div className="space-y-4">
-      <div className="seed-card relative aspect-[3/4] overflow-hidden bg-[#1c1c16]">
+      <div className="seed-card relative aspect-[3/4] overflow-hidden bg-[#ebe8df]">
         {showVideo && product.videoSrc ? (
           <video
             ref={videoRef}
@@ -106,7 +106,7 @@ function ProductGallery({ product }: { product: FormProduct }) {
                 setActive(index);
                 setPlaying(false);
               }}
-              className={`relative aspect-square overflow-hidden rounded-[1.25rem] bg-[#1c1c16] transition ${
+              className={`relative aspect-square overflow-hidden rounded-[1.25rem] bg-[#ebe8df] transition ${
                 active === index && !playing
                   ? "ring-2 ring-[#2f2e24] ring-offset-2 ring-offset-[#f4f2eb]"
                   : "opacity-80 hover:opacity-100"
@@ -118,7 +118,7 @@ function ProductGallery({ product }: { product: FormProduct }) {
                 alt=""
                 fill
                 sizes="120px"
-                className={productImageClass(src)}
+                className={productImageClass(src, true)}
               />
             </button>
           ))}
@@ -380,7 +380,7 @@ export default function ProductPageClient({
         <Stagger className="mt-12 grid gap-8 md:grid-cols-3" delay={0.05}>
           {product.featuredIngredients.map((ingredient) => (
             <StaggerItem key={ingredient.name} className="text-center">
-              <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[2.5rem] bg-[#1c1c16]">
+              <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[2.5rem] bg-[#ebe8df]">
                 <Image
                   src={ingredient.image}
                   alt={ingredient.name}
@@ -479,12 +479,12 @@ export default function ProductPageClient({
                     href={`/products/${item.slug}`}
                     className="seed-card group grid overflow-hidden bg-[#fffcf7] transition hover:-translate-y-1 sm:grid-cols-[160px_1fr]"
                   >
-                    <div className="relative aspect-square overflow-hidden bg-[#1c1c16] sm:aspect-auto sm:min-h-full">
+                    <div className="relative aspect-square overflow-hidden bg-[#ebe8df] sm:aspect-auto sm:min-h-full">
                       <Image
                         src={src}
                         alt={item.name}
                         fill
-                        className={productImageClass(src)}
+                        className={productImageClass(src, true)}
                         sizes="160px"
                       />
                     </div>

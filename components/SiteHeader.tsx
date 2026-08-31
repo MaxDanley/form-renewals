@@ -20,6 +20,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import BrandLogo from "@/components/BrandLogo";
 import { bundles } from "@/lib/catalog";
+import { productImageClass } from "@/lib/images";
 import { products } from "@/lib/products";
 
 const nav = [
@@ -157,12 +158,12 @@ export default function SiteHeader() {
                       className="flex items-center gap-3 rounded-2xl px-2 py-2 transition hover:bg-black/5"
                       onClick={() => setShopOpen(false)}
                     >
-                      <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-[#1c1c16]">
+                      <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-[#ebe8df]">
                         <Image
                           src={product.cardImage}
                           alt=""
                           fill
-                          className="object-cover"
+                          className={productImageClass(product.cardImage, true)}
                           sizes="44px"
                         />
                       </span>
@@ -249,12 +250,12 @@ export default function SiteHeader() {
                   onClick={() => setOpen(false)}
                   className="flex items-center gap-3 rounded-2xl px-2 py-2"
                 >
-                  <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-[#1c1c16]">
+                  <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-[#ebe8df]">
                     <Image
                       src={product.cardImage}
                       alt=""
                       fill
-                      className="object-cover"
+                      className={productImageClass(product.cardImage, true)}
                       sizes="40px"
                     />
                   </span>
