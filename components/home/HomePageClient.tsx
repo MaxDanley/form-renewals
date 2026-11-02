@@ -100,12 +100,10 @@ function HeroSection() {
                 Shop the lineup
               </PurgoButton>
               <Link
-                href={shampoo.purgoUrl ?? PURGO_ORIGIN}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/account"
                 className="inline-flex items-center gap-1.5 text-[0.95rem] font-medium text-[#2f2e24] transition hover:opacity-70"
               >
-                Buy on Purgo
+                Your Form account
                 <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
               </Link>
             </motion.div>
@@ -687,7 +685,7 @@ function UgcSection() {
     { src: "/images/renewal/capsule.png", label: "Capsule Cream" },
     { src: "/images/renewal/collection.png", label: "Morning flat lay" },
     { src: "/images/renewal/lift.png", label: "Lift Cream" },
-    { src: "/images/renewal/serum.png", label: "Scalp Serum · soon" },
+    { src: "/images/renewal/serum.png", label: "Scalp Serum" },
   ];
 
   return (
@@ -748,18 +746,19 @@ function BookendSection() {
                 Purgo Labs
               </p>
               <h2 className="mt-4 text-3xl font-medium tracking-[-0.02em] md:text-4xl">
-                Available through Purgo
+                Your Form routine, connected
               </h2>
               <p className="mt-3 max-w-sm text-white/80">
-                Browse the formulas here, then complete purchase on Purgo Labs.
+                Shop here with your existing Purgo account. Secure payment and fulfillment are handled by Purgo Labs.
               </p>
               <div className="mt-6">
                 <PurgoButton
-                  href={PURGO_ORIGIN}
+                  href="/account"
+                  external={false}
                   variant="light"
                   iconRight={<ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />}
                 >
-                  Visit Purgo
+                  Your account
                 </PurgoButton>
               </div>
             </div>

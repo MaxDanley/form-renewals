@@ -570,9 +570,9 @@ const productContent: FormProduct[] = [
       "Aqua, Propanediol, Copper Tripeptide-1, Copper Tripeptide-3, Sodium Citrate, Gluconolactone, Citric Acid, Sodium Hydroxide, Xanthan Gum, Sodium Benzoate, Niacinamide, Salicylic Acid, Caffeine.",
     faqs: [
       {
-        question: "When does the Scalp Serum launch?",
+        question: "Where can I find current availability?",
         answer:
-          "It\u2019s in production now. The formula and packaging are final \u2014 pricing and the checkout link go live at launch.",
+          "Current pricing and availability are shown above and confirmed again at checkout.",
       },
       {
         question: "How is this different from Copper Growth Shampoo?",
