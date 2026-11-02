@@ -12,6 +12,7 @@ export function isScenePhoto(src: string): boolean {
 }
 
 export function productImageClass(src: string, compact = false): string {
+  if (src.startsWith("/images/renewal/")) return "object-contain object-center";
   if (isScenePhoto(src)) return "object-cover object-center";
   return compact
     ? "object-contain object-center p-1.5"

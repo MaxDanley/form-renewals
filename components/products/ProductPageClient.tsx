@@ -1,4 +1,5 @@
 "use client";
+import { LivePrice } from "@/components/CommerceProvider";
 
 import {
   ArrowLeft,
@@ -21,7 +22,7 @@ import StickyBuyBar from "@/components/StickyBuyBar";
 import Reveal from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { isScenePhoto, productImageClass } from "@/lib/images";
-import { formatPrice, type FormProduct } from "@/lib/products";
+import { type FormProduct } from "@/lib/products";
 
 const tabs = [
   { id: "product", label: "Product" },
@@ -188,6 +189,8 @@ export default function ProductPageClient({
 }) {
   const [openGroup, setOpenGroup] = useState(0);
   const scene = product.benefitImage ?? product.cardImage ?? product.secondImage;
+  if (product.comingSoon) return <main className="min-h-screen bg-[#f4f2eb] px-6 pb-24 pt-32"><div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2"><ProductGallery product={product}/><div><p className="text-sm uppercase tracking-widest">Coming soon</p><h1 className="mt-5 text-4xl">{product.name}</h1><p className="mt-5 text-xl">{product.tagline}</p><p className="mt-5">{product.size} · {product.actives}</p><p className="mt-8 text-muted">Not yet available to order. Pricing and availability will be announced at launch.</p><Link href="/products" className="mt-8 inline-block underline">Explore the collection</Link></div></div></main>;
+
 
   return (
     <div className="min-h-screen bg-[#f4f2eb] pb-24">
@@ -216,9 +219,7 @@ export default function ProductPageClient({
               Size · {product.size}
             </p>
             <p className="mt-4 text-3xl tracking-[-0.02em] text-shell">
-              {product.price === undefined
-                ? "Price at launch"
-                : formatPrice(product.price)}
+              <LivePrice slug={product.slug} />
             </p>
 
             <div className="mt-6">
@@ -516,9 +517,7 @@ export default function ProductPageClient({
                       </p>
                       <p className="mt-2 text-sm text-muted">{item.tagline}</p>
                       <p className="mt-3 text-sm text-shell">
-                        {item.price === undefined
-                          ? "Coming soon"
-                          : formatPrice(item.price)}
+                        <LivePrice slug={item.slug} />
                       </p>
                     </div>
                   </Link>
@@ -529,7 +528,7 @@ export default function ProductPageClient({
         </section>
       ) : null}
 
-      <StickyBuyBar
+      <StickyBuyBar slug={product.slug}
         name={product.name}
         price={product.price}
         purgoUrl={product.purgoUrl}
