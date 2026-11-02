@@ -1,6 +1,6 @@
 import 'server-only';
 export const PURGO_SERVER_ORIGIN = process.env.PURGO_ORIGIN || 'https://www.purgolabs.com';
-export const FORM_SERVER_ORIGIN = process.env.FORM_ORIGIN || 'https://formrenewal.com';
+export const FORM_SERVER_ORIGIN = process.env.FORM_ORIGIN || 'https://www.formrenewal.com';
 export async function purgoRequest(path:string, body?:unknown) {
   const secret=process.env.FORM_BRIDGE_SECRET;
   if(body && (!secret || secret.length<32)) throw new Error('Account connection is not configured');
