@@ -40,12 +40,12 @@ export const bundles: FormBundle[] = [
     tagline: "Scalp cleanse + melt-on skin capsules.",
     description:
       "Copper Growth Shampoo and Capsule Cream together for a daily peptide ritual across scalp and skin.",
-    badge: "Bundle + Save 25%",
-    image: "/images/home/s6-duo.jpg",
+    badge: "Build your routine",
+    image: "/images/renewal/collection.png",
     productSlugs: [shampoo.slug, capsule.slug],
-    price: Number(((listPrice(shampoo) + listPrice(capsule)) * 0.75).toFixed(2)),
+    price: Number(((listPrice(shampoo) + listPrice(capsule)) * 1).toFixed(2)),
     compareAt: Number((listPrice(shampoo) + listPrice(capsule)).toFixed(2)),
-    savePercent: 25,
+    savePercent: 0,
     purgoUrl: shampoo.purgoUrl ?? PURGO_ORIGIN,
   },
   {
@@ -54,16 +54,16 @@ export const bundles: FormBundle[] = [
     tagline: "Shampoo, Capsule Cream, and Lift Cream.",
     description:
       "The complete [FORM] renewal lineup in one ritual—scalp, face capsules, and focused lift cream.",
-    badge: "Bundle + Save 20%",
-    image: "/images/home/s5-bundle.jpg",
+    badge: "Build your routine",
+    image: "/images/renewal/collection.png",
     productSlugs: [shampoo.slug, capsule.slug, lift.slug],
     price: Number(
-      ((listPrice(shampoo) + listPrice(capsule) + listPrice(lift)) * 0.8).toFixed(2)
+      ((listPrice(shampoo) + listPrice(capsule) + listPrice(lift)) * 1).toFixed(2)
     ),
     compareAt: Number(
       (listPrice(shampoo) + listPrice(capsule) + listPrice(lift)).toFixed(2)
     ),
-    savePercent: 20,
+    savePercent: 0,
     purgoUrl: shampoo.purgoUrl ?? PURGO_ORIGIN,
   },
 ];

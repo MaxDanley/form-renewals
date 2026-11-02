@@ -203,7 +203,7 @@ export default function SiteHeader() {
                       </span>
                     </span>
                     <span className="seed-pill ml-auto bg-[#c5c29a] px-2 py-0.5 text-[0.65rem] text-shell">
-                      Save {bundles[0].savePercent}%
+                      Explore
                     </span>
                   </Link>
                 </li>
@@ -223,8 +223,9 @@ export default function SiteHeader() {
           </div>
         </div>
 
+        <Link href="/account" className="pointer-events-auto ml-auto rounded-full bg-white px-4 py-2 text-sm">Account</Link>
         <Link
-          href="/products"
+          href="/cart"
           className={`seed-pill inline-flex items-center justify-center gap-2 px-4 py-2.5 text-[0.88rem] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.14)] transition ${
             lightChrome
               ? "bg-white text-[#1f2118] hover:bg-[#f4f2eb]"
@@ -232,7 +233,7 @@ export default function SiteHeader() {
           }`}
         >
           <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.75} />
-          Shop
+          Bag
         </Link>
       </div>
 

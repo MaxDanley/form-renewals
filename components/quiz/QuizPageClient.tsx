@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import PurgoButton from "@/components/PurgoButton";
 import { productImageClass } from "@/lib/images";
-import { formatPrice } from "@/lib/products";
+import { LivePrice } from "@/components/CommerceProvider";
 import {
   quizConcerns,
   quizScopes,
@@ -227,13 +227,7 @@ export default function QuizPageClient() {
               </div>
               <div className="space-y-5 p-6 md:p-8">
                 <p className="text-xl font-medium text-shell">
-                  {result.product
-                    ? result.product.price === undefined
-                      ? "Price at launch"
-                      : formatPrice(result.product.price)
-                    : result.bundle
-                      ? formatPrice(result.bundle.price)
-                      : null}
+                  {result.product ? <LivePrice slug={result.product.slug}/> : 'Choose your products individually'}
                 </p>
                 <ul className="space-y-3 text-sm leading-relaxed text-muted">
                   {result.why.map((line) => (
@@ -250,7 +244,7 @@ export default function QuizPageClient() {
                   <PurgoButton
                     href={
                       result.product?.purgoUrl ??
-                      result.bundle?.purgoUrl ??
+
                       "/products"
                     }
                     icon={<ShoppingBag className="h-4 w-4" strokeWidth={1.75} />}

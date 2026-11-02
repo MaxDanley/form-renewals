@@ -56,7 +56,7 @@ export type FormProduct = {
   features: { title: string; body: string }[];
 };
 
-export const products: FormProduct[] = [
+const productContent: FormProduct[] = [
   {
     slug: "copper-growth-shampoo",
     name: "Copper Growth Shampoo",
@@ -176,7 +176,7 @@ export const products: FormProduct[] = [
       {
         question: "Where do I buy it?",
         answer:
-          "Checkout currently runs through Purgo Labs. Use Shop Now to open the live product page.",
+          "Add your items to your Form bag. Payment is securely processed by Purgo Labs.",
       },
     ],
     features: [
@@ -446,7 +446,7 @@ export const products: FormProduct[] = [
       {
         question: "Where do I buy it?",
         answer:
-          "Checkout currently runs through Purgo Labs. Shop Now takes you to the live product page.",
+          "Add your items to your Form bag. Payment is securely processed by Purgo Labs.",
       },
     ],
     features: [
@@ -486,8 +486,9 @@ export const products: FormProduct[] = [
     greatFor: ["Thinning hair", "Scalp health", "Daily use"],
     benefitTags: ["Density", "Scalp", "Leave-on"],
     concerns: ["hair", "thinning", "scalp"],
-    badge: "Coming soon",
-    comingSoon: true,
+    badge: "New",
+    comingSoon: false,
+    purgoUrl: `${PURGO_ORIGIN}/products/ghk-cu-serum`,
     image: "/images/home/sr4-serum-scene.jpg",
     cardImage: "/images/home/sr1-serum-ledge.jpg",
     secondImage: "/images/home/sr2-serum-pack.jpg",
@@ -600,6 +601,21 @@ export const products: FormProduct[] = [
     ],
   },
 ];
+
+const photoNames = ['shampoo','capsule','lift','serum'];
+export const products: FormProduct[] = productContent.map((product,index) => {
+  const name=photoNames[index];
+  const image=`/images/renewal/${name}.png`;
+  const pack=`/images/renewal/${name}-pack.${name==='lift'?'jpg':'png'}`;
+  const box=name==='lift'?image:`/images/renewal/${name}-box.png`;
+  return {...product,image,cardImage:image,secondImage:box,gallery:[...new Set([image,pack,box])],videoSrc:undefined};
+});
+
+const upcomingProducts: FormProduct[] = [
+  { slug: 'ghk-cu-body-lotion', name: '3% GHK-Cu Body Lotion', shortName: 'Body Lotion', size: '200 mL', actives: '3% GHK-Cu', image: '/images/renewal/lotion.png', tagline: 'Copper peptide body care. Coming soon.' },
+  { slug: 'ghk-cu-tallow-moisturizing-balm', name: 'GHK-Cu Tallow Moisturizing Balm', shortName: 'Tallow Moisturizing Balm', size: '30 g / 1.06 oz', actives: 'GHK-Cu', image: '/images/renewal/balm.png', tagline: 'Moisturize and soften. Coming soon.' },
+].map(item => ({ ...item, description: item.tagline, comingSoon: true, badge: 'Coming soon', cardImage: item.image, secondImage: item.image, gallery: [item.image], story: [], keyActives: [], greatFor: [], benefitTags: ['Coming soon'], concerns: [], ritualLabel: '', ritualTitle: '', ritualSteps: [], formulaBlurb: '', ingredientCount: 0, benefits: [], benefitGroups: [], featuredIngredients: [], directions: '', ingredients: '', faqs: [], features: [] }));
+products.push(...upcomingProducts);
 
 export function getProduct(slug: string) {
   return products.find((product) => product.slug === slug);

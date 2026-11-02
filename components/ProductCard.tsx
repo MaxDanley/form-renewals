@@ -1,4 +1,5 @@
 "use client";
+import { LivePrice } from "@/components/CommerceProvider";
 
 import { ArrowRight, ShoppingBag, Sparkles } from "lucide-react";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import Link from "next/link";
 import ComingSoonTag from "@/components/ComingSoonTag";
 import PurgoButton from "@/components/PurgoButton";
 import { productImageClass } from "@/lib/images";
-import { formatPrice, type FormProduct } from "@/lib/products";
+import { type FormProduct } from "@/lib/products";
 
 export default function ProductCard({
   product,
@@ -63,9 +64,7 @@ export default function ProductCard({
           </p>
         </div>
         <p className={`text-sm ${onDark ? "text-white/85" : "text-shell"}`}>
-          {product.comingSoon || product.price === undefined
-            ? "Price at launch"
-            : `From ${formatPrice(product.price)}`}
+          <LivePrice slug={product.slug} />
         </p>
         <div className="mt-auto flex flex-wrap gap-2 pt-2">
           <PurgoButton

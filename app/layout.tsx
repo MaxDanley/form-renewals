@@ -1,3 +1,4 @@
+import { CommerceProvider } from '@/components/CommerceProvider';
 import type { Metadata } from "next";
 import { Lexend_Deca, Newsreader } from "next/font/google";
 import SiteFooter from "@/components/SiteFooter";
@@ -53,11 +54,11 @@ export default function RootLayout({
       <body
         className={`${lexendDeca.variable} ${newsreader.variable} antialiased`}
       >
-        <SmoothScroll>
+        <CommerceProvider><SmoothScroll>
           <SiteHeader />
           <main>{children}</main>
           <SiteFooter />
-        </SmoothScroll>
+        </SmoothScroll></CommerceProvider>
       </body>
     </html>
   );

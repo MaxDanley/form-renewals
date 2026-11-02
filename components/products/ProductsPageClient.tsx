@@ -1,4 +1,5 @@
 "use client";
+import { LivePrice } from "@/components/CommerceProvider";
 
 import {
   ArrowRight,
@@ -17,7 +18,7 @@ import ScrollShift from "@/components/motion/ScrollShift";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { bundles, getBundleProducts } from "@/lib/catalog";
 import { productImageClass } from "@/lib/images";
-import { formatPrice, products, type FormProduct } from "@/lib/products";
+import { products, type FormProduct } from "@/lib/products";
 
 const shampoo = products[0];
 const rest = products.slice(1);
@@ -55,9 +56,7 @@ function ShopProductCard({ product }: { product: FormProduct }) {
           {product.benefitTags.join(" · ")}
         </p>
         <p className="text-lg font-medium text-shell">
-          {product.price === undefined
-            ? "Price at launch"
-            : formatPrice(product.price)}
+          <LivePrice slug={product.slug} />
         </p>
         <div className="mt-auto flex flex-col gap-2 pt-2">
           {product.purgoUrl ? (
@@ -116,9 +115,7 @@ function FeaturedBestseller() {
             {shampoo.tagline} A wash-day cleanse with 5% GHK-Cu and 1% AHK-Cu.
           </p>
           <p className="text-xl font-medium">
-            {shampoo.price === undefined
-              ? "Price at launch"
-              : formatPrice(shampoo.price)}
+            <LivePrice slug={shampoo.slug} />
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <PurgoButton
@@ -183,7 +180,7 @@ function BundlePromo() {
     <article className="seed-shell relative min-h-[420px] overflow-hidden bg-shell text-white">
       <ScrollScale className="absolute inset-0" from={1.2} to={1}>
         <Image
-          src="/images/home/s5-bundle.jpg"
+          src="/images/renewal/collection.png"
           alt=""
           fill
           className="object-cover object-[center_20%]"
@@ -207,10 +204,7 @@ function BundlePromo() {
           {items.map((item) => item.name).join(" · ")}
         </p>
         <p className="mt-4 flex items-baseline gap-3 text-lg font-medium">
-          <span>{formatPrice(full.price)}</span>
-          <span className="text-sm font-normal text-white/55 line-through">
-            {formatPrice(full.compareAt)}
-          </span>
+          <span>Choose your items below</span>
         </p>
         <div className="mt-6">
           <PurgoButton
@@ -229,7 +223,7 @@ function BundlePromo() {
 
 const masonry = [
   {
-    src: "/images/home/h29-shelfie.jpg",
+    src: "/images/renewal/collection.png",
     label: "Bathroom shelf",
     shape: "tall",
   },
@@ -244,7 +238,7 @@ const masonry = [
     shape: "oval",
   },
   {
-    src: "/images/home/h32-flatlay.jpg",
+    src: "/images/renewal/collection.png",
     label: "Morning flat lay",
     shape: "tall",
   },
@@ -260,7 +254,7 @@ export default function ProductsPageClient() {
         <div className="seed-shell relative mx-auto min-h-[42svh] max-w-[1400px] overflow-hidden bg-[#eceae3] md:min-h-[52svh]">
           <ScrollScale className="absolute inset-0" from={1.16} to={1.02}>
             <Image
-              src="/images/home/s1-shop-hero.jpg"
+              src="/images/renewal/collection.png"
               alt="[FORM] renewal copper peptide lineup"
               fill
               priority
@@ -318,7 +312,7 @@ export default function ProductsPageClient() {
             <div className="relative min-h-[220px] overflow-hidden">
               <ScrollScale className="absolute inset-0" from={1.16} to={1}>
                 <Image
-                  src="/images/home/s6-duo.jpg"
+                  src="/images/renewal/collection.png"
                   alt="Copper Growth Shampoo and Capsule Cream"
                   fill
                   className="object-cover object-[72%_center]"
@@ -328,7 +322,7 @@ export default function ProductsPageClient() {
             </div>
             <div className="flex flex-col justify-center gap-5 p-8 md:p-10">
               <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                Bundle + save {duo.savePercent}%
+                Build your routine
               </p>
               <h2 className="max-w-[14ch] text-3xl font-medium tracking-[-0.02em] text-shell">
                 {duo.name}
@@ -340,10 +334,7 @@ export default function ProductsPageClient() {
                 {duoItems.map((item) => item.name).join(" + ")}
               </p>
               <p className="flex items-baseline gap-3 text-xl font-medium text-shell">
-                <span>{formatPrice(duo.price)}</span>
-                <span className="text-sm font-normal text-muted line-through">
-                  {formatPrice(duo.compareAt)}
-                </span>
+                <span>Choose your items below</span>
               </p>
               <div className="flex flex-wrap items-center gap-4">
                 <PurgoButton

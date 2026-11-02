@@ -1,3 +1,6 @@
+"use client";
+import { AddToCart } from "@/components/CommerceProvider";
+import { FORM_PURGO_SLUGS } from "@/lib/commerce";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -37,6 +40,9 @@ export default function PurgoButton({
       {iconRight}
     </>
   );
+
+  const formSlug = Object.keys(FORM_PURGO_SLUGS).find(slug => href === `https://www.purgolabs.com/products/${FORM_PURGO_SLUGS[slug]}`);
+  if (formSlug) return <AddToCart slug={formSlug} className={classes + " disabled:opacity-50"} />;
 
   if (!external) {
     return (

@@ -1,4 +1,5 @@
 "use client";
+import { LivePrice } from "@/components/CommerceProvider";
 
 import {
   AnimatePresence,
@@ -24,7 +25,7 @@ import ScrollShift from "@/components/motion/ScrollShift";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { PURGO_ORIGIN } from "@/lib/brand";
 import { isScenePhoto, productImageClass } from "@/lib/images";
-import { formatPrice, products } from "@/lib/products";
+import { products } from "@/lib/products";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const shampoo = products[0];
@@ -55,7 +56,7 @@ function HeroSection() {
       <div className="seed-hero relative min-h-[92svh] w-full bg-[#eceae3]">
         <ScrollScale className="absolute inset-0" from={1.16} to={1.04}>
           <Image
-            src="/images/home/h1-hero.jpg"
+            src="/images/renewal/collection.png"
             alt="[FORM] renewal copper peptide lineup"
             fill
             priority
@@ -487,7 +488,7 @@ function ScienceSection() {
               How each formula uses them
             </p>
             <h3 className="mt-3 max-w-[16ch] text-2xl font-medium tracking-[-0.02em] text-shell md:text-4xl">
-              Three products, one peptide system.
+              Four formulas, one peptide system.
             </h3>
           </Reveal>
           <Stagger className="mt-10 grid gap-4 md:grid-cols-3" delay={0.05}>
@@ -680,13 +681,13 @@ function ReviewSection() {
 
 function UgcSection() {
   const tiles = [
-    { src: "/images/home/h2-shampoo-ledge.jpg", label: "Copper Growth Shampoo" },
-    { src: "/images/home/h29-shelfie.jpg", label: "Bathroom shelf" },
-    { src: "/products/form-shampoo-packaging.jpg", label: "Bottle + box" },
-    { src: "/images/home/h3-capsule-ledge.jpg", label: "Capsule Cream" },
-    { src: "/images/home/h32-flatlay.jpg", label: "Morning flat lay" },
-    { src: "/images/home/h4-lift-ledge.jpg", label: "Lift Cream" },
-    { src: "/images/home/sr1-serum-ledge.jpg", label: "Scalp Serum · soon" },
+    { src: "/images/renewal/shampoo.png", label: "Copper Growth Shampoo" },
+    { src: "/images/renewal/collection.png", label: "Bathroom shelf" },
+    { src: "/images/renewal/shampoo.png", label: "Bottle + box" },
+    { src: "/images/renewal/capsule.png", label: "Capsule Cream" },
+    { src: "/images/renewal/collection.png", label: "Morning flat lay" },
+    { src: "/images/renewal/lift.png", label: "Lift Cream" },
+    { src: "/images/renewal/serum.png", label: "Scalp Serum · soon" },
   ];
 
   return (
@@ -768,7 +769,7 @@ function BookendSection() {
         <Reveal delay={0.08}>
           <div className="seed-shell relative min-h-[480px] overflow-hidden bg-[#7b7869]">
             <Image
-              src="/images/home/h35-shampoo-steam.jpg"
+              src="/images/renewal/shampoo.png"
               alt={shampoo.name}
               fill
               className="object-cover object-[72%_center]"
@@ -780,9 +781,7 @@ function BookendSection() {
                 Start with Copper Growth.
               </h2>
               <p className="mt-3 max-w-xs text-white/85">
-                {shampoo.price === undefined
-                  ? "Price at launch"
-                  : `From ${formatPrice(shampoo.price)}`}
+                <LivePrice slug={shampoo.slug} />
               </p>
               <div className="mt-6">
                 <PurgoButton

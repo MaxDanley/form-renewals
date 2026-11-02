@@ -55,7 +55,7 @@ export const quizScopes: { id: QuizScope; label: string; hint: string; image: st
 
 export const quizStyles: { id: QuizStyle; label: string; hint: string }[] = [
   { id: "single", label: "One formula", hint: "Start with a single product" },
-  { id: "stack", label: "A stack", hint: "Pair formulas and save" },
+  { id: "stack", label: "A stack", hint: "Pair complementary formulas" },
 ];
 
 function productResult(
